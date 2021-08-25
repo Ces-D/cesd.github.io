@@ -1,0 +1,19 @@
+.mast {
+  border: 0;
+  border-bottom: 1px;
+  border-style: solid;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+
+  .title {
+    & > a:hover {
+      color: $secondary;
+    }
+  }
+
+  .topic {
+    display: inline-block;
+    padding-left: 1em;
+  }
+}

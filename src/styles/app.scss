@@ -1,0 +1,18 @@
+@import "./variables";
+
+@import "./elements";
+
+@import "./components/header";
+
+@import "./components/articleCard";
+
+.container {
+  margin-left: $container-margin;
+  margin-right: $container-margin;
+}
+
+.date {
+  opacity: 50%;
+  margin-block-start: 0.25rem;
+  margin-block-end: 0.25rem;
+}
