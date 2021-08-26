@@ -12,10 +12,7 @@ export default function Header() {
           <a href="#search">Search</a>
         </h3>
         <h3 className="topic">
-          <a href="#about">About</a>
-        </h3>
-        <h3 className="topic">
-          <a href="#contact">Contact</a>
+          <a href="#contact">Contact</a> //TODO:
         </h3>
         <h3 className="topic">
           <a href="/archive">Archive</a>

@@ -1,6 +1,6 @@
 import React from "react";
 import { readdirSync } from "fs";
-import { GetStaticProps } from "next";
+import { GetStaticProps, GetStaticPropsResult } from "next";
 import ArticleCard from "../components/ArticleCard";
 
 import BlogDataFactory from "../utils/contentFactory";
@@ -36,9 +36,25 @@ export const getStaticProps: GetStaticProps = async () => {
     return fileData;
   });
 
-  const res = await Promise.all(blogCards);
+  const response = await Promise.all(blogCards).then((res) => {
+    res.sort((a, b) => {
+      const aDate = new Date(a.date);
+      const bDate = new Date(b.date);
+
+      if (aDate > bDate) {
+        return 1;
+      } else if (aDate < bDate) {
+        return -1;
+      } else {
+        return 0;
+      }
+    });
+
+    return res;
+  });
 
   return {
-    props: { posts: res },
+    props: { posts: response },
+    revalidate: 30,
   };
 };
