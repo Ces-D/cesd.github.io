@@ -1,7 +1,7 @@
 import path from "path";
 import process from "process";
 import matter from "gray-matter";
-import markdownToHtml from "./markdownToHtml";
+import markdownToHtml from "../markdownToHtml";
 
 export const CONTENT_DIRECTORY = path.join(process.cwd(), "content");
 
@@ -16,7 +16,7 @@ export default class GrayMatterData {
   protected _title: any;
 
   constructor(fileName: string) {
-    const grayFile = matter.read(path.join(CONTENT_DIRECTORY, fileName));
+    const grayFile = this.GrayMatterRead(path.join(CONTENT_DIRECTORY, fileName));
 
     this._content = markdownToHtml(grayFile.content) || "";
     this._coverImage =
@@ -30,5 +30,9 @@ export default class GrayMatterData {
     this._slug = fileName.split(".")[0] || "";
     this._tags = grayFile.data.tags || "";
     this._title = grayFile.data.title || "";
+  }
+
+  protected GrayMatterRead(filePath: string) {
+    return matter.read(filePath);
   }
 }

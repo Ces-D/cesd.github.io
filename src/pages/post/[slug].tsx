@@ -4,9 +4,9 @@ import { GetStaticPaths, GetStaticPropsContext } from "next";
 import { readdirSync } from "fs";
 
 import BlogDataFactory from "../../utils/contentFactory";
-import { BlogPaths } from "../../utils/PathsData";
-import { BlogPost } from "../../utils/PostData";
-import { CONTENT_DIRECTORY } from "../../utils/GrayMatterData";
+import { BlogPaths } from "../../utils/data/PathsData";
+import { BlogPost } from "../../utils//data/PostData";
+import { CONTENT_DIRECTORY } from "../../utils/data/GrayMatterData";
 
 export default function BlogPostPage(props: BlogPost) {
   return (
@@ -15,7 +15,7 @@ export default function BlogPostPage(props: BlogPost) {
         <title>{`${props.title} - Cesar Diaz`}</title>
         <meta name="description" content={props.description} />
       </Head>
-      <div className="container">
+      <div className="margins">
         <h1>{props.title}</h1>
         <p className="date">{new Date(props.date).toLocaleDateString()}</p>
         <div dangerouslySetInnerHTML={{ __html: props.content }} />

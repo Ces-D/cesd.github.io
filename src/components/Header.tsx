@@ -1,23 +1,22 @@
 import React from "react";
+import Link from "next/link";
+
+import BurgerMenu from "./BurgerMenu";
+import SearchBar from "./SearchBar";
 
 export default function Header() {
   return (
-    <header className="mast container">
-      <h1 className="title">
-        <a href="#home">Cesar Diaz</a>
-      </h1>
-      <div>
-        {/* //TODO:make the search bar */}
-        <h3 className="topic">
-          <a href="#search">Search</a>
+    <header className="header">
+      <nav className="menu">
+        <h1 className="menu-title">
+          <Link href="/">Cesar</Link>
+        </h1>
+        <h3 className="menu-topic">
+          <Link href="#contact">Contact</Link>
         </h3>
-        <h3 className="topic">
-          <a href="#contact">Contact</a> //TODO:
-        </h3>
-        <h3 className="topic">
-          <a href="/archive">Archive</a>
-        </h3>
-      </div>
+        <BurgerMenu />
+      </nav>
+      <SearchBar />
     </header>
   );
 }

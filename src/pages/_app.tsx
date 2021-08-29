@@ -14,7 +14,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         />
       </Head>
       <Header />
-      <Component {...pageProps} />
+      <div className="container">
+        <Component {...pageProps} />
+      </div>
     </>
   );
 }
