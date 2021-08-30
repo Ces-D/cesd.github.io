@@ -1,7 +1,7 @@
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import Header from "../components/Header";
-import "../styles/app.scss";
+import "../globals.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -14,7 +14,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         />
       </Head>
       <Header />
-      <div className="container">
+      <div className="mx-auto mt-10 w-full sm:w-1/2">
         <Component {...pageProps} />
       </div>
     </>

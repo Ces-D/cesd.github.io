@@ -29,6 +29,9 @@ export default class BlogDataFactory {
       case "Post":
         data = new PostData(fileName);
         break;
+      case "Paths":
+        data = new PathsData(fileName);
+        break;
       default:
         throw new Error("You did not enter the correct Blog Data Level");
     }
@@ -36,6 +39,3 @@ export default class BlogDataFactory {
     return data.toJson();
   }
 }
-
-// TODO: create a pagination system
-// TODO: separate the sort logic

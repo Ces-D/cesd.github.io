@@ -1,5 +1,6 @@
 import React from "react";
 import Head from "next/head";
+import Image from "next/image";
 import { GetStaticPaths, GetStaticPropsContext } from "next";
 import { readdirSync } from "fs";
 
@@ -15,10 +16,21 @@ export default function BlogPostPage(props: BlogPost) {
         <title>{`${props.title} - Cesar Diaz`}</title>
         <meta name="description" content={props.description} />
       </Head>
-      <div className="margins">
-        <h1>{props.title}</h1>
-        <p className="date">{new Date(props.date).toLocaleDateString()}</p>
-        <div dangerouslySetInnerHTML={{ __html: props.content }} />
+      <div className="flex flex-grow flex-col gap-y-4">
+        <h1 className="text-2xl font-bold">{props.title}</h1>
+        <p className="opacity-50">{props.date}</p>
+        <div className="w-full h-60 sm:h-96 relative object-center">
+          <Image
+            src={props.coverImage}
+            layout="fill"
+            objectFit="cover"
+            alt={props.title + "cover image"}
+          />
+        </div>
+        <article
+          className="blog-content prose prose-yellow"
+          dangerouslySetInnerHTML={{ __html: props.content }}
+        />
       </div>
     </>
   );

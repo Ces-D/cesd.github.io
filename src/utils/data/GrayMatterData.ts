@@ -2,7 +2,7 @@ import path from "path";
 import process from "process";
 import matter from "gray-matter";
 import markdownToHtml from "../markdownToHtml";
-
+import date from "date-and-time"
 export const CONTENT_DIRECTORY = path.join(process.cwd(), "content");
 
 export default class GrayMatterData {
@@ -22,7 +22,8 @@ export default class GrayMatterData {
     this._coverImage =
       grayFile.data.coverImage ||
       "https://images.unsplash.com/photo-1493612276216-ee3925520721?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80";
-    this._date = new Date(grayFile.data.date).toLocaleDateString() || "";
+
+    this._date = date.format(new Date(grayFile.data.date), "MMMM D. YYYY") || "";
     this._description =
       grayFile.data.description ||
       "Software developer learning and explaining the process of developing";

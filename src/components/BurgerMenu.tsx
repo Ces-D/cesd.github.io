@@ -2,10 +2,10 @@ import React from "react";
 
 export default function BurgerMenu() {
   return (
-    <div className="menu-burger">
+    <div className="sm:hidden inline-block">
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        className="burger"
+        className="h-6 w-6"
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
