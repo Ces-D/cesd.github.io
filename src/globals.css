@@ -23,21 +23,22 @@
   }
 
   body {
-    @apply bg-dark;
     @apply m-0;
     @apply p-0;
-    @apply text-light;
-    @apply font-robot
+    @apply font-robot;
+    @apply bg-light;
+    @apply text-dark;
   }
 
   a {
-    @apply hover:text-green-300;
+    @apply hover:text-teal;
   }
 }
 
 @layer components {
   .blog-content {
     @apply mt-4;
+    @apply px-0.5;
     @apply text-left;
     @apply leading-relaxed;
   }

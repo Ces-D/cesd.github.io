@@ -1,21 +1,17 @@
+const colors = require("tailwindcss/colors");
+
 module.exports = {
-  purge: [],
-  darkMode: false, // or 'media' or 'class'
+  purge: ["./src/**/*.tsx"],
+  darkMode: "media", // or 'media' or 'class'
 
   theme: {
     extend: {
-      colors: {
-        dark: "#1a1a1a",
-        light: "#f5f5f5",
-        "baby-blue": "#e2f6ff",
-      },
-
       typography: (theme) => ({
         DEFAULT: {
           css: {
-            color: theme("colors.light"),
+            color: theme("colors.dark"),
             h1: {
-              color: theme("colors.baby-blue"),
+              color: theme("colors.sky"),
             },
           },
         },
@@ -25,13 +21,19 @@ module.exports = {
     fontFamily: {
       robot: ["Roboto", "sans-serif"],
     },
+    colors: {
+      dark: colors.trueGray[900],
+      light: colors.trueGray[50],
+      gray: colors.trueGray[300],
+      darkGray: colors.trueGray[400],
+      sky: colors.sky[400],
+      teal: colors.teal[300],
+    },
 
     screens: {
       sm: "480px",
       md: "768px",
       lg: "1024px",
-      xl: "1280px",
-      "2xl": "1536px",
     },
   },
 

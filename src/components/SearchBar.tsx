@@ -1,16 +1,20 @@
 import React from "react";
 
 export default function SearchBar() {
-  //TODO: figure out the search bar
+
   return (
-    <div className="w-11/12 mx-auto mt-2 sm:mt-0">
-      <input className="border-box w-11/12 sm:w-10/12 p-1" type="text" placeholder="Search" />
-      <button className="bg-red-400 rounded-sm align-middle">
+    <div className="w-full sm:w-3/12 h-8 sm:h-6 mt-2 sm:mt-0">
+      <input
+        className="border-box w-11/12 sm:w-10/12 md:w-11/12 p-1 bg-gray h-full align-middle"
+        type="text"
+        placeholder="Search"
+      />
+      <button className="border-box bg-teal rounded-sm align-middle w-1/12 sm:w-2/12 md:w-1/12 h-full">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 20 20"
           fill="currentColor"
-          className="h-5 w-5"
+          className="h-6 w-6 sm:h-5 sm:w-5 mx-auto"
         >
           <path
             fillRule="evenodd"

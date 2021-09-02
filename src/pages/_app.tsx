@@ -14,7 +14,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         />
       </Head>
       <Header />
-      <div className="mx-auto mt-10 w-full sm:w-2/3 lg:w-1/2">
+      <div className="mx-auto mt-10 mb-5 w-full sm:w-5/6 lg:w-2/3">
         <Component {...pageProps} />
       </div>
     </>

@@ -22,4 +22,7 @@ tree.water(40)
 if (tree.ready){
   tree.blossom
 }
+tree.sprout(branches, flowers, mushrooms, beans, apples, leaves, potatos)
+zebra.eat(apples,20)
 ```
+<img src="https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif" />

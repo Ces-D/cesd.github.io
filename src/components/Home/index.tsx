@@ -9,8 +9,8 @@ type Props = { posts: BlogCard[] };
 export default function Home({ posts }: Props) {
   return (
     <>
-      <h1 className="text-4xl font-bold">Recent Posts</h1>
-      <ul className="list-inside list-none my-4">
+      <h1 className="text-4xl">Recent Posts</h1>
+      <ul className="list-inside list-none">
         {posts.map((post) => (
           <PostDisplay key={uuidv4()} {...post} />
         ))}

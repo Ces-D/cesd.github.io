@@ -3,6 +3,10 @@ import Head from "next/head";
 import Image from "next/image";
 import { GetStaticPaths, GetStaticPropsContext } from "next";
 import { readdirSync } from "fs";
+import { v4 as uuidv4 } from "uuid";
+
+import TagButton from "../../components/TagButton";
+import ShareButton from "../../components/ShareButton";
 
 import BlogDataFactory from "../../utils/contentFactory";
 import { BlogPaths } from "../../utils/data/PathsData";
@@ -17,8 +21,9 @@ export default function BlogPostPage(props: BlogPost) {
         <meta name="description" content={props.description} />
       </Head>
       <div className="flex flex-grow flex-col gap-y-4">
-        <h1 className="text-2xl font-bold">{props.title}</h1>
+        <h1 className="text-4xl">{props.title}</h1>
         <p className="opacity-50">{props.date}</p>
+        <ShareButton description={props.description} title={props.title} />
         <div className="w-full h-60 sm:h-96 relative object-center">
           <Image
             src={props.coverImage}
@@ -28,9 +33,14 @@ export default function BlogPostPage(props: BlogPost) {
           />
         </div>
         <article
-          className="blog-content prose prose-yellow"
+          className="blog-content prose prose-blue"
           dangerouslySetInnerHTML={{ __html: props.content }}
         />
+        <ul className="list-inside list-none w-full">
+          {props.tags.map((tag) => (
+            <TagButton key={uuidv4()} tag={tag} />
+          ))}
+        </ul>
       </div>
     </>
   );

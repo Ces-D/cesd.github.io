@@ -4,7 +4,7 @@ export type BlogPost = {
   title: string;
   coverImage: string;
   date: string;
-  tags: string;
+  tags: string[];
   description: string;
   content: string;
 };
@@ -21,7 +21,7 @@ export default class PostData extends GrayMatterData {
       content: this._content,
       date: this._date,
       description: this._description,
-      tags: this._tags,
+      tags: this._tags.split(","),
     };
   }
 }
