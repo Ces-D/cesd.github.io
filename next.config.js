@@ -1,5 +1,10 @@
 /** @type {import('next').NextConfig} */
-module.exports = {
+
+const withBundleAnalyzer = require("@next/bundle-analyzer")({
+  enabled: process.env.ANALYZE === "true",
+});
+
+module.exports = withBundleAnalyzer({
   reactStrictMode: true,
   images: {
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
@@ -9,5 +14,7 @@ module.exports = {
     domains: ["images.unsplash.com"],
     disableStaticImages: false,
     minimumCacheTTL: 60,
+    inlineImageLimit: -1,
   },
-};
+  compress: true,
+});
