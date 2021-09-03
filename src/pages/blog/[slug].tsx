@@ -7,19 +7,20 @@ import { v4 as uuidv4 } from "uuid";
 
 import TagButton from "../../components/TagButton";
 import ShareButton from "../../components/ShareButton";
+import Container from "../../components/Container";
 
 import BlogDataFactory from "../../utils/contentFactory";
 import { BlogPaths } from "../../utils/data/PathsData";
-import { BlogPost } from "../../utils//data/PostData";
+import { BlogPost } from "../../utils/data/PostData";
 import { CONTENT_DIRECTORY } from "../../utils/data/GrayMatterData";
 
 export default function BlogPostPage(props: BlogPost) {
   return (
-    <>
-      <Head>
-        <title>{`${props.title} - Cesar Diaz`}</title>
-        <meta name="description" content={props.description} />
-      </Head>
+    <Container
+    title={props.title}
+    description={props.description}
+    articleDate={props.date}
+    >
       <div className="flex flex-grow flex-col gap-y-4">
         <h1 className="text-4xl">{props.title}</h1>
         <p className="opacity-50">{props.date}</p>
@@ -42,7 +43,7 @@ export default function BlogPostPage(props: BlogPost) {
           ))}
         </ul>
       </div>
-    </>
+    </Container>
   );
 }
 

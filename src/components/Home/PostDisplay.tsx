@@ -14,7 +14,7 @@ export default function PostDisplay(props: BlogCard) {
       <p className="opacity-50 mb-3">{props.date}</p>
       <div className="w-full">
         <h2 className="align-top inline-block mb-3 text-xl w-full sm:w-3/4">
-          <a href={`post/${props.slug}`}>{props.title}</a>
+          <a href={`blog/${props.slug}`}>{props.title}</a>
         </h2>
         <div className="inline-block w-full sm:w-1/4">
           {postTags.map((tag) => (

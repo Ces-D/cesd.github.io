@@ -22,6 +22,11 @@
       url("https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap");
   }
 
+  html {
+    min-width: 360px;
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply m-0;
     @apply p-0;
