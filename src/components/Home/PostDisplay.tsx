@@ -11,7 +11,7 @@ export default function PostDisplay(props: BlogCard) {
 
   return (
     <li className="py-8 border-b border-opacity-30 w-full">
-      <p className="opacity-50 mb-3">{props.date}</p>
+      <p className="opacity-50 mb-3">{props.publishDate}</p>
       <div className="w-full">
         <h2 className="align-top inline-block mb-3 text-xl w-full sm:w-3/4">
           <a href={`blog/${props.slug}`}>{props.title}</a>

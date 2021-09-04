@@ -3,7 +3,8 @@ import GrayMatterData from "./GrayMatterData";
 export type BlogCard = {
   title: string;
   slug: string;
-  date: string;
+  publishDate: string;
+  readingTime: number;
   tags: string[];
 };
 
@@ -15,8 +16,9 @@ export default class CardData extends GrayMatterData {
   toJson(): BlogCard {
     return {
       title: this._title,
-      date: this._date,
       slug: this._slug,
+      publishDate: this._publishDate,
+      readingTime: this._readingTime,
       tags: this._tags.split(","),
     };
   }

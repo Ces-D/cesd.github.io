@@ -16,3 +16,8 @@ export default function Header() {
     </header>
   );
 }
+
+
+// TODO: Complete searchbar and site map
+// REFERENCE: https://leerob.io/dashboard
+// REPO: https://github.com/leerob/leerob.io

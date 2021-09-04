@@ -1,7 +1,7 @@
 ---
 title: apples take a long walk across the beach
 coverImage: https://images.unsplash.com/photo-1536329583941-14287ec6fc4e?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80
-date: 08/28/2021
+publishDate: 08/28/2021
 tags: jello,me,butt,fart,cheese,c#,code,typescript,interface
 description: The apples take a long walk across the beach to the markdown to html.
 ---

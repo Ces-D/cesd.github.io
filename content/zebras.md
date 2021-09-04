@@ -1,14 +1,14 @@
 ---
 title: Zebras Make the World Go Round, Round and Round
 coverImage: https://images.unsplash.com/photo-1536329583941-14287ec6fc4e?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80
-date: 08/25/2021
+publishDate: 08/25/2021
 tags: jello,me,butt,fart
 description: The Zebras to the markdown to html baker that will be my blog app.
 ---
 
 # Testing Title Level
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lacus laoreet non curabitur gravida arcu. Nulla pharetra diam sit amet nisl suscipit. Dignissim suspendisse in est ante in nibh mauris cursus. Dapibus ultrices in iaculis nunc sed augue lacus. Id consectetur purus ut faucibus pulvinar elementum integer enim. Et ultrices neque ornare aenean. Quis auctor elit sed vulputate mi sit amet mauris commodo. Imperdiet nulla malesuada pellentesque elit eget. In tellus integer feugiat scelerisque varius morbi enim nunc faucibus. Ut venenatis tellus in metus. Nec nam aliquam sem et. Dictumstquisque sagittis purus sit amet volutpat.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lacus laoreet non curabitur gravida arcu. Nulla pharetra diam sit amet nisl suscipit. Dignissim suspendisse in est ante in nibh mauris cursus. Dapibus ultrices in iaculis nunc sed augue lacus. Id consectetur purus ut faucibus pulvinar elementum integer enim. Et ultrices neque ornare aenean. Quis auctor elit sed vulputate mi sit amet mauris commodo. Imperdiet nulla malesuada pellentesque elit eget. In tellus integer feugiat scelerisque varius morbi enim nunc faucibus. Ut venenatis tellus in metus. Nec nam aliquam sem et. Dictumstquisque sagittis purus sit amet volutpat. This should be updated and show first.
 
 ## Test the max Level
 
@@ -25,4 +25,5 @@ if (tree.ready){
 tree.sprout(branches, flowers, mushrooms, beans, apples, leaves, potatos)
 zebra.eat(apples,20)
 ```
+
 <img src="https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif" />

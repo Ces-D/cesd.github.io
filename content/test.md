@@ -1,7 +1,7 @@
 ---
 title: Hello World
 coverImage: https://images.unsplash.com/photo-1536329583941-14287ec6fc4e?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80
-date: 08/23/2021
+publishDate: 08/23/2021
 tags: hello,world,butt,fart
 description: The hello world to the markdown to html baker that will be my blog app.
 ---

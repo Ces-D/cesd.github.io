@@ -5,8 +5,8 @@ type SortFormat = "newest" | "oldest";
 export const dateSort = (format: SortFormat, content: BlogCard[]) => {
   if (format === "newest") {
     return content.sort((a, b) => {
-      const aDate = new Date(a.date);
-      const bDate = new Date(b.date);
+      const aDate = new Date(a.publishDate);
+      const bDate = new Date(b.publishDate);
 
       if (aDate > bDate) {
         return -1;
@@ -18,8 +18,8 @@ export const dateSort = (format: SortFormat, content: BlogCard[]) => {
     });
   } else if (format === "oldest") {
     return content.sort((a, b) => {
-      const aDate = new Date(a.date);
-      const bDate = new Date(b.date);
+      const aDate = new Date(a.publishDate);
+      const bDate = new Date(b.publishDate);
 
       if (aDate > bDate) {
         return 1;
