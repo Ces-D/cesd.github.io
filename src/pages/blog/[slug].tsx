@@ -1,7 +1,7 @@
 import { GetStaticPaths, GetStaticPropsContext } from "next";
 import { readdirSync } from "fs";
 
-import Blog from "../../components/BlogPost";
+import Blog from "../../components/Blog/BlogPost";
 
 import BlogDataFactory from "../../utils/contentFactory";
 import { BlogPaths } from "../../utils/data/PathsData";

@@ -21,7 +21,7 @@ export default function ShareButton(props: Props) {
         }}
       >
         <div className="flex w-full flex-row items-center justify-center gap-x-2 p-1">
-          <p className="text-xs">Share</p>
+          <p>Share</p>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-3 w-3"

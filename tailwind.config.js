@@ -3,7 +3,6 @@ const colors = require("tailwindcss/colors");
 module.exports = {
   purge: ["./src/**/*.tsx"],
   darkMode: "media", // or 'media' or 'class'
-
   theme: {
     extend: {
       typography: (theme) => ({
@@ -18,10 +17,21 @@ module.exports = {
       }),
     },
 
+    fontSize: {
+      xs: ".5rem",
+      tag: "0.75rem",
+      sm: ".875rem",
+      md: "1rem",
+      lg: "1.125rem",
+      xl: "1.25rem",
+      "2xl": "1.5rem",
+      "3xl": "1.875rem",
+    },
     fontFamily: {
-      robot: ["Roboto", "sans-serif"],
+      base: ["Roboto Slab", "serif"],
     },
     colors: {
+      transparent: colors.transparent,
       dark: colors.trueGray[900],
       light: colors.trueGray[50],
       gray: colors.trueGray[300],
@@ -29,7 +39,6 @@ module.exports = {
       sky: colors.sky[400],
       teal: colors.teal[300],
     },
-
     screens: {
       sm: "480px",
       md: "768px",

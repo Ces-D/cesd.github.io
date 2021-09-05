@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Footer from "./Footer";
 import Header from "./Header";
 
 type Props = {
@@ -29,10 +30,11 @@ export default function Container(props: Props) {
       </Head>
       <Header />
       <main className="px-6">
-        <div className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-16">
-        {props.children}
+        <div className="flex flex-col justify-center items-start max-w-xl mx-auto mb-16">
+          {props.children}
         </div>
-        </main>
+      </main>
+      <Footer />
     </div>
   );
 }
