@@ -1,6 +1,6 @@
 ---
 title: Zebras Make the World Go Round, Round and Round
-coverImage: https://images.unsplash.com/photo-1536329583941-14287ec6fc4e?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80
+coverImage: https://images.unsplash.com/photo-1630771966222-d7d5019b1a64?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=967&q=80
 publishDate: 08/25/2021
 tags: jello,me,butt,fart
 description: The Zebras to the markdown to html baker that will be my blog app.

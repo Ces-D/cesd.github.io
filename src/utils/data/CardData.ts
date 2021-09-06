@@ -5,7 +5,8 @@ export type BlogCard = {
   slug: string;
   publishDate: string;
   readingTime: number;
-  tags: string[];
+  coverImage: string;
+  excerpt: string;
 };
 
 export default class CardData extends GrayMatterData {
@@ -19,7 +20,8 @@ export default class CardData extends GrayMatterData {
       slug: this._slug,
       publishDate: this._publishDate,
       readingTime: this._readingTime,
-      tags: this._tags.split(","),
+      coverImage: this._coverImage,
+      excerpt: this._excerpt,
     };
   }
 }

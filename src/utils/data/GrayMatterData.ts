@@ -33,7 +33,7 @@ export default class GrayMatterData {
       grayFile.data.description ||
       "Software developer learning and explaining the process of developing";
 
-    this._excerpt = grayFile.content.split("\n").slice(0, 1).join(" ");
+    this._excerpt = grayFile.content.split(new RegExp("[.?!]")).slice(0, 2).join(". ");
 
     this._slug = fileName.split(".")[0] || "";
 

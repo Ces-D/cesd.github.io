@@ -1,6 +1,6 @@
 ---
 title: Jello Mundo
-coverImage: https://images.unsplash.com/photo-1536329583941-14287ec6fc4e?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80
+coverImage: https://images.unsplash.com/photo-1620942243860-aa66b05b45a2?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80
 publishDate: 08/23/2021
 tags: jello,me,butt,fart
 description: The jello mundo to the markdown to html baker that will be my blog app.

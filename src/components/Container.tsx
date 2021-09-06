@@ -18,7 +18,7 @@ export default function Container(props: Props) {
   };
 
   return (
-    <div>
+    <>
       <Head>
         <title>{meta.title}</title>
         <meta content={meta.description} name="description" />
@@ -35,6 +35,6 @@ export default function Container(props: Props) {
         </div>
       </main>
       <Footer />
-    </div>
+    </>
   );
 }

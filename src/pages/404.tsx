@@ -5,8 +5,8 @@ import Link from "next/link";
 export default function FourZeroFour() {
   return (
     <Container title="404 - Cesar Diaz">
-      <div className="flex flex-col justify-center items-start gap-y-4">
-        <h1>Whoops!!</h1>
+      <div className="flex flex-col h-screen justify-center items-start gap-y-4">
+        <h1 className="text-really-big">Whoops!!</h1>
         <p>
           Something is missing. You should double check that the url is not misspelled.
         </p>

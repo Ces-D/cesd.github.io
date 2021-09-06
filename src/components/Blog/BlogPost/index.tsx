@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 import Container from "../../Container";
 import ShareButton from "../../ShareButton";
 import TagButton from "../../TagButton";
+import DateTimeTab from "../DateTimeTab";
 
 import { BlogPost } from "../../../utils/data/PostData";
 
@@ -17,12 +18,8 @@ export default function Blog(props: BlogPost) {
     >
       <div className="flex flex-grow flex-col gap-y-4 mx-auto">
         <h1>{props.title}</h1>
-        <div className="flex flex-row gap-x-3">
-          <p className="opacity-50">{props.publishDate}</p>
-          <p>|</p>
-          <p className="opacity-50">{props.readingTime} min read</p>
-        </div>
-          <ShareButton description={props.description} title={props.title} />
+        <DateTimeTab publishDate={props.publishDate} readingTime={props.readingTime} />
+        <ShareButton description={props.description} title={props.title} />
         <div className="w-full h-60 sm:h-96 relative object-center">
           <Image
             src={props.coverImage}

@@ -25,7 +25,7 @@ module.exports = {
       lg: "1.125rem",
       xl: "1.25rem",
       "2xl": "1.5rem",
-      "3xl": "1.875rem",
+      "really-big": "5rem",
     },
     fontFamily: {
       base: ["Roboto Slab", "serif"],
@@ -33,7 +33,8 @@ module.exports = {
     colors: {
       transparent: colors.transparent,
       dark: colors.trueGray[900],
-      light: colors.trueGray[50],
+      light: "#fefefe",
+      lightGray: colors.trueGray[100],
       gray: colors.trueGray[300],
       darkGray: colors.trueGray[400],
       sky: colors.sky[400],

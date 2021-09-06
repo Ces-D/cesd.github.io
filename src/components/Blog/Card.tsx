@@ -1,28 +1,39 @@
 import React from "react";
+import Image from "next/image";
+import Link from "next/link";
+
+import DateTimeTab from "./DateTimeTab";
+
 import { BlogCard } from "../../utils/data/CardData";
-import TagButton from "../TagButton";
-import ExtraTagsButton from "./ExtraTagsButton";
-import { v4 as uuidv4 } from "uuid";
 
-
-export default function Card(props: BlogCard) {
-  const SHOWN_TAGS = 4;
-  const remainingTags = props.tags.length - SHOWN_TAGS;
-  const postTags = props.tags.slice(0, SHOWN_TAGS);
-
+export default function Card(props: { post: BlogCard; flip: boolean }) {
   return (
-    <li className="py-4 border-b border-opacity-50 block">
-      <p className="opacity-50">{props.publishDate}</p>
-      <div className="w-full">
-        <h3 className="align-top inline-block mb-3 w-full sm:w-3/4">
-          <a href={`blog/${props.slug}`}>{props.title}</a>
+    <li className="border-b border-darkGray h-80 sm:h-40 w-full flex flex-col sm:flex-row items-center justify-center my-6 pb-6">
+      <div
+        className={`w-full sm:w-1/3 sm:h-full h-2/5 relative object-center order-1 ${
+          props.flip ? "sm:order-2" : "sm:order-1"
+        }`}
+      >
+        <Image
+          src={props.post.coverImage}
+          layout="fill"
+          objectFit="cover"
+          alt={props.post.title + "cover image"}
+        />
+      </div>
+      <div
+        className={`pt-2 h-3/5 sm:w-2/3 sm:h-full sm:pt-0 flex flex-col justify-center order-2 cursor-default ${
+          props.flip ? "sm:order-1 sm:pr-3" : "sm:order-2 sm:pl-3"
+        }`}
+      >
+        <DateTimeTab
+          publishDate={props.post.publishDate}
+          readingTime={props.post.readingTime}
+        />
+        <h3 className="mb-2 leading-5">
+          <Link href={`blog/${props.post.slug}`}>{props.post.title}</Link>
         </h3>
-        <div className="inline-block w-full sm:w-1/4">
-          {postTags.map((tag) => (
-            <TagButton key={uuidv4()} tag={tag} />
-          ))}
-          {remainingTags > 0 ? <ExtraTagsButton extraTags={remainingTags} /> : ""}
-        </div>
+        <p className="w-full overflow-clip leading-5">{props.post.excerpt}...</p>
       </div>
     </li>
   );

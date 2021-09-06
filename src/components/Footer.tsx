@@ -13,7 +13,16 @@ export default function Footer() {
             <a target="_blank">GitHub</a>
           </Link>
         </p>
+        <p>
+          <Link href="https://www.goodreads.com/user/show/101250642-cesar-diaz">
+            <a target="_blank">GoodReads</a>
+          </Link>
+        </p>
       </nav>
     </footer>
   );
 }
+
+
+//TODO: https://www.figma.com/community/file/809292669091916902?preview=fullscreen
+// https://www.figma.com/community/file/895225371918055740
