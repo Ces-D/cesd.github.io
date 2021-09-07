@@ -12,7 +12,7 @@ export default function ShareButton(props: Props) {
   const router = useRouter();
 
   return (
-    <button className="rounded-md bg-gray w-16">
+    <button className="rounded-md bg-gray w-16 mb-2">
       <RWebShare
         data={{
           text: props.description,

@@ -55,12 +55,3 @@
     @apply text-sm;
   }
 }
-
-@layer components {
-  .blog-content {
-    @apply mt-4;
-    @apply px-0.5;
-    @apply text-left;
-    @apply leading-relaxed;
-  }
-}
