@@ -16,16 +16,18 @@ export default function Blog(props: BlogPost) {
       articleDate={props.publishDate}
     >
       <div className="flex flex-col w-full">
-        <h1>{props.title}</h1>
-        <DateTimeTab publishDate={props.publishDate} readingTime={props.readingTime} />
-        <ul className="flex flex-row w-full list-none list-inside gap-x-1 text-darkGray">
-          {props.tags.map((tag) => (
-            <li key={uuidv4()} className="capitalize text-tag">
-              #{tag}
-            </li>
-          ))}
-        </ul>
-        <ShareButton description={props.description} title={props.title} />
+        <div className="w-full sm:w-11/12 mx-auto">
+          <h1>{props.title}</h1>
+          <DateTimeTab publishDate={props.publishDate} readingTime={props.readingTime} />
+          <ul className="flex flex-row w-full list-none list-inside gap-x-1 text-darkGray">
+            {props.tags.map((tag) => (
+              <li key={uuidv4()} className="capitalize text-tag">
+                #{tag}
+              </li>
+            ))}
+          </ul>
+          <ShareButton description={props.description} title={props.title} />
+        </div>
         <div className="w-full h-60 sm:h-72 relative object-center">
           <Image
             src={props.coverImage}
@@ -35,7 +37,7 @@ export default function Blog(props: BlogPost) {
           />
         </div>
         <article
-          className="mt-4 prose prose-sm"
+          className="my-4 w-full sm:w-10/12 mx-auto flex flex-col gap-y-3 leading-5"
           dangerouslySetInnerHTML={{ __html: props.content }}
         />
       </div>

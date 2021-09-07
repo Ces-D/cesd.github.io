@@ -4,22 +4,21 @@
 
 @layer base {
   @font-face {
+    font-family: "Urbanist", serif;
+    font-weight: 400;
+    src: @import url("https://fonts.googleapis.com/css2?family=Urbanist&display=swap");
+  }
+  @font-face {
     font-family: "Roboto Slab", serif;
+    font-weight: 600;
+    src: @import
+      url("https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@1,600&display=swap");
+  }
+  @font-face {
+    font-family: "Source Code Pro", monospace;
     font-weight: 300;
     src: @import
-      url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap");
-  }
-  @font-face {
-    font-family: "Roboto Slab", serif;
-    font-weight: 500;
-    src: @import
-      url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap");
-  }
-  @font-face {
-    font-family: "Roboto Slab", serif;
-    font-weight: 700;
-    src: @import
-      url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap");
+      url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap");
   }
 
   html {
@@ -53,5 +52,25 @@
 
   p {
     @apply text-sm;
+  }
+
+  table {
+    @apply border-collapse table-auto;
+  }
+
+  th {
+    @apply p-2 border bg-teal;
+  }
+
+  td {
+    @apply p-2 border;
+  }
+
+  pre {
+    @apply bg-darkBlue p-2 rounded-md overflow-x-auto;
+  }
+
+  code {
+    @apply font-code text-light text-sm max-w-full;
   }
 }

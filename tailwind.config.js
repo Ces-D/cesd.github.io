@@ -15,7 +15,8 @@ module.exports = {
       "really-big": "5rem",
     },
     fontFamily: {
-      base: ["Roboto Slab", "serif"],
+      base: ["Urbanist", "sans-serif"],
+      code: ["Source Code Pro", "monospace"],
     },
     colors: {
       dark: colors.trueGray[900],
@@ -33,35 +34,12 @@ module.exports = {
       lg: "1024px",
     },
 
-    extend: {
-      typography: (theme) => ({
-        DEFAULT: {
-          // TODO: style the <pre><code> blocks to look good
-          css: {
-            color: theme("colors.dark"),
-            fontFamily: theme("fontFamily"),
-            pre: {
-              backgroundColor: theme("colors.darkBlue"),
-              color: theme("colors.light"),
-            },
-            "pre code::after": {
-              backgroundColor: theme("colors.teal"),
-              "padding-right": "unset",
-            },
-            code: {
-              color: theme("colors.light"),
-              fontWeight: "400",
-              "border-radius": "0.25rem",
-            },
-          },
-        },
-      }),
-    },
+    extend: {},
   },
 
   variants: {
     extend: {},
   },
 
-  plugins: [require("@tailwindcss/typography")],
+  plugins: [],
 };
