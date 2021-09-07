@@ -1,28 +1,25 @@
 import React from "react";
-import Link from "next/link";
+
+import Github from "./Icons/Github";
+import GoodReads from "./Icons/Goodreads";
 
 export default function Footer() {
+  const DIMENSION = 14;
+
   return (
-    <footer className="w-full p-2 bg-dark text-light">
-      <nav className="max-w-4xl mx-auto flex flex-col justify-around items-center sm:flex-row">
+    <footer className="w-full h-20 p-2 flex flex-col justify-center items-center bg-dark text-light gap-y-1">
+      <p className="text-tag italic">Building, Learning, Developing</p>
+      <div className="mx-auto flex flex-row justify-center gap-x-2 w-20">
         <p>
-          <Link href="/">Home</Link>
+          <Github w={DIMENSION} h={DIMENSION} />
         </p>
         <p>
-          <Link href="https://github.com/Ces-D">
-            <a target="_blank">GitHub</a>
-          </Link>
+          <GoodReads w={DIMENSION} h={DIMENSION} />
         </p>
-        <p>
-          <Link href="https://www.goodreads.com/user/show/101250642-cesar-diaz">
-            <a target="_blank">GoodReads</a>
-          </Link>
-        </p>
-      </nav>
+      </div>
     </footer>
   );
 }
-
 
 //TODO: https://www.figma.com/community/file/809292669091916902?preview=fullscreen
 // https://www.figma.com/community/file/895225371918055740

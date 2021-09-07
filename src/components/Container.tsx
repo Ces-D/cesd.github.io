@@ -11,7 +11,7 @@ type Props = {
 
 export default function Container(props: Props) {
   const meta = {
-    title: props.title || "Cesar Diaz - Building, Learning, Developing",
+    title: props.title || "Building, Learning, Developing - Cesar Diaz",
     description: props.description || "Code connoisseur, Web developer, and blogger",
     type: "website",
     date: props.articleDate,
@@ -29,7 +29,7 @@ export default function Container(props: Props) {
         {meta.date && <meta property="article:published_time" content={meta.date} />}
       </Head>
       <Header />
-      <main className="px-6">
+      <main className="px-6 container">
         <div className="flex flex-col justify-center items-start max-w-xl mx-auto">
           {props.children}
         </div>

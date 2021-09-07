@@ -74,3 +74,10 @@
     @apply font-code text-light text-sm max-w-full;
   }
 }
+
+@layer components {
+  .container {
+    min-height: 75vh;
+    min-width: 100vw;
+  }
+}
