@@ -20,6 +20,3 @@ export default function Footer() {
     </footer>
   );
 }
-
-//TODO: https://www.figma.com/community/file/809292669091916902?preview=fullscreen
-// https://www.figma.com/community/file/895225371918055740
