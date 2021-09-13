@@ -26,7 +26,7 @@ export default function BlogHome(props: { posts: BlogCard[] }) {
           are coming.
         </p>
         <p>Use the search below to filter by title</p>
-        <div className="relative w-full">
+        <div className="relative w-full mt-2">
           <input
             placeholder="Search"
             value={searchValue}

@@ -18,7 +18,7 @@ export default function Home() {
           />
         </div>
         <button className="bg-darkBlue text-light p-5 font-code rounded-md">
-          <h1>Page Under Production</h1>
+          <h1>Page In Production</h1>
           <p className="mt-2 font-code">
             In the mean time. Check out the
             <Link href="/blog">

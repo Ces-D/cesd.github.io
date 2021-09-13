@@ -10,7 +10,9 @@ export default function FourZeroFour() {
         <p>
           Something is missing. You should double check that the url is not misspelled.
         </p>
-        <Link href="/">Return Home</Link>
+        <Link href="/">
+          <a className="text-md">Return Home</a>
+        </Link>
       </div>
     </Container>
   );

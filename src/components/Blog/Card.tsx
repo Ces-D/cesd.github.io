@@ -33,7 +33,9 @@ export default function Card(props: { post: BlogCard; flip: boolean }) {
         <h3 className="mt-0">
           <Link href={`blog/${props.post.slug}`}>{props.post.title}</Link>
         </h3>
-        <p className="w-full overflow-clip leading-6 font-tag">{props.post.excerpt}...</p>
+        <p className="w-full overflow-clip leading-6 text-tag">
+          {props.post.excerpt}...
+        </p>
       </div>
     </li>
   );

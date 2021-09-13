@@ -19,7 +19,7 @@ export default function Blog(props: BlogPost) {
         <div className="w-full sm:w-11/12 mx-auto">
           <h1>{props.title}</h1>
           <DateTimeTab publishDate={props.publishDate} readingTime={props.readingTime} />
-          <ul className="flex flex-row w-full list-none list-inside gap-x-2 text-darkGray">
+          <ul className="flex flex-row w-full list-none list-inside gap-x-2 text-darkGray mb-1">
             {props.tags.map((tag) => (
               <li key={uuidv4()} className="text-tag">
                 #{tag}
