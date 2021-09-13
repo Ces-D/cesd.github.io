@@ -5,13 +5,12 @@ module.exports = {
   darkMode: "media", // or 'media' or 'class'
   theme: {
     fontSize: {
-      xs: ".5rem",
-      tag: ".65rem",
-      sm: ".75rem",
-      md: "1rem",
-      lg: "1.125rem",
-      xl: "1.25rem",
-      "2xl": "1.5rem",
+      tag: "1rem",
+      sm: "1.25rem",
+      md: "1.5rem",
+      lg: "1.75rem",
+      xl: "2rem",
+      "2xl": "2.25rem",
       "really-big": "5rem",
     },
     fontFamily: {
@@ -21,9 +20,9 @@ module.exports = {
     colors: {
       dark: colors.trueGray[900],
       light: "#fefefe",
-      lightGray: colors.trueGray[100],
+      lightGray: colors.trueGray[200],
       gray: colors.trueGray[300],
-      darkGray: colors.trueGray[400],
+      darkGray: colors.trueGray[500],
       darkBlue: "#1e2135",
       sky: colors.sky[400],
       teal: colors.teal[300],
@@ -34,7 +33,11 @@ module.exports = {
       lg: "1024px",
     },
 
-    extend: {},
+    extend: {
+      height: (theme) => ({
+        100: "32rem",
+      }),
+    },
   },
 
   variants: {
