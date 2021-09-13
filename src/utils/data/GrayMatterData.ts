@@ -41,7 +41,9 @@ export default class GrayMatterData {
 
     this._title = grayFile.data.title || "";
 
-    this._readingTime = Math.round(readingTime(grayFile.content).minutes);
+    this._readingTime = Math.round(
+      readingTime(grayFile.content, { wordsPerMinute: 60 }).minutes
+    );
   }
 
   protected GrayMatterRead(filePath: string) {

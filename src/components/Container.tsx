@@ -21,6 +21,9 @@ export default function Container(props: Props) {
     <>
       <Head>
         <title>{meta.title}</title>
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <meta content={meta.description} name="description" />
         <meta property="og:type" content={meta.type} />
         <meta property="og:site_name" content="Cesar Diaz" />
@@ -30,7 +33,7 @@ export default function Container(props: Props) {
       </Head>
       <Header />
       <main className="px-6 container">
-        <div className="flex flex-col justify-center items-start max-w-xl mx-auto">
+        <div className="flex flex-col justify-center items-start max-w-5xl mx-auto">
           {props.children}
         </div>
       </main>
