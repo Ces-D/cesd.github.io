@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://cesd-github-io.vercel.app/
+Host: https://cesardiaz.xyz/
 
 # Sitemaps
-Sitemap: https://cesd-github-io.vercel.app/sitemap.xml
+Sitemap: https://cesardiaz.xyz/sitemap.xml
