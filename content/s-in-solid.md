@@ -1,0 +1,124 @@
+---
+title: Understanding the S in SOLID Principles
+coverImage: https://images.unsplash.com/photo-1494861895304-fb272971c078?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80
+publishDate: 09/09/2021
+tags: Typescript,SOLID,OOP,JavaScript,
+description: Explaining the Single-Responsibility of SOLID principles in object-oriented programming.
+---
+
+A responsibility is defined as a _reason to change_, and every function, module, class should have exactly one reason to be changed. If a function where to have more than a single responsibility, then it should be split into n number of functions depending on the number of responsibilities present. This principle represents a good way of identifying functions during the design phase and it reminds us to think of all the ways the class can evolve. A good separation of responsibilities is done when the full picture of how the application should work is understood.
+
+In all of the following examples, I am going to request featured playlists through the Spotify API. These examples will follow the [client-credentials flow](https://developer.spotify.com/documentation/general/guides/authorization-guide/) of spotify developers as written in their documentation. The flow begins by requesting access token from their servers using our applications _client id_, _client secret_, and the _grant type_. With the access token we are then able to request from their api any non-private data from their servers. I am first going to implement this without using the Single-Responsibility Principle, and then I am going to show how it is much easier to extend maintenance and functionality using the principle.
+
+## The SOLID principles are
+
+- **Single-Responsibility principle**
+- **Open-Closed principle**
+- **Liskov Substitution principle**
+- **Interface Segregation principle**
+- **Dependency Inversion principle**
+
+### Typescript Examples
+
+First we will look at an example not using the Single-responsibility principle.
+
+```
+import axios from "axios";
+import { config } from "dotenv";
+
+config({ path: "../.env" });
+
+const spotifyRequest = async () => {
+  const client_id = process.env.CLIENT_ID;
+  const client_secret = process.env.CLIENT_SECRET;
+  const auth_token = Buffer.from(`${client_id}:${client_secret}`, "utf-8").toString(
+    "base64"
+  );
+  const body = new URLSearchParams({ grant_type: "client_credentials" });
+
+  const tokenResponse = await axios.post("https://accounts.spotify.com/api/token", body, {
+    headers: {
+      Authorization: `Basic ${auth_token}`,
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+  });
+
+  const response = await axios.get(
+    "https://api.spotify.com/v1/browse/featured-playlists",
+    {
+      headers: {
+        Authorization: `Bearer ${tokenResponse.data.access_token}`,
+      },
+    }
+  );
+
+  console.log(response.data);
+};
+
+spotifyRequest();
+
+```
+
+In this example, all of our logic is stored under the function `spotifyRequest`. This is a working function that will return to us an object of the featured playlists and its associated meta data. This is a completely fine function, if this was going to be the end product. Difficulty maintaining or extending this function could arise if our application wanted to request from more spotify api endpoints, change our authentication flow, or if we wanted to manipulate the response in some way. Currently the responsibilities of this single function include:
+
+- building the access token request body
+- requesting the access token
+- requesting from the spotify server using the access token
+
+Let us look at an example where we separate the responsibilities and expand on this first example.
+
+```
+interface AccessTokens {
+  access_token: string;
+  token_type: string;
+  expires_in: number;
+}
+```
+
+Firstly we define the expected response structure for our access token.
+
+```
+const clientCredentialsAccessToken = (): Promise<AccessTokens> => {
+  const client_id = process.env.CLIENT_ID;
+  const client_secret = process.env.CLIENT_SECRET;
+  const auth_token = Buffer.from(`${client_id}:${client_secret}`, "utf-8").toString(
+    "base64"
+  );
+  const body = new URLSearchParams({ grant_type: "client_credentials" });
+
+  return axios
+    .post("https://accounts.spotify.com/api/token", body, {
+      headers: {
+        Authorization: `Basic ${auth_token}`,
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+    })
+    .then((res) => {
+      return res.data;
+    });
+};
+```
+
+Secondly we define a function that will return a Promise of our AccessToken structure. This function contains all the logic for requesting the token through the client-credentials flow.
+
+```
+const featurePlaylists = async (accessToken: Promise<AccessTokens>) => {
+  const tokens = await accessToken;
+  const response = await axios.get(
+    "https://api.spotify.com/v1/browse/featured-playlists",
+    {
+      headers: {
+        Authorization: `Bearer ${tokens.access_token}`,
+      },
+    }
+  );
+
+  console.log(response.data);
+};
+```
+
+Lastly we have a function that is in charge of requesting the feature playlists from the spotify server. This function requires a Promise of type AccessTokens. If we wanted to change the authentication flow to allow requesting from more api endpoints, this function would still work, assuming it is passed the correct parameter. If we wanted to add different api endpoints we need to only pass that function the correct `Promise<AccessTokens>`
+
+### Summary
+
+As a summary. The single responsibility principle represents a good way of identifying functions during the design phase and it reminds us to think of all the ways the class can evolve. A good separation of responsibilities is done when the full picture of how the application should work is understood.
