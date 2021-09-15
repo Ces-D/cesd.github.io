@@ -22,7 +22,7 @@ The example below will be an expanded rewrite of my earlier example on the Singl
 
 ## CSharp Example
 
-```
+```csharp
 namespace Solid.ApiAuthorizations
 {
     using System.Threading.Tasks;
@@ -38,7 +38,7 @@ namespace Solid.ApiAuthorizations
 
 This is the interface that will be inherited on each of my classes responsible for providing the spotify authorization tokens. Spotify currently has three different authorization flows, each providing different levels of access to their apis. In this example I am only writing for the [client-credentials flow](https://developer.spotify.com/documentation/general/guides/authorization-guide/#client-credentials-flow).
 
-```
+```csharp
 namespace Solid.ApiAuthorizations
 {
     using Solid.Models;

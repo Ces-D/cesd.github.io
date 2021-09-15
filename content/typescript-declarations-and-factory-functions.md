@@ -18,7 +18,7 @@ Factory functions are an object oriented language design pattern where a single 
 
 ## Example
 
-```
+```typescript
 export type BlogDataLevel = "Post" | "Card" | "Paths";
 
 interface OverLoads {
@@ -56,7 +56,6 @@ export default class BlogDataFactory {
     return data.toJson();
   }
 }
-
 ```
 
 In this example the factory function is deciding on the return type based on the value of the variable `dataLevel`. The accepted values of dataLevel are declared in the type of `BlogDataLevel`. The static method `returnData` has an overload where we create a variable `D` extending BlogDataLevel and assigning that type to our parameter dataLevel. Since our function is `async` our return type has to be a `Promise` of a specific type. `Overloads` is an interface object mapping the value of D to its appropriate return type. Putting all this together we get a function of return type `Promise<Overloads[D]>`.
