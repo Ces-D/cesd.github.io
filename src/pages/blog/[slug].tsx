@@ -1,7 +1,7 @@
 import { GetStaticPaths, GetStaticPropsContext } from "next";
 import { readdirSync } from "fs";
 
-import Blog from "../../components/Blog/BlogPost";
+import BlogPostComponent from "../../components/routes/BlogPost";
 
 import BlogDataFactory from "../../utils/contentFactory";
 import { BlogPaths } from "../../utils/data/PathsData";
@@ -9,7 +9,7 @@ import { BlogPost } from "../../utils/data/PostData";
 import { CONTENT_DIRECTORY } from "../../utils/data/GrayMatterData";
 
 export default function BlogPostPage(props: BlogPost) {
-  return <Blog {...props} />;
+  return <BlogPostComponent {...props} />;
 }
 
 export const getStaticProps = async (context: GetStaticPropsContext<BlogPaths>) => {

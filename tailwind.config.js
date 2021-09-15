@@ -2,7 +2,7 @@ const colors = require("tailwindcss/colors");
 
 module.exports = {
   purge: ["./src/**/*.tsx"],
-  darkMode: "media", // or 'media' or 'class'
+  darkMode: "class", // or 'media' or 'class'
   theme: {
     fontSize: {
       tag: "1rem",
@@ -18,7 +18,7 @@ module.exports = {
       code: ["Source Code Pro", "monospace"],
     },
     colors: {
-      dark: colors.trueGray[900],
+      dark: "#1a1a1a",
       light: "#fefefe",
       lightGray: colors.trueGray[200],
       gray: colors.trueGray[300],

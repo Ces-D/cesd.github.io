@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import Container from "../Container";
+import Container from "../layout/Container";
 
 export default function Home() {
   return (
@@ -30,6 +30,3 @@ export default function Home() {
     </Container>
   );
 }
-
-// TODO: 8. Animated Clipping Mask
-// https://speckyboy.com/css-svg-canvas-masks/

@@ -1,7 +1,5 @@
 import { BlogCard } from "./data/CardData";
 
-// TODO: identify if this function is going to stay in use
-
 type SortFormat = "newest" | "oldest";
 
 export const dateSort = (format: SortFormat, content: BlogCard[]) => {

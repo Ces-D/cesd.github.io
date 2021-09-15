@@ -15,7 +15,7 @@ export default function ShareButton(props: Props) {
   const dimensions = 20
 
   return (
-    <button className="rounded-md bg-lightGray px-2 mb-2">
+    <button className="rounded-md bg-lightGray dark:bg-darkGray px-2 mb-2">
       <RWebShare
         data={{
           text: props.description,

@@ -2,13 +2,13 @@ import React from "react";
 import Image from "next/image";
 import { v4 as uuidv4 } from "uuid";
 
-import Container from "../../Container";
-import ShareButton from "../../ShareButton";
-import DateTimeTab from "../DateTimeTab";
+import Container from "../layout/Container";
+import ShareButton from "../ShareButton";
+import DateTime from "../DateTime";
 
-import { BlogPost } from "../../../utils/data/PostData";
+import { BlogPost } from "../../utils/data/PostData";
 
-export default function Blog(props: BlogPost) {
+export default function BlogPost(props: BlogPost) {
   return (
     <Container
       title={props.title}
@@ -18,7 +18,7 @@ export default function Blog(props: BlogPost) {
       <div className="flex flex-col w-full">
         <div className="w-full sm:w-11/12 mx-auto">
           <h1>{props.title}</h1>
-          <DateTimeTab publishDate={props.publishDate} readingTime={props.readingTime} />
+          <DateTime publishDate={props.publishDate} readingTime={props.readingTime} />
           <ul className="flex flex-row w-full list-none list-inside gap-x-2 text-darkGray mb-1">
             {props.tags.map((tag) => (
               <li key={uuidv4()} className="text-tag">

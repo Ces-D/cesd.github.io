@@ -1,8 +1,8 @@
 import React, { useState, useMemo } from "react";
 import { v4 as uuidv4 } from "uuid";
 
-import Container from "../Container";
-import Card from "./Card";
+import Container from "../layout/Container";
+import HorizontalCard from "../HorizontalCard";
 import SearchGlass from "../Icons/SearchGlass";
 
 import { BlogCard } from "../../utils/data/CardData";
@@ -38,8 +38,8 @@ export default function BlogHome(props: { posts: BlogCard[] }) {
         </div>
         <ul className="list-none list-inside">
           {!filteredPosts.length && <p className="text-darkGray mb-4">No posts found.</p>}
-          {filteredPosts.map((post, index) => (
-            <Card key={uuidv4()} post={post} flip={index % 2 !== 0} />
+          {filteredPosts.map((post) => (
+            <HorizontalCard key={uuidv4()} {...post} />
           ))}
         </ul>
       </div>

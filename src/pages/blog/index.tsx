@@ -2,15 +2,15 @@ import React from "react";
 import { readdirSync } from "fs";
 import { GetStaticProps, GetStaticPropsResult } from "next";
 
-import BlogHome from "../../components/Blog/BlogHome";
+import Blogs from "../../components/routes/Blogs";
 
 import BlogDataFactory from "../../utils/contentFactory";
 import { CONTENT_DIRECTORY } from "../../utils/data/GrayMatterData";
 import { dateSort } from "../../utils/sort";
 import { BlogCard } from "../../utils/data/CardData";
 
-export default function BlogPage(props: { posts: BlogCard[] }) {
-  return <BlogHome posts={props.posts} />;
+export default function BlogsPage(props: { posts: BlogCard[] }) {
+  return <Blogs posts={props.posts} />;
 }
 
 export const getStaticProps: GetStaticProps = async (): Promise<

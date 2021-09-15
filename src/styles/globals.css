@@ -27,11 +27,9 @@
   }
 
   body {
-    @apply m-0;
-    @apply p-0;
-    @apply font-base;
-    @apply bg-light;
-    @apply text-dark;
+    @apply m-0 p-0 font-base;
+    @apply bg-light text-dark;
+    @apply dark:bg-dark dark:text-light;
   }
 
   a {
@@ -75,16 +73,17 @@
   }
 
   code {
-    @apply font-code text-sm max-w-full p-1 rounded-sm;
+    @apply font-code text-sm max-w-full;
   }
 }
 
 @layer components {
   .container {
     min-height: 75vh;
-    min-width: 100vw;
+    min-width: 95vw;
+    margin-left: auto;
+    margin-right: auto;
   }
-/* TODO: Make this prettier */
 
   /*
 Atom One Dark With support for ReasonML by Gidi Morris, based off work by Daniel Gamage
