@@ -8,9 +8,9 @@ import { BlogCard } from "../utils/data/CardData";
 
 export default function HorizontalCard(props: BlogCard) {
   return (
-    <li className="w-full h-56 bg-lightGray dark:bg-darkGray mb-1">
-      <div className="w-1/3 inline-block">
-        <div className="h-20 w-20 relative object-center">
+    <li className="bg-gray-100 dark:bg-gray-800 mb-1">
+      <div className="flex flex-col sm:flex-row justify-between items-center min-h-56 py-4">
+        <div className="w-52 h-40  sm:h-36 sm:w-36 relative mx-auto">
           <Image
             src={props.coverImage}
             layout="fill"
@@ -18,13 +18,13 @@ export default function HorizontalCard(props: BlogCard) {
             alt={props.title + "cover image"}
           />
         </div>
-      </div>
-      <div className="inline-block w-2/3 justify-center cursor-default">
-        <DateTime publishDate={props.publishDate} readingTime={props.readingTime} />
-        <h3 className="mt-0">
-          <Link href={`blog/${props.slug}`}>{props.title}</Link>
-        </h3>
-        <p className="w-full overflow-clip leading-6 text-tag">{props.excerpt}...</p>
+        <div className="w-full sm:w-2/3 pt-3 inline-block cursor-default">
+          <DateTime publishDate={props.publishDate} readingTime={props.readingTime} />
+          <h3 className="mt-0">
+            <Link href={`blog/${props.slug}`}>{props.title}</Link>
+          </h3>
+          <p className="overflow-clip leading-6 text-tag">{props.excerpt}...</p>
+        </div>
       </div>
     </li>
   );

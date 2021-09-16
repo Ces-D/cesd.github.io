@@ -18,14 +18,15 @@ module.exports = {
       code: ["Source Code Pro", "monospace"],
     },
     colors: {
-      dark: "#1a1a1a",
-      light: "#fefefe",
-      lightGray: colors.trueGray[200],
-      gray: colors.trueGray[300],
-      darkGray: colors.trueGray[500],
-      darkBlue: "#1e2135",
-      sky: colors.sky[400],
-      teal: colors.teal[300],
+      dark: "#212121",
+      light: "#EFEFEF",
+      gray: {
+        100: "#E1E2E4",
+        200: "#C7C9CB",
+        400: "#444444",
+        800: "#161617",
+      },
+      teal: "#22C8B2",
     },
     screens: {
       sm: "480px",
@@ -36,6 +37,9 @@ module.exports = {
     extend: {
       height: (theme) => ({
         100: "32rem",
+      }),
+      minHeight: (theme) => ({
+        56: "14rem",
       }),
     },
   },

@@ -8,7 +8,7 @@ import DateTime from "../DateTime";
 
 import { BlogPost } from "../../utils/data/PostData";
 
-export default function BlogPost(props: BlogPost) {
+export default function BlogPostComponent(props: BlogPost) {
   return (
     <Container
       title={props.title}
@@ -19,7 +19,7 @@ export default function BlogPost(props: BlogPost) {
         <div className="w-full sm:w-11/12 mx-auto">
           <h1>{props.title}</h1>
           <DateTime publishDate={props.publishDate} readingTime={props.readingTime} />
-          <ul className="flex flex-row w-full list-none list-inside gap-x-2 text-darkGray mb-1">
+          <ul className="flex flex-row w-full list-none list-inside gap-x-2 muted-text mb-1">
             {props.tags.map((tag) => (
               <li key={uuidv4()} className="text-tag">
                 #{tag}

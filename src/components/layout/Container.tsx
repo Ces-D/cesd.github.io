@@ -33,7 +33,7 @@ export default function Container(props: Props) {
       </Head>
       <Header />
       <main className="container">
-        <div className="flex flex-col justify-center items-start max-w-5xl mx-auto">
+        <div className="flex flex-col justify-center items-start max-w-5xl mx-auto px-1 sm:px-0">
           {props.children}
         </div>
       </main>

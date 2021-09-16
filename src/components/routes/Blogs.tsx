@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 
 import Container from "../layout/Container";
 import HorizontalCard from "../HorizontalCard";
-import SearchGlass from "../Icons/SearchGlass";
+import SearchBar from "../SearchBar";
 
 import { BlogCard } from "../../utils/data/CardData";
 
@@ -17,7 +17,7 @@ export default function BlogHome(props: { posts: BlogCard[] }) {
 
   return (
     <Container title="Blog - Cesar Diaz">
-      <div className="flex flex-col gap-y-2 justify-center">
+      <>
         <h1>Hello 🤘</h1>
         <p>
           This is my blog space where I record my thinking behind project decisions, walk
@@ -26,23 +26,14 @@ export default function BlogHome(props: { posts: BlogCard[] }) {
           are coming.
         </p>
         <p>Use the search below to filter by title</p>
-        <div className="relative w-full mt-2">
-          <input
-            placeholder="Search"
-            value={searchValue}
-            onChange={(e) => setSearchValue(e.target.value)}
-            type="text"
-            className="border=box p-2 border-darkGray focus:ring-teal focus:border-teal w-full rounded-md bg-lightGray text-darkGray"
-          />
-          <SearchGlass />
-        </div>
+        <SearchBar value={searchValue} setValue={setSearchValue} />
         <ul className="list-none list-inside">
-          {!filteredPosts.length && <p className="text-darkGray mb-4">No posts found.</p>}
+          {!filteredPosts.length && <p className="muted-text">No posts found.</p>}
           {filteredPosts.map((post) => (
             <HorizontalCard key={uuidv4()} {...post} />
           ))}
         </ul>
-      </div>
+      </>
     </Container>
   );
 }
