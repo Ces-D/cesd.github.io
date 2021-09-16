@@ -1,8 +1,9 @@
 import { BlogCard } from "./data/CardData";
+import { BlogExcerpt } from "./data/ExcerptData";
 
 type SortFormat = "newest" | "oldest";
 
-export const dateSort = (format: SortFormat, content: BlogCard[]) => {
+export const dateSort = (format: SortFormat, content: BlogCard[] | BlogExcerpt[]) => {
   if (format === "newest") {
     return content.sort((a, b) => {
       const aDate = new Date(a.publishDate);

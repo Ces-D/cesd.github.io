@@ -5,8 +5,10 @@ module.exports = {
   darkMode: "class", // or 'media' or 'class'
   theme: {
     fontSize: {
+      xs: "0.7rem",
       tag: "1rem",
       sm: "1.25rem",
+      smd: "1.35rem",
       md: "1.5rem",
       lg: "1.75rem",
       xl: "2rem",
@@ -37,6 +39,9 @@ module.exports = {
     extend: {
       height: (theme) => ({
         100: "32rem",
+      }),
+      width: (theme) => ({
+        "22/100": "22%",
       }),
       minHeight: (theme) => ({
         56: "14rem",

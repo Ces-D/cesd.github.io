@@ -1,14 +1,25 @@
 import React from "react";
+import { v4 as uuidv4 } from "uuid";
 import Image from "next/image";
-import Link from "next/link";
 
 import Container from "../layout/Container";
+import VerticalCard from "../VerticalCard";
 
-export default function Home() {
+import { BlogExcerpt } from "../../utils/data/ExcerptData";
+
+type Props = {
+  posts: BlogExcerpt[];
+};
+
+export default function Home(props: Props) {
   return (
     <Container>
-      <div className="flex flex-col justify-center items-center w-full my-3">
-        <div className="relative w-full h-40 sm:h-52 mb-3 ">
+      <>
+        <p className="mx-auto my-5">
+          I am a self taught developer who likes finishing projects. Thats the toughest
+          part!
+        </p>
+        <div className="relative w-full h-40 sm:h-52 my-5">
           <Image
             src="/Muhammad-Ali.jpg"
             layout="fill"
@@ -16,16 +27,13 @@ export default function Home() {
             alt="Muhammad Ali knocking down opponent"
           />
         </div>
-        <button className="bg-dark text-light p-5 font-code rounded-md">
-          <h1>Page In Production</h1>
-          <p className="mt-2 font-code">
-            In the mean time. Check out the
-            <Link href="/blog">
-              <a className="font-bold text-teal"> blog</a>
-            </Link>
-          </p>
-        </button>
-      </div>
+        <h2 className="border-b border-teal mx-auto">THE LATEST</h2>
+        <ul className="flex flex-col sm:flex-row justify-around">
+          {props.posts.map((post) => (
+            <VerticalCard key={uuidv4()} {...post} />
+          ))}
+        </ul>
+      </>
     </Container>
   );
 }

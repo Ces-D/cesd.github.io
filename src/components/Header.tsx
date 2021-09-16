@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
 import { useTheme } from "next-themes";
 
@@ -7,7 +7,7 @@ import Moon from "./Icons/Moon";
 
 export default function Header() {
   const DIMENSIONS = 28;
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme} = useTheme();
 
   return (
     <>
@@ -19,7 +19,7 @@ export default function Header() {
           <h4>
             <Link href="/blog">Blog</Link>
           </h4>
-          {theme == "dark" ? (
+          {theme === "dark" ? (
             <button onClick={() => setTheme("light")}>
               <Moon w={DIMENSIONS} h={DIMENSIONS} />
             </button>
