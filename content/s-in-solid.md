@@ -22,7 +22,7 @@ In all of the following examples, I am going to request featured playlists throu
 
 First we will look at an example not using the Single-responsibility principle.
 
-```
+```typescript
 import axios from "axios";
 import { config } from "dotenv";
 
@@ -56,7 +56,6 @@ const spotifyRequest = async () => {
 };
 
 spotifyRequest();
-
 ```
 
 In this example, all of our logic is stored under the function `spotifyRequest`. This is a working function that will return to us an object of the featured playlists and its associated meta data. This is a completely fine function, if this was going to be the end product. Difficulty maintaining or extending this function could arise if our application wanted to request from more spotify api endpoints, change our authentication flow, or if we wanted to manipulate the response in some way. Currently the responsibilities of this single function include:
@@ -67,7 +66,7 @@ In this example, all of our logic is stored under the function `spotifyRequest`.
 
 Let us look at an example where we separate the responsibilities and expand on this first example.
 
-```
+```typescript
 interface AccessTokens {
   access_token: string;
   token_type: string;
@@ -77,7 +76,7 @@ interface AccessTokens {
 
 Firstly we define the expected response structure for our access token.
 
-```
+```typescript
 const clientCredentialsAccessToken = (): Promise<AccessTokens> => {
   const client_id = process.env.CLIENT_ID;
   const client_secret = process.env.CLIENT_SECRET;
@@ -101,7 +100,7 @@ const clientCredentialsAccessToken = (): Promise<AccessTokens> => {
 
 Secondly we define a function that will return a Promise of our AccessToken structure. This function contains all the logic for requesting the token through the client-credentials flow.
 
-```
+```typescript
 const featurePlaylists = async (accessToken: Promise<AccessTokens>) => {
   const tokens = await accessToken;
   const response = await axios.get(

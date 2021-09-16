@@ -11,7 +11,10 @@
   },
   "dependencies": {
     "date-and-time": "^2.0.0",
+    "he": "^1.2.0",
+    "highlight.js": "^11.2.0",
     "next": "11.1.0",
+    "next-themes": "^0.0.15",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-web-share": "^1.1.0",
@@ -21,6 +24,8 @@
   },
   "devDependencies": {
     "@types/date-and-time": "^0.13.0",
+    "@types/he": "^1.1.2",
+    "@types/highlight.js": "^10.1.0",
     "@types/react": "17.0.19",
     "@types/showdown": "^1.9.4",
     "@types/uuid": "^8.3.1",

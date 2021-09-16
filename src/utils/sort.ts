@@ -1,10 +1,13 @@
 import { BlogCard } from "./data/CardData";
-
-// TODO: identify if this function is going to stay in use
+import { BlogExcerpt } from "./data/ExcerptData";
 
 type SortFormat = "newest" | "oldest";
 
-export const dateSort = (format: SortFormat, content: BlogCard[]) => {
+type AcceptableContent = BlogCard[] | BlogExcerpt[];
+
+export function dateSort(format: SortFormat, content: BlogCard[]): BlogCard[];
+export function dateSort(format: SortFormat, content: BlogExcerpt[]): BlogExcerpt[];
+export function dateSort(format: SortFormat, content: AcceptableContent) {
   if (format === "newest") {
     return content.sort((a, b) => {
       const aDate = new Date(a.publishDate);
@@ -33,4 +36,4 @@ export const dateSort = (format: SortFormat, content: BlogCard[]) => {
     });
   }
   throw new Error("Incorrect sort format");
-};
+}

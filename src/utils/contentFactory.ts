@@ -1,13 +1,15 @@
 import PostData, { BlogPost } from "./data/PostData";
 import CardData, { BlogCard } from "./data/CardData";
 import PathsData, { BlogPaths } from "./data/PathsData";
+import ExcerptData, { BlogExcerpt } from "./data/ExcerptData";
 
-export type BlogDataLevel = "Post" | "Card" | "Paths";
+export type BlogDataLevel = "Post" | "Card" | "Paths" | "Excerpt";
 
 interface OverLoads {
   ["Post"]: BlogPost;
   ["Card"]: BlogCard;
   ["Paths"]: BlogPaths;
+  ["Excerpt"]: BlogExcerpt;
 }
 
 export default class BlogDataFactory {
@@ -31,6 +33,9 @@ export default class BlogDataFactory {
         break;
       case "Paths":
         data = new PathsData(fileName);
+        break;
+      case "Excerpt":
+        data = new ExcerptData(fileName);
         break;
       default:
         throw new Error("You did not enter the correct Blog Data Level");

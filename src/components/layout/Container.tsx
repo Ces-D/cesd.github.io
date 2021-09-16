@@ -1,6 +1,6 @@
 import Head from "next/head";
-import Footer from "./Footer";
-import Header from "./Header";
+import Footer from "../Footer";
+import Header from "../Header";
 
 type Props = {
   title?: string;
@@ -32,8 +32,8 @@ export default function Container(props: Props) {
         {meta.date && <meta property="article:published_time" content={meta.date} />}
       </Head>
       <Header />
-      <main className="px-6 container">
-        <div className="flex flex-col justify-center items-start max-w-5xl mx-auto">
+      <main className="container">
+        <div className="flex flex-col justify-center items-start max-w-5xl mx-auto px-1 sm:px-0">
           {props.children}
         </div>
       </main>

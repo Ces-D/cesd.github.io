@@ -1,16 +1,36 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
+import { useTheme } from "next-themes";
+
+import Sun from "./Icons/Sun";
+import Moon from "./Icons/Moon";
 
 export default function Header() {
+  const DIMENSIONS = 28;
+  const { theme, setTheme} = useTheme();
+
   return (
-    <header className="w-full max-w-4xl mx-auto flex flex-row justify-end items-center mb-2 px-2 py-1 sm:px-5 gap-x-5 bg-dark text-light">
-      <h4>
-        <Link href="/">Home</Link>
-      </h4>
-      <h4>
-        <Link href="/blog">Blog</Link>
-      </h4>
-    </header>
+    <>
+      <header className="mb-2 px-2 py-1 sm:px-5 bg-dark text-light dark:bg-light dark:text-dark">
+        <nav className="w-full flex flex-row justify-end items-center gap-x-5">
+          <h4>
+            <Link href="/">Home</Link>
+          </h4>
+          <h4>
+            <Link href="/blog">Blog</Link>
+          </h4>
+          {theme === "dark" ? (
+            <button onClick={() => setTheme("light")}>
+              <Moon w={DIMENSIONS} h={DIMENSIONS} />
+            </button>
+          ) : (
+            <button onClick={() => setTheme("dark")}>
+              <Sun w={DIMENSIONS} h={DIMENSIONS} />
+            </button>
+          )}
+        </nav>
+      </header>
+    </>
   );
 }
 
