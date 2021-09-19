@@ -28,7 +28,7 @@ export default function BlogHome(props: { posts: BlogCard[] }) {
         <p>Use the search below to filter by title</p>
         <SearchBar value={searchValue} setValue={setSearchValue} />
         <ul className="list-none list-inside">
-          {!filteredPosts.length && <p className="muted-text">No posts found.</p>}
+          {!filteredPosts.length && <p className="muted-text mt-3">No posts found.</p>}
           {filteredPosts.map((post) => (
             <HorizontalCard key={uuidv4()} {...post} />
           ))}

@@ -6,9 +6,9 @@ module.exports = {
   theme: {
     fontSize: {
       xs: "0.7rem",
-      tag: "1rem",
-      sm: "1.25rem",
-      smd: "1.35rem",
+      tag: "0.9rem",
+      sm: "1rem",
+      smd: "1.25rem",
       md: "1.5rem",
       lg: "1.75rem",
       xl: "2rem",
@@ -20,15 +20,28 @@ module.exports = {
       code: ["Source Code Pro", "monospace"],
     },
     colors: {
-      dark: "#212121",
-      light: "#EFEFEF",
+      // Background colors
+      darkGround: "#181d1f",
+      lightGround: "#f8f5f2",
+
+      // Element Colors
+      strokeL: "#232323",
+      strokeD: "#F5F5F5",
+      mainL: "#fffffe",
+      pStrokeL: "#222525",
+      pStrokeD: "#F4F5F5",
+
+      // Highlight Colors
+      highlight: "#00A19D",
+      secondary: "#E05D5D",
+      white: "#fefefe",
+
       gray: {
-        100: "#E1E2E4",
-        200: "#C7C9CB",
-        400: "#444444",
-        800: "#161617",
+        100: "#F8F9FA",
+        200: "#E9ECEF",
+        400: "#CED4DA",
+        800: "#343A40",
       },
-      teal: "#22C8B2",
     },
     screens: {
       sm: "480px",

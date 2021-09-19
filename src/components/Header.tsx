@@ -11,7 +11,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="mb-2 px-2 py-1 sm:px-5 bg-dark text-light dark:bg-light dark:text-dark">
+      <header className="mb-2 px-2 py-1 sm:px-5 text-highlight">
         <nav className="w-full flex flex-row justify-end items-center gap-x-5">
           <h4>
             <Link href="/">Home</Link>

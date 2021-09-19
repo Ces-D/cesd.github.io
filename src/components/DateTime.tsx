@@ -12,7 +12,7 @@ export default function DateTime(props: Props) {
 
   return (
     <div
-      className={`flex flex-row opacity-50 mb-1 muted-text
+      className={`flex flex-row opacity-60 mb-1 muted-text
        ${typeof props.className === "undefined" ? "" : props.className}`}
     >
       <p className={fontSize}>{props.publishDate}</p>

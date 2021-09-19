@@ -9,7 +9,7 @@ type Props = {
 
 export default function SearchBar(props: Props) {
   return (
-    <div className="relative w-full mt-2 text-gray-400">
+    <div className="relative w-full mt-2 text-pStrokeL">
       <input
         placeholder="Search"
         value={props.value}
