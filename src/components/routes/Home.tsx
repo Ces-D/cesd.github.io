@@ -22,7 +22,7 @@ export default function Home(props: Props) {
         <div className="block w-full">
         <ImageBlock
           dimensionClass="w-80 h-60 sm:w-96 sm:h-64"
-          src="/Muhammad-Ali.jpg"
+          src="/images/Muhammad-Ali.jpg"
           alt="Muhammad Ali celebrating a victory"
         />
         </div>
