@@ -8,6 +8,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "axios": "^0.24.0",
     "date-and-time": "^2.0.1",
     "gray-matter": "^4.0.3",
     "he": "^1.2.0",

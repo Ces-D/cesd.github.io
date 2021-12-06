@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { HTMLAttributeAnchorTarget, HTMLAttributeReferrerPolicy } from "react";
 
 export const H1 = styled.h1`
   font-size: 24px;
@@ -33,7 +34,12 @@ export const P3 = styled.p`
   line-height: 14px;
 `;
 
-export const A = styled.a<{ activePath?: string }>`
+export const A = styled.a.attrs(
+  (props: { rel: HTMLAttributeReferrerPolicy; target: HTMLAttributeAnchorTarget }) => ({
+    rel: props.rel ?? "nofollow",
+    target: props.target ?? "_blank",
+  })
+)<{ activePath?: string }>`
   padding: 0 1rem 0 1rem;
   text-decoration: none;
   color: ${(props) => {

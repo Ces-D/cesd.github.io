@@ -1,13 +1,19 @@
 import Link from "next/link";
 import Image from "next/image";
 import styled from "styled-components";
-import { A } from "../UI/Typography";
+import { A, H2 } from "../UI/Typography";
 
-type Props = { colSpan: number; imgSrc: string; location: string };
+type Props = {
+  colSpan: number;
+  imgSrc: string;
+  location: string;
+  children: React.ReactChild;
+};
 
 const CardContainer = styled.div<{ colSpan: number }>`
   column-span: ${(props) => props.colSpan};
-  padding: 0.5rem;
+  border: 1px;
+  border-style: solid;
 `;
 
 const FillImageContainer = styled.div`
@@ -26,6 +32,7 @@ export default function Card(props: Props) {
           </FillImageContainer>
         </A>
       </Link>
+      {props.children}
     </CardContainer>
   );
 }
