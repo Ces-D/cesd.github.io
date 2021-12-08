@@ -11,6 +11,11 @@ const ContainerDiv = styled.div`
 const Space = styled.div<{ leftRightSpace: boolean }>`
   margin-left: ${(props) => (props.leftRightSpace ? "10px" : "auto")};
   margin-right: ${(props) => (props.leftRightSpace ? "10px" : "auto")};
+
+  @media ${(props) => props.theme.breakPoints.laptop} {
+    margin-left: auto;
+    margin-right: auto;
+  }
 `;
 
 type Props = { children: React.ReactChild; leftRightSpace?: boolean };

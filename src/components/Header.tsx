@@ -6,6 +6,7 @@ import { H1, H2 } from "../UI/Typography";
 const HeaderContainer = styled.nav`
   width: 100%;
   height: 5em;
+  margin-bottom: 1em;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -58,3 +59,6 @@ export default function Header() {
     </HeaderContainer>
   );
 }
+
+// TODO: small styling tweaks and get the actual recently updated repos not these
+// TODO: find a way to update the images for the repos

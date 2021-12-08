@@ -18,6 +18,9 @@ export const theme = {
     tablet: "(min-width: 770px)",
     laptop: "(min-width: 1240px)",
   },
+  border: {
+    solidBrown: "3px solid #C76E1B", // secondaryBrown
+  },
 };
 
 declare module "styled-components" {
