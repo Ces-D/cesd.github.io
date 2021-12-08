@@ -1,6 +1,7 @@
 import type { AppProps } from "next/app";
 import { theme } from "../UI/theme";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
+import "../UI/app.css";
 
 const GlobalStyle = createGlobalStyle`
   body{
@@ -9,7 +10,7 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     background-color: #FDFDFD;
     color:#101010;
-    font-family: Roboto Mono;
+    font-family: 'Roboto Mono', 'monospace';
     font-style: normal;
     font-weight: normal;
   }

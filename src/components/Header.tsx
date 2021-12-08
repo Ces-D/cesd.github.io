@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import Link from "next/link";
 import styled from "styled-components";
-import { H1, H2, A } from "../UI/Typography";
+import { H1, H2 } from "../UI/Typography";
 
 const HeaderContainer = styled.nav`
   width: 100%;
@@ -14,8 +14,23 @@ const HeaderContainer = styled.nav`
 const NavItems = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   text-align: end;
-  width: 10em;
+  width: 15em;
+`;
+
+const A = styled.a<{ activePath?: string }>`
+  padding: 0 1rem 0 1rem;
+  text-decoration: none;
+  color: ${(props) => {
+    return props.activePath === props.href
+      ? props.theme.colors.primaryBlue
+      : props.theme.colors.black;
+  }};
+
+  &:hover {
+    color: ${(props) => props.theme.colors.primaryBrown};
+  }
 `;
 
 export default function Header() {
@@ -24,7 +39,7 @@ export default function Header() {
   return (
     <HeaderContainer>
       <Link href={"/"} passHref>
-        <A activePath={router.pathname}>
+        <A href={"/"} activePath={router.pathname}>
           <H1>Cesar Diaz</H1>
         </A>
       </Link>
