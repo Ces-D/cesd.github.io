@@ -1,6 +1,6 @@
-import { BlogCard } from "./data/CardData";
-import { BlogExcerpt } from "./data/ExcerptData";
-import { RepoData } from "./data/GithubData";
+import { BlogCard } from "./data/posts/CardData";
+import { BlogExcerpt } from "./data/posts/ExcerptData";
+import { RepoData } from "./data/repos/GithubData";
 
 type SortFormat = "newest" | "oldest";
 
@@ -68,3 +68,5 @@ export function repoSort(format: SortFormat, content: RepoData[]) {
     });
   }
 }
+
+//TODO: complete the sort for the new formatted githubRepo

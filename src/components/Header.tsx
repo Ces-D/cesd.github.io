@@ -60,5 +60,4 @@ export default function Header() {
   );
 }
 
-// TODO: small styling tweaks and get the actual recently updated repos not these
 // TODO: find a way to update the images for the repos

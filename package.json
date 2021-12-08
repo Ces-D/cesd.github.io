@@ -2,6 +2,7 @@
   "name": "web",
   "private": true,
   "scripts": {
+    "writeRepos": "node src/utils/data/populateRepoData.ts",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",

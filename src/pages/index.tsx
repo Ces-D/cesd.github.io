@@ -1,14 +1,15 @@
 import type { GetServerSidePropsResult, GetStaticProps, NextPage } from "next";
 import { readdirSync } from "fs";
-import { CONTENT_DIRECTORY } from "../utils/data/GrayMatterData";
+import { CONTENT_DIRECTORY } from "../utils/data/posts/GrayMatterData";
 import BlogDataFactory from "../utils/fileService";
 import { dateSort, repoSort } from "../utils/sort";
-import { BlogExcerpt } from "../utils/data/ExcerptData";
-import GithubData, { RepoData } from "../utils/data/GithubData";
+import { BlogExcerpt } from "../utils/data/posts/ExcerptData";
+import GithubAccessor from "../utils/data/repos/GithubAccessor";
+import { GithubRepo } from "../utils/data/repos/GithubRepoData";
 
 import HomePage from "../components/Home";
 
-export type HomePageProps = { posts: BlogExcerpt[]; repos: RepoData[] };
+export type HomePageProps = { posts: BlogExcerpt[]; repos: GithubRepo[] };
 
 const Home: NextPage<HomePageProps> = (props) => {
   return <HomePage {...props} />;
@@ -30,9 +31,9 @@ export const getStaticProps: GetStaticProps = async (): Promise<
     dateSort("newest", res)
   );
 
-  const dateSortedGithubRepos = await new GithubData()
-    .Repos()
-    .then((repos) => repoSort("newest", repos));
+  const githubAccess = new GithubAccessor();
+
+  const dateSortedGithubRepos = await githubAccess.accessRepoData();
 
   return {
     props: {

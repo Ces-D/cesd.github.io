@@ -70,42 +70,33 @@ export default function HomePage(props: HomePageProps) {
           {/* Left Column - contains secondary repos */}
           <div>
             <RepoCard
-              cardLink={secondRepo.html_url}
-              imgSrc={
-                "https://images.unsplash.com/photo-1638729330060-b9bafd5f9eb9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-              }
+              cardLink={secondRepo.htmlUrl}
+              imgSrc={secondRepo.coverImage}
               spaceBelow={true}
               borderBottom={true}
             >
               <>
                 <H2>{secondRepo.name.toUpperCase()}</H2>
-                <P3>{secondRepo.updated_at}</P3>
+                <P3>{secondRepo.updatedAt}</P3>
               </>
             </RepoCard>
-            <RepoCard
-              cardLink={thirdRepo.html_url}
-              imgSrc={
-                "https://images.unsplash.com/photo-1638729330060-b9bafd5f9eb9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-              }
-            >
+            <RepoCard cardLink={thirdRepo.htmlUrl} imgSrc={secondRepo.coverImage}>
               <>
                 <H2>{thirdRepo.name.toUpperCase()}</H2>
-                <P3>{thirdRepo.updated_at}</P3>
+                <P3>{thirdRepo.updatedAt}</P3>
               </>
             </RepoCard>
           </div>
           {/* Hero Column - contains hero repo */}
           <RepoCard
-            cardLink={heroRepo.html_url}
-            imgSrc={
-              "https://images.unsplash.com/photo-1638729330060-b9bafd5f9eb9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-            }
+            cardLink={heroRepo.htmlUrl}
+            imgSrc={secondRepo.coverImage}
             hero={true}
           >
             <>
               <H1>{heroRepo.name.toUpperCase()}</H1>
               <P1>{heroRepo.description}</P1>
-              <P3>{heroRepo.updated_at}</P3>
+              <P3>{heroRepo.updatedAt}</P3>
             </>
           </RepoCard>
         </Grid>
