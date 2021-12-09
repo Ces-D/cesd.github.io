@@ -55,15 +55,17 @@ export default function RepoCard(props: Props) {
       marginBottom={props.spaceBelow ?? false}
       borderBottom={props.borderBottom ?? false}
     >
-      <Link href={props.cardLink} as={A}>
-        <ImageContainer hero={props.hero ?? false}>
-          <Image
-            layout="fill"
-            objectFit="cover"
-            src={props.imgSrc}
-            alt={`${props.title} cover image`}
-          />
-        </ImageContainer>
+      <Link href={props.cardLink} passHref>
+        <A>
+          <ImageContainer hero={props.hero ?? false}>
+            <Image
+              layout="fill"
+              objectFit="cover"
+              src={props.imgSrc}
+              alt={`${props.title} cover image`}
+            />
+          </ImageContainer>
+        </A>
       </Link>
       <TextSection>{props.children}</TextSection>
     </CardContainer>

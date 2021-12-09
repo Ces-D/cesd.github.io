@@ -1,7 +1,7 @@
-import PostData, { BlogPost } from "./data/posts/PostData";
-import CardData, { BlogCard } from "./data/posts/CardData";
-import PathsData, { BlogPaths } from "./data/posts/PathsData";
-import ExcerptData, { BlogExcerpt } from "./data/posts/ExcerptData";
+import PostData, { BlogPost } from "./models/PostData";
+import CardData, { BlogCard } from "./models/CardData";
+import PathsData, { BlogPaths } from "./models/PathsData";
+import ExcerptData, { BlogExcerpt } from "./models/ExcerptData";
 
 export type BlogDataLevel = "Post" | "Card" | "Paths" | "Excerpt";
 

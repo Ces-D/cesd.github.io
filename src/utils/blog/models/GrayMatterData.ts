@@ -1,7 +1,7 @@
 import path from "path";
 import process from "process";
 import matter from "gray-matter";
-import markdownToHtml from "../../markdownToHtml";
+import markdownToHtml from "../markdownToHtml";
 import date from "date-and-time";
 import readingTime from "reading-time";
 

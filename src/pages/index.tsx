@@ -1,11 +1,12 @@
 import type { GetServerSidePropsResult, GetStaticProps, NextPage } from "next";
 import { readdirSync } from "fs";
-import { CONTENT_DIRECTORY } from "../utils/data/posts/GrayMatterData";
-import BlogDataFactory from "../utils/fileService";
-import { dateSort, repoSort } from "../utils/sort";
-import { BlogExcerpt } from "../utils/data/posts/ExcerptData";
-import GithubAccessor from "../utils/data/repos/GithubAccessor";
-import { GithubRepo } from "../utils/data/repos/GithubRepoData";
+import { CONTENT_DIRECTORY } from "../utils/blog/models/GrayMatterData";
+import BlogDataFactory from "../utils/blog/BlogDataFactory";
+import { sortBlogPosts } from "../utils/blog/sort";
+import { sortRepos } from "../utils/repos/sort";
+import { BlogExcerpt } from "../utils/blog/models/ExcerptData";
+import GithubAccessor from "../utils/repos/GithubAccessor";
+import { GithubRepo } from "../utils/repos/models/GithubRepoData";
 
 import HomePage from "../components/Home";
 
@@ -28,14 +29,14 @@ export const getStaticProps: GetStaticProps = async (): Promise<
     async (blogFile) => await BlogDataFactory.returnData("Excerpt", blogFile)
   );
   const dateSortedBlogPosts = await Promise.all(blogPosts).then((res) =>
-    dateSort("newest", res)
+    sortBlogPosts("newest", res)
   );
 
   const githubAccess = new GithubAccessor();
 
   const dateSortedGithubRepos = await githubAccess
     .accessRepoData()
-    .then((res) => repoSort("newest", res));
+    .then((res) => sortRepos("newest", res));
 
   return {
     props: {

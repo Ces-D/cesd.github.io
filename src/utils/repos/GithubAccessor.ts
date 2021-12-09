@@ -1,7 +1,7 @@
 import path from "path";
 import fs from "fs";
 import axios from "axios";
-import GithubRepoData, { GithubRepo } from "./GithubRepoData";
+import GithubRepoData, { GithubRepo } from "./models/GithubRepoData";
 
 export default class GithubAccessor {
   private static REPO_DIR = path.join(process.cwd(), "content/repo");
