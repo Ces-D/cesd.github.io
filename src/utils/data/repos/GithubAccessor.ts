@@ -8,25 +8,23 @@ export default class GithubAccessor {
   private static REPO_JSON_FILE = path.join(GithubAccessor.REPO_DIR, "repos.json");
 
   async accessRepoData() {
-    if (!fs.existsSync(GithubAccessor.REPO_JSON_FILE)) {
-      await this.populateRepoData();
-    }
+    this.populateRepoData();
 
-    const data = JSON.parse(
+    const data: GithubRepo[] = JSON.parse(
       fs.readFileSync(GithubAccessor.REPO_JSON_FILE, { encoding: "utf-8" })
     );
 
-    return data as GithubRepo[];
+    return data;
   }
 
   private async populateRepoData() {
     const response = await axios.get("https://api.github.com/users/Ces-D/repos");
     const githubResponseRepos = response.data;
-    const githubRepos = githubResponseRepos.map((resp: any) => {
+    const githubRepos: GithubRepo[] = githubResponseRepos.map((resp: any) => {
       const data = new GithubRepoData(resp);
       return data.ToJson();
     });
 
-    fs.writeFileSync(GithubAccessor.REPO_JSON_FILE, JSON.stringify(githubRepos));
+    fs.writeFileSync(GithubAccessor.REPO_JSON_FILE, JSON.stringify(githubRepos, null, 2));
   }
 }

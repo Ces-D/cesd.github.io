@@ -33,7 +33,9 @@ export const getStaticProps: GetStaticProps = async (): Promise<
 
   const githubAccess = new GithubAccessor();
 
-  const dateSortedGithubRepos = await githubAccess.accessRepoData();
+  const dateSortedGithubRepos = await githubAccess
+    .accessRepoData()
+    .then((res) => repoSort("newest", res));
 
   return {
     props: {

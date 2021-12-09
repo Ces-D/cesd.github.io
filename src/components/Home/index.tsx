@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { HomePageProps } from "../../pages";
 import { H1, H2, H3, P3, P1 } from "../../UI/Typography";
+import AnchorLink from "../AnchorLink";
 import RepoCard from "./RepoCard";
 import Container from "../Container";
 import PostCard from "./PostCard";
@@ -74,15 +75,24 @@ export default function HomePage(props: HomePageProps) {
               imgSrc={secondRepo.coverImage}
               spaceBelow={true}
               borderBottom={true}
+              title={secondRepo.name}
             >
               <>
-                <H2>{secondRepo.name.toUpperCase()}</H2>
+                <AnchorLink href={secondRepo.htmlUrl}>
+                  <H2>{secondRepo.name.toUpperCase()}</H2>
+                </AnchorLink>
                 <P3>{secondRepo.updatedAt}</P3>
               </>
             </RepoCard>
-            <RepoCard cardLink={thirdRepo.htmlUrl} imgSrc={secondRepo.coverImage}>
+            <RepoCard
+              cardLink={thirdRepo.htmlUrl}
+              imgSrc={secondRepo.coverImage}
+              title={thirdRepo.name}
+            >
               <>
-                <H2>{thirdRepo.name.toUpperCase()}</H2>
+                <AnchorLink href={thirdRepo.htmlUrl}>
+                  <H2>{thirdRepo.name.toUpperCase()}</H2>
+                </AnchorLink>
                 <P3>{thirdRepo.updatedAt}</P3>
               </>
             </RepoCard>
@@ -90,11 +100,14 @@ export default function HomePage(props: HomePageProps) {
           {/* Hero Column - contains hero repo */}
           <RepoCard
             cardLink={heroRepo.htmlUrl}
-            imgSrc={secondRepo.coverImage}
+            imgSrc={heroRepo.coverImage}
             hero={true}
+            title={heroRepo.name}
           >
             <>
-              <H1>{heroRepo.name.toUpperCase()}</H1>
+              <AnchorLink href={heroRepo.htmlUrl}>
+                <H1>{heroRepo.name.toUpperCase()}</H1>
+              </AnchorLink>
               <P1>{heroRepo.description}</P1>
               <P3>{heroRepo.updatedAt}</P3>
             </>
@@ -108,9 +121,12 @@ export default function HomePage(props: HomePageProps) {
               imgSrc={post.coverImage}
               cardLink={`blog/${post.slug}`}
               borderTop={true}
+              title={post.title}
             >
               <>
-                <H3>{post.title.toUpperCase()}</H3>
+                <AnchorLink href={`blog/${post.slug}`}>
+                  <H3>{post.title.toUpperCase()}</H3>
+                </AnchorLink>
                 <P3>
                   {post.publishDate} | {post.readingTime} mins
                 </P3>

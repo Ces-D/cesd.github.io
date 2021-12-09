@@ -1,6 +1,6 @@
 import { BlogCard } from "./data/posts/CardData";
 import { BlogExcerpt } from "./data/posts/ExcerptData";
-import { RepoData } from "./data/repos/GithubData";
+import { GithubRepo } from "./data/repos/GithubRepoData";
 
 type SortFormat = "newest" | "oldest";
 
@@ -39,11 +39,11 @@ export function dateSort(format: SortFormat, content: AcceptableContent) {
   throw new Error("Incorrect sort format");
 }
 
-export function repoSort(format: SortFormat, content: RepoData[]) {
+export function repoSort(format: SortFormat, content: GithubRepo[]) {
   if (format === "newest") {
     return content.sort((a, b) => {
-      const aDate = new Date(a.created_at);
-      const bDate = new Date(b.created_at);
+      const aDate = new Date(a.createdAt);
+      const bDate = new Date(b.createdAt);
 
       if (aDate > bDate) {
         return -1;
@@ -55,8 +55,8 @@ export function repoSort(format: SortFormat, content: RepoData[]) {
     });
   } else {
     return content.sort((a, b) => {
-      const aDate = new Date(a.created_at);
-      const bDate = new Date(b.created_at);
+      const aDate = new Date(a.createdAt);
+      const bDate = new Date(b.createdAt);
 
       if (aDate > bDate) {
         return 1;
@@ -68,5 +68,3 @@ export function repoSort(format: SortFormat, content: RepoData[]) {
     });
   }
 }
-
-//TODO: complete the sort for the new formatted githubRepo

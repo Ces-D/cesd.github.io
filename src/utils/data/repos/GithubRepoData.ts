@@ -1,3 +1,5 @@
+import date from "date-and-time";
+
 export type GithubRepo = {
   name: string;
   fullName: string;
@@ -23,8 +25,8 @@ export default class GithubRepoData {
     this._name = data.name ?? "";
     this._full_name = data.full_name ?? "";
     this._description = data.description ?? "";
-    this._updated_at = data.updated_at ?? "";
-    this._created_at = data.created_at ?? "";
+    this._updated_at = date.format(new Date(data.updated_at), "MMMM D. YYYY") ?? "";
+    this._created_at = date.format(new Date(data.created_at), "MMMM D. YYYY") ?? "";
     this._language = data.language ?? "";
     this._html_url = data.html_url ?? "";
     this._cover_image =
@@ -35,7 +37,7 @@ export default class GithubRepoData {
     this._cover_image = imgSrc;
   }
 
-  ToJson() {
+  ToJson(): GithubRepo {
     return {
       name: this._name,
       fullName: this._full_name,

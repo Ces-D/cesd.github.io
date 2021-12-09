@@ -59,5 +59,3 @@ export default function Header() {
     </HeaderContainer>
   );
 }
-
-// TODO: find a way to update the images for the repos

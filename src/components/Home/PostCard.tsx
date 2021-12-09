@@ -34,15 +34,21 @@ type Props = {
   imgSrc: string;
   cardLink: string;
   borderTop?: boolean;
+  title: string;
 };
 
 export default function PostCard(props: Props) {
   return (
     <CardContainer borderTop={props.borderTop ?? false}>
       <TextSection>{props.children}</TextSection>
-      <Link href={props.cardLink}>
+      <Link href={props.cardLink} passHref>
         <ImageContainer>
-          <Image layout="fill" objectFit="contain" src={props.imgSrc} />
+          <Image
+            layout="fill"
+            objectFit="contain"
+            src={props.imgSrc}
+            alt={`${props.title} cover image`}
+          />
         </ImageContainer>
       </Link>
     </CardContainer>
