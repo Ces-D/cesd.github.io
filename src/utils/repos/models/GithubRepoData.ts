@@ -1,4 +1,5 @@
 import date from "date-and-time";
+import UnsplashApi from "./UnsplashApi";
 
 export type GithubRepo = {
   name: string;
@@ -20,8 +21,10 @@ export default class GithubRepoData {
   protected _language: string;
   protected _html_url: string;
   protected _cover_image: string;
+  protected unsplashApi: UnsplashApi;
 
   constructor(data: any) {
+    this.unsplashApi = new UnsplashApi();
     this._name = data.name ?? "";
     this._full_name = data.full_name ?? "";
     this._description = data.description ?? "";
@@ -29,15 +32,29 @@ export default class GithubRepoData {
     this._created_at = date.format(new Date(data.created_at), "MMMM D. YYYY") ?? "";
     this._language = data.language ?? "";
     this._html_url = data.html_url ?? "";
-    this._cover_image =
-      "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80";
+    this._cover_image = "";
   }
 
-  addImage(imgSrc: string) {
-    this._cover_image = imgSrc;
+  private async addImage(query: string) {
+    const MAX_RESULTS = 20;
+
+    const photos = await this.unsplashApi.SearchPhotos({
+      query: query,
+      per_page: MAX_RESULTS,
+    });
+    const randomIndex = Math.floor(Math.random() * photos.results.length);
+
+    if (photos.results.length === 0) {
+      return "https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80";
+    } else {
+      const imageUrl = photos.results[randomIndex].urls.regular;
+      return imageUrl;
+    }
   }
 
-  ToJson(): GithubRepo {
+  async ToJson(): Promise<GithubRepo> {
+    this._cover_image = await this.addImage(this._language);
+
     return {
       name: this._name,
       fullName: this._full_name,
