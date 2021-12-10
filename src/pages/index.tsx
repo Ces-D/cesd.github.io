@@ -18,6 +18,7 @@ const Home: NextPage<HomePageProps> = (props) => {
 
 export default Home;
 
+// Grab minimalist data for the Highlight blog posts and repos
 export const getStaticProps: GetStaticProps = async (): Promise<
   GetServerSidePropsResult<HomePageProps>
 > => {
@@ -32,7 +33,7 @@ export const getStaticProps: GetStaticProps = async (): Promise<
     sortBlogPosts("newest", res)
   );
 
-  const githubAccess = new GithubAccessor();
+  const githubAccess = new GithubAccessor(true);
 
   const dateSortedGithubRepos = await githubAccess
     .accessRepoData()

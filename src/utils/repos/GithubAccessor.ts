@@ -6,9 +6,18 @@ import GithubRepoData, { GithubRepo } from "./models/GithubRepoData";
 export default class GithubAccessor {
   private static REPO_DIR = path.join(process.cwd(), "content/repo");
   private static REPO_JSON_FILE = path.join(GithubAccessor.REPO_DIR, "repos.json");
+  protected _rewrite: boolean;
+
+  constructor(rewrite: boolean) {
+    this._rewrite = rewrite;
+  }
 
   async accessRepoData() {
-    await this.populateRepoData();
+    if (this._rewrite) {
+      await this.populateRepoData();
+    } else if (!this._rewrite && !fs.existsSync(GithubAccessor.REPO_JSON_FILE)) {
+      await this.populateRepoData();
+    }
 
     const data: GithubRepo[] = JSON.parse(
       fs.readFileSync(GithubAccessor.REPO_JSON_FILE, { encoding: "utf-8" })
