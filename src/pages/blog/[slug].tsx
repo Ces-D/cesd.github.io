@@ -53,3 +53,5 @@ export const getStaticPaths: GetStaticPaths = async () => {
     fallback: false,
   };
 };
+
+// TODO: complete the styling of this page

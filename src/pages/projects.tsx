@@ -34,3 +34,5 @@ export const getStaticProps: GetStaticProps = async (): Promise<
     props: { projects: dateSortedGithubRepos },
   };
 };
+
+// TODO: complete the styling

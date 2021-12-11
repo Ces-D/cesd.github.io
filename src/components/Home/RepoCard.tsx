@@ -8,7 +8,7 @@ const CardContainer = styled.div<{
   borderBottom: boolean;
 }>`
   order: ${(props) => props.hero && -1};
-  margin-bottom: ${(props) => (props.marginBottom ? "1em" : "0")};
+  margin-bottom: ${(props) => (props.hero ? "0" : "1em")};
 
   @media ${(props) => props.theme.breakPoints.tablet} {
     order: ${(props) => props.hero && 0};

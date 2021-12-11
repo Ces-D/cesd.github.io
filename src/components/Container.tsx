@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Header from "./Header";
 
 const ContainerDiv = styled.div`
-  max-width: 1780px;
+  max-width: 1820px;
   margin-left: auto;
   margin-right: auto;
 `;

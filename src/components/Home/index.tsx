@@ -12,8 +12,6 @@ const OuterFlex = styled.div`
   justify-content: space-between;
   align-items: top;
   flex-direction: column;
-  padding-top: 1em;
-  border-top: ${(props) => props.theme.border.solidBrown};
 
   @media ${(props) => props.theme.breakPoints.laptop} {
     flex-direction: row;
@@ -24,8 +22,10 @@ const Grid = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-row-gap: 1em;
-
   width: 100%;
+  padding-top: 1em;
+  padding-right: 1em;
+  border-top: ${(props) => props.theme.border.solidBrown};
 
   @media ${(props) => props.theme.breakPoints.tablet} {
     margin-bottom: 1em;
@@ -45,17 +45,23 @@ const RightColContainer = styled.div`
   grid-template-columns: 1fr;
   grid-column-gap: 0;
   width: 100%;
+  margin-top: 1em;
+  padding-top: 1em;
+  border-top: ${(props) => props.theme.border.solidBrown};
 
   @media ${(props) => props.theme.breakPoints.tablet} {
     grid-template-columns: 1fr 1fr;
     grid-column-gap: 1em;
+    margin-top: 0;
   }
 
   @media ${(props) => props.theme.breakPoints.laptop} {
-    margin-left: 1em;
+    padding-left: 1em;
+    padding-top: 0;
     width: 30%;
     grid-template-columns: 1fr;
     grid-column-gap: 0;
+    border-left: ${(props) => props.theme.border.solidBrown};
   }
 `;
 
@@ -115,12 +121,12 @@ export default function HomePage(props: HomePageProps) {
         </Grid>
         {/* // Right Column - contains recent blog posts */}
         <RightColContainer>
-          {props.posts.map((post) => (
+          {props.posts.map((post, index) => (
             <PostCard
               key={v4()}
               imgSrc={post.coverImage}
               cardLink={`blog/${post.slug}`}
-              borderTop={true}
+              borderBottom={index !== props.posts.length - 1}
               title={post.title}
             >
               <>

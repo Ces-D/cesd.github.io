@@ -3,7 +3,6 @@ import { ReactChild } from "react";
 import styled from "styled-components";
 
 const A = styled.a`
-  padding: 0 1rem 0 1rem;
   text-decoration: none;
   cursor: pointer;
   color: ${(props) => props.theme.colors.black};

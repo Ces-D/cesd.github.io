@@ -7,7 +7,6 @@ import { sortRepos } from "../utils/repos/sort";
 import { BlogExcerpt } from "../utils/blog/models/ExcerptData";
 import GithubAccessor from "../utils/repos/GithubAccessor";
 import { GithubRepo } from "../utils/repos/models/GithubRepoData";
-
 import HomePage from "../components/Home";
 
 export type HomePageProps = { posts: BlogExcerpt[]; repos: GithubRepo[] };
@@ -33,7 +32,7 @@ export const getStaticProps: GetStaticProps = async (): Promise<
     sortBlogPosts("newest", res)
   );
 
-  const githubAccess = new GithubAccessor(true);
+  const githubAccess = new GithubAccessor(false); // turn to false when testing to save free api calls
 
   const dateSortedGithubRepos = await githubAccess
     .accessRepoData()

@@ -12,6 +12,11 @@ export type GithubRepo = {
   coverImage: string;
 };
 
+/**
+ * Class that formats the Repo data for the rest of the application.
+ * This class takes in the response Json from the github repo api endpoint, selects specific data and then formats it.
+ * It also utilizes the UnsplashApi class to add a coverImage as a detail
+ */
 export default class GithubRepoData {
   protected _name: string;
   protected _full_name: string;

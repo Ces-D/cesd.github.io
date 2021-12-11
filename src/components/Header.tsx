@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import Link from "next/link";
 import styled from "styled-components";
-import { H1, H2 } from "../UI/Typography";
+import { H1, H3 } from "../UI/Typography";
 
 const HeaderContainer = styled.nav`
   width: 100%;
@@ -17,7 +17,15 @@ const NavItems = styled.div`
   justify-content: space-between;
   align-items: center;
   text-align: end;
-  width: 15em;
+  width: 15rem;
+
+  @media ${(props) => props.theme.breakPoints.tablet} {
+    width: 20rem;
+  }
+
+  @media ${(props) => props.theme.breakPoints.laptop} {
+    width: 22rem;
+  }
 `;
 
 const A = styled.a<{ activePath?: string }>`
@@ -47,12 +55,12 @@ export default function Header() {
       <NavItems>
         <Link href={"/projects"} passHref>
           <A activePath={router.pathname}>
-            <H2>Projects</H2>
+            <H3>Projects</H3>
           </A>
         </Link>
         <Link href={"/blog"} passHref>
           <A activePath={router.pathname}>
-            <H2>Blog</H2>
+            <H3>Blog</H3>
           </A>
         </Link>
       </NavItems>

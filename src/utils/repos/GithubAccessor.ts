@@ -3,6 +3,10 @@ import path from "path";
 import fs from "fs";
 import GithubRepoData, { GithubRepo } from "./models/GithubRepoData";
 
+/**
+ * This class handles all logic related to
+ * @constructor takes a singles boolean argument that determines whether the repo json file which serves as state is refreshed and written over
+ */
 export default class GithubAccessor {
   private static REPO_DIR = path.join(process.cwd(), "content/repo");
   private static REPO_JSON_FILE = path.join(GithubAccessor.REPO_DIR, "repos.json");
@@ -13,9 +17,11 @@ export default class GithubAccessor {
   }
 
   async accessRepoData() {
+    // checks whether to rewrite the json file
     if (this._rewrite) {
       await this.populateRepoData();
     } else if (!this._rewrite && !fs.existsSync(GithubAccessor.REPO_JSON_FILE)) {
+      // if not rewrite but file does not exist; write regardless
       await this.populateRepoData();
     }
 

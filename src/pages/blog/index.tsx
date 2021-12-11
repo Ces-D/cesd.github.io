@@ -40,3 +40,5 @@ export const getStaticProps: GetStaticProps = async (): Promise<
     props: { posts: dateSortedResponses },
   };
 };
+
+// TODO: complete the styling for both this and slug
