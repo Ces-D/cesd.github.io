@@ -10,11 +10,21 @@ import { CONTENT_DIRECTORY } from "../../utils/blog/models/GrayMatterData";
 import { BlogPaths } from "../../utils/blog/models/PathsData";
 import { BlogPost } from "../../utils/blog/models/PostData";
 import BlogPostSlugPage from "../../components/Blog/Slug";
+import Meta from "../../components/common/Meta";
 
 type BlogPostPageProps = { data: BlogPost };
 
 const BlogPostPage: NextPage<BlogPostPageProps> = (props) => {
-  return <BlogPostSlugPage {...props.data} />;
+  return (
+    <>
+      <Meta
+        title={props.data.title}
+        description={props.data.description}
+        articleDate={props.data.publishDate}
+      />
+      <BlogPostSlugPage {...props.data} />
+    </>
+  );
 };
 
 export default BlogPostPage;
@@ -46,5 +56,3 @@ export const getStaticPaths: GetStaticPaths = async () => {
     fallback: false,
   };
 };
-
-// TODO: complete the styling of this page

@@ -1,9 +1,10 @@
 import styled from "styled-components";
-import { H1, P3, TextArticle } from "../../UI/Typography";
+import { H1, P2, P3, TextArticle } from "../../UI/Typography";
 import { BlogPost } from "../../utils/blog/models/PostData";
 import Container from "../common/Container";
 import { ImageWidth } from "../common/ImageContainer";
 import ImageContainer, { ImageHeight } from "../common/ImageContainer";
+import { v4 } from "uuid";
 
 const Tags = styled.ul`
   display: flex;
@@ -11,6 +12,7 @@ const Tags = styled.ul`
   list-style-type: none;
   list-style-position: outside;
   padding-inline-start: 0px;
+  flex-wrap: wrap;
 `;
 
 const Tag = styled.li`
@@ -18,15 +20,17 @@ const Tag = styled.li`
 `;
 
 const TextSpacing = styled.div`
-  margin-right: 5em;
-  margin-left: 5em;
+  @media ${(props) => props.theme.breakPoints.tablet} {
+    margin-right: 5em;
+    margin-left: 5em;
+  }
 `;
 
 export default function BlogPostSlugPage(props: BlogPost) {
   const imageHeight: ImageHeight = {
     mobile: "30em",
     tablet: "30em",
-    laptop: "30em",
+    laptop: "35em",
   };
 
   const imageWidth: ImageWidth = {
@@ -43,7 +47,9 @@ export default function BlogPostSlugPage(props: BlogPost) {
           <P3>{`${props.publishDate} | ${props.readingTime}min`}</P3>
           <Tags>
             {props.tags.map((tag) => (
-              <Tag>#{tag}</Tag>
+              <Tag key={v4()}>
+                <P2>#{tag}</P2>
+              </Tag>
             ))}
           </Tags>
         </TextSpacing>

@@ -1,4 +1,5 @@
 import { GetStaticProps, GetStaticPropsResult, NextPage } from "next";
+import Meta from "../components/common/Meta";
 import ProjectsPage from "../components/Projects";
 import GithubAccessor from "../utils/repos/GithubAccessor";
 import { GithubRepo } from "../utils/repos/models/GithubRepoData";
@@ -7,7 +8,12 @@ import { sortRepos } from "../utils/repos/sort";
 export type ProjectsPageProps = { projects: GithubRepo[] };
 
 const Projects: NextPage<ProjectsPageProps> = (props) => {
-  return <ProjectsPage {...props} />;
+  return (
+    <>
+      <Meta title="Projects" description="List of past projects and github repos" />
+      <ProjectsPage {...props} />
+    </>
+  );
 };
 
 export default Projects;
@@ -25,5 +31,3 @@ export const getStaticProps: GetStaticProps = async (): Promise<
     props: { projects: dateSortedGithubRepos },
   };
 };
-
-// TODO: complete the styling

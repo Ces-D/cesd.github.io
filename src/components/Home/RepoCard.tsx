@@ -71,5 +71,3 @@ export default function RepoCard(props: Props) {
     </CardContainer>
   );
 }
-
-//TODO: test this

@@ -5,11 +5,17 @@ import { sortBlogPosts } from "../../utils/blog/sort";
 import { BlogCard } from "../../utils/blog/models/CardData";
 import { CONTENT_DIRECTORY } from "../../utils/blog/models/GrayMatterData";
 import BlogHomePage from "../../components/Blog";
+import Meta from "../../components/common/Meta";
 
 export type BlogHomePageProps = { posts: BlogCard[] };
 
 const BlogHome: NextPage<BlogHomePageProps> = (props) => {
-  return <BlogHomePage {...props} />;
+  return (
+    <>
+      <Meta title="Blog Posts" description="List of blog posts" />
+      <BlogHomePage {...props} />
+    </>
+  );
 };
 
 export default BlogHome;
@@ -31,5 +37,3 @@ export const getStaticProps: GetStaticProps = async (): Promise<
     props: { posts: dateSortedResponses },
   };
 };
-
-// TODO: complete the styling for both this and slug

@@ -8,11 +8,18 @@ import { BlogExcerpt } from "../utils/blog/models/ExcerptData";
 import GithubAccessor from "../utils/repos/GithubAccessor";
 import { GithubRepo } from "../utils/repos/models/GithubRepoData";
 import HomePage from "../components/Home";
+import Meta from "../components/common/Meta";
 
 export type HomePageProps = { posts: BlogExcerpt[]; repos: GithubRepo[] };
 
 const Home: NextPage<HomePageProps> = (props) => {
-  return <HomePage {...props} />;
+  return (
+    <>
+      <Meta title="Welcome" />
+      <HomePage {...props} />
+      );
+    </>
+  );
 };
 
 export default Home;
@@ -45,3 +52,5 @@ export const getStaticProps: GetStaticProps = async (): Promise<
     },
   };
 };
+
+// TODO: test everything and double check the designs responsiveness

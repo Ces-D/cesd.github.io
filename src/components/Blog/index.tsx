@@ -3,6 +3,7 @@ import Container from "../common/Container";
 import { BlogHomePageProps } from "../../pages/blog";
 import { H1 } from "../../UI/Typography";
 import Card from "./Card";
+import { v4 } from "uuid";
 
 const List = styled.ul`
   list-style-type: none;
@@ -17,7 +18,7 @@ export default function BlogHomePage(props: BlogHomePageProps) {
         <H1>Blog Posts</H1>
         <List>
           {props.posts.map((post) => (
-            <Card {...post} />
+            <Card key={v4()} {...post} />
           ))}
         </List>
       </>
