@@ -1,22 +1,13 @@
 import { GetStaticProps, GetStaticPropsResult, NextPage } from "next";
-import Container from "../components/Container";
+import ProjectsPage from "../components/Projects";
 import GithubAccessor from "../utils/repos/GithubAccessor";
 import { GithubRepo } from "../utils/repos/models/GithubRepoData";
 import { sortRepos } from "../utils/repos/sort";
 
-type ProjectsPageProps = { projects: GithubRepo[] };
+export type ProjectsPageProps = { projects: GithubRepo[] };
 
 const Projects: NextPage<ProjectsPageProps> = (props) => {
-  return (
-    <Container>
-      <>
-        <div>Hello Projects</div>
-        {props.projects.map((project) => (
-          <div>{project.fullName}</div>
-        ))}
-      </>
-    </Container>
-  );
+  return <ProjectsPage {...props} />;
 };
 
 export default Projects;

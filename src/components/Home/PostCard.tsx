@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import Image from "next/image";
-import Link from "next/link";
+import { TextSection } from "../../UI/Typography";
+import { ImageHeight, ImageWidth } from "../common/ImageContainer";
+import LinkImageContainer from "../common/LinkImageContainer";
 
 const CardContainer = styled.div<{ borderBottom: boolean }>`
   display: flex;
@@ -16,22 +17,6 @@ const CardContainer = styled.div<{ borderBottom: boolean }>`
   }
 `;
 
-const ImageContainer = styled.div`
-  position: relative;
-  display: inline-block;
-  height: 7em;
-  width: 30%;
-  cursor: pointer;
-`;
-
-const TextSection = styled.section`
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-  width: 70%;
-  display: inline-block;
-  text-align: left;
-`;
-
 type Props = {
   children: React.ReactChild;
   imgSrc: string;
@@ -41,19 +26,30 @@ type Props = {
 };
 
 export default function PostCard(props: Props) {
+  const imageHeight: ImageHeight = {
+    mobile: "7em",
+    tablet: "7em",
+    laptop: "7em",
+  };
+
+  const imageWidth: ImageWidth = {
+    mobile: "7em",
+    tablet: "7em",
+    laptop: "7em",
+  };
+
   return (
     <CardContainer borderBottom={props.borderBottom}>
-      <TextSection>{props.children}</TextSection>
-      <Link href={props.cardLink} passHref>
-        <ImageContainer>
-          <Image
-            layout="fill"
-            objectFit="contain"
-            src={props.imgSrc}
-            alt={`${props.title} cover image`}
-          />
-        </ImageContainer>
-      </Link>
+      <TextSection width="70%" paddingRight="0.5rem">
+        {props.children}
+      </TextSection>
+      <LinkImageContainer
+        href={props.cardLink}
+        height={imageHeight}
+        width={imageWidth}
+        imgSrc={props.imgSrc}
+        imgAlt={`${props.title} cover image`}
+      />
     </CardContainer>
   );
 }

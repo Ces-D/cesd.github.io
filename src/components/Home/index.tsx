@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { HomePageProps } from "../../pages";
 import { H1, H2, H3, P3, P1 } from "../../UI/Typography";
-import AnchorLink from "../AnchorLink";
+import AnchorLink from "../common/AnchorLink";
 import RepoCard from "./RepoCard";
-import Container from "../Container";
+import Container from "../common/Container";
 import PostCard from "./PostCard";
 import { v4 } from "uuid";
 

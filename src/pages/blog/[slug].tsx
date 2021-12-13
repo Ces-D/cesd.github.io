@@ -5,23 +5,16 @@ import {
   GetStaticPropsResult,
   NextPage,
 } from "next";
-import Container from "../../components/Container";
 import BlogDataFactory from "../../utils/blog/BlogDataFactory";
 import { CONTENT_DIRECTORY } from "../../utils/blog/models/GrayMatterData";
 import { BlogPaths } from "../../utils/blog/models/PathsData";
 import { BlogPost } from "../../utils/blog/models/PostData";
+import BlogPostSlugPage from "../../components/Blog/Slug";
 
 type BlogPostPageProps = { data: BlogPost };
 
 const BlogPostPage: NextPage<BlogPostPageProps> = (props) => {
-  return (
-    <Container>
-      <>
-        <div>Hello from Blog Home</div>
-        <div>{props.data.title}</div>
-      </>
-    </Container>
-  );
+  return <BlogPostSlugPage {...props.data} />;
 };
 
 export default BlogPostPage;

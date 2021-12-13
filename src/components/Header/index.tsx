@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import Link from "next/link";
 import styled from "styled-components";
-import { H1, H3 } from "../UI/Typography";
+import { H1, H3 } from "../../UI/Typography";
 
 const HeaderContainer = styled.nav`
   width: 100%;

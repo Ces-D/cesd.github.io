@@ -32,7 +32,7 @@ export const getStaticProps: GetStaticProps = async (): Promise<
     sortBlogPosts("newest", res)
   );
 
-  const githubAccess = new GithubAccessor(false); // turn to false when testing to save free api calls
+  const githubAccess = new GithubAccessor(true); // FIXME: turn to false when testing to save free api calls
 
   const dateSortedGithubRepos = await githubAccess
     .accessRepoData()

@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import Image from "next/image";
-import Link from "next/link";
+import { TextSection } from "../../UI/Typography";
+import { ImageHeight, ImageWidth } from "../common/ImageContainer";
+import LinkImageContainer from "../common/LinkImageContainer";
 
 const CardContainer = styled.div<{
   hero: boolean;
@@ -17,27 +18,6 @@ const CardContainer = styled.div<{
   }
 `;
 
-const ImageContainer = styled.div<{ hero: boolean }>`
-  position: relative;
-  height: ${(props) => (props.hero ? "18em" : "12em")};
-  cursor: pointer;
-
-  @media ${(props) => props.theme.breakPoints.tablet} {
-    height: ${(props) => (props.hero ? "25em" : "12em")};
-  }
-
-  @media ${(props) => props.theme.breakPoints.laptop} {
-    height: ${(props) => (props.hero ? "30em" : "12em")};
-  }
-`;
-
-const A = styled.a.attrs({ rel: "nofollow", target: "_blank" })``;
-
-const TextSection = styled.section`
-  padding-left: 0.5rem;
-  text-align: left;
-`;
-
 type Props = {
   cardLink: string;
   imgSrc: string;
@@ -49,25 +29,47 @@ type Props = {
 };
 
 export default function RepoCard(props: Props) {
+  const heroImageHeights: ImageHeight = {
+    mobile: "18em",
+    tablet: "25em",
+    laptop: "30em",
+  };
+
+  const otherImageHeights: ImageHeight = {
+    mobile: "12em",
+    tablet: "12em",
+    laptop: "12em",
+  };
+
+  const heroImageWidths: ImageWidth = {
+    mobile: "100%",
+    tablet: "100%",
+    laptop: "100%",
+  };
+
+  const otherImageWidths: ImageWidth = {
+    mobile: "100%",
+    tablet: "100%",
+    laptop: "100%",
+  };
+
   return (
     <CardContainer
       hero={props.hero ?? false}
       marginBottom={props.spaceBelow ?? false}
       borderBottom={props.borderBottom ?? false}
     >
-      <Link href={props.cardLink} passHref>
-        <A>
-          <ImageContainer hero={props.hero ?? false}>
-            <Image
-              layout="fill"
-              objectFit="cover"
-              src={props.imgSrc}
-              alt={`${props.title} cover image`}
-            />
-          </ImageContainer>
-        </A>
-      </Link>
+      <LinkImageContainer
+        height={props.hero ? heroImageHeights : otherImageHeights}
+        width={props.hero ? heroImageWidths : otherImageWidths}
+        href={props.cardLink}
+        target={"_blank"}
+        imgSrc={props.imgSrc}
+        imgAlt={`${props.title} cover image`}
+      />
       <TextSection>{props.children}</TextSection>
     </CardContainer>
   );
 }
+
+//TODO: test this

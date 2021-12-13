@@ -14,11 +14,16 @@ const classAttr = 'class="';
 const setHighlightJsClassesExtension = (pre = true): ShowdownExtension => {
   return {
     type: "output",
-    filter(text) {
+    filter(text, converter, options) {
       let left = "<pre><code\\b[^>]*>",
         right = "</code></pre>",
         flags = "g",
-        replacement = (match: string, left: string, right: string) => {
+        replacement = (
+          wholeMatch: string,
+          match: string,
+          left: string,
+          right: string
+        ) => {
           match = decode(match);
           let lang = (left.match(/class=\"([^ \"]+)/) || [])[1];
 
