@@ -1,0 +1,282 @@
+[
+  {
+    "name": "basketball_gambling",
+    "fullName": "Ces-D/basketball_gambling",
+    "description": "A degenerates retreat. Using python. ",
+    "updatedAt": "August 4. 2021",
+    "createdAt": "August 3. 2021",
+    "language": "Python",
+    "htmlUrl": "https://github.com/Ces-D/basketball_gambling",
+    "coverImage": "https://images.unsplash.com/photo-1607799279861-4dd421887fb3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyODIyNTN8MHwxfHNlYXJjaHwzfHxQeXRob24lMkMlMjBwcm9ncmFtbWluZ3xlbnwwfDB8fHwxNjM5NDQzMzY1&ixlib=rb-1.2.1&q=80&w=1080"
+  },
+  {
+    "name": "basketball_reference_scraper",
+    "fullName": "Ces-D/basketball_reference_scraper",
+    "description": "A python module for scraping static and dynamic content from Basketball Reference.",
+    "updatedAt": "August 5. 2021",
+    "createdAt": "August 5. 2021",
+    "language": "Python",
+    "htmlUrl": "https://github.com/Ces-D/basketball_reference_scraper",
+    "coverImage": "https://images.unsplash.com/photo-1607798748738-b15c40d33d57?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyODIyNTN8MHwxfHNlYXJjaHwyfHxQeXRob24lMkMlMjBwcm9ncmFtbWluZ3xlbnwwfDB8fHwxNjM5NDQzMzY1&ixlib=rb-1.2.1&q=80&w=1080"
+  },
+  {
+    "name": "bing-clone",
+    "fullName": "Ces-D/bing-clone",
+    "description": "a clone of Bing, built using react",
+    "updatedAt": "July 15. 2021",
+    "createdAt": "July 10. 2021",
+    "language": "TypeScript",
+    "htmlUrl": "https://github.com/Ces-D/bing-clone",
+    "coverImage": "https://images.unsplash.com/photo-1603354351226-d82bd4a635a3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyODIyNTN8MHwxfHNlYXJjaHwxNHx8VHlwZVNjcmlwdCUyQyUyMHByb2dyYW1taW5nfGVufDB8MHx8fDE2Mzk0NDMzNjU&ixlib=rb-1.2.1&q=80&w=1080"
+  },
+  {
+    "name": "Ces-D",
+    "fullName": "Ces-D/Ces-D",
+    "description": "Read about Me",
+    "updatedAt": "July 22. 2021",
+    "createdAt": "July 13. 2020",
+    "language": "",
+    "htmlUrl": "https://github.com/Ces-D/Ces-D",
+    "coverImage": "https://images.unsplash.com/photo-1599507593499-a3f7d7d97667?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyODIyNTN8MHwxfHNlYXJjaHwxfHwlMkMlMjBwcm9ncmFtbWluZ3xlbnwwfDB8fHwxNjM5NDQzMzY1&ixlib=rb-1.2.1&q=80&w=1080"
+  },
+  {
+    "name": "cesd.github.io",
+    "fullName": "Ces-D/cesd.github.io",
+    "description": "The code for my blogs site. It is built using Next and Markdown. ",
+    "updatedAt": "December 12. 2021",
+    "createdAt": "August 25. 2021",
+    "language": "TypeScript",
+    "htmlUrl": "https://github.com/Ces-D/cesd.github.io",
+    "coverImage": "https://images.unsplash.com/photo-1615494937408-7f4e41bf45d9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyODIyNTN8MHwxfHNlYXJjaHwxM3x8VHlwZVNjcmlwdCUyQyUyMHByb2dyYW1taW5nfGVufDB8MHx8fDE2Mzk0NDMzNjU&ixlib=rb-1.2.1&q=80&w=1080"
+  },
+  {
+    "name": "Chingu-Weather-CLI",
+    "fullName": "Ces-D/Chingu-Weather-CLI",
+    "description": "Tier 2 Chingu Weather CLI using Weather API",
+    "updatedAt": "October 20. 2020",
+    "createdAt": "October 19. 2020",
+    "language": "JavaScript",
+    "htmlUrl": "https://github.com/Ces-D/Chingu-Weather-CLI",
+    "coverImage": "https://images.unsplash.com/photo-1484417894907-623942c8ee29?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyODIyNTN8MHwxfHNlYXJjaHwyfHxKYXZhU2NyaXB0JTJDJTIwcHJvZ3JhbW1pbmd8ZW58MHwwfHx8MTYzOTQ0MzM2NQ&ixlib=rb-1.2.1&q=80&w=1080"
+  },
+  {
+    "name": "cobblepot",
+    "fullName": "Ces-D/cobblepot",
+    "description": "Based on bean-count, but written in csharp. A simpler CLI tool for managing personal finances. ",
+    "updatedAt": "August 20. 2021",
+    "createdAt": "July 18. 2021",
+    "language": "C#",
+    "htmlUrl": "https://github.com/Ces-D/cobblepot",
+    "coverImage": "https://images.unsplash.com/photo-1631376604944-ddb97deb9839?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyODIyNTN8MHwxfHNlYXJjaHwxMnx8QyUyMyUyQyUyMHByb2dyYW1taW5nfGVufDB8MHx8fDE2Mzk0NDMzNjU&ixlib=rb-1.2.1&q=80&w=1080"
+  },
+  {
+    "name": "Content-Calendar",
+    "fullName": "Ces-D/Content-Calendar",
+    "description": "A content calendar to visualize and simplify your marketing campaigns",
+    "updatedAt": "January 11. 2021",
+    "createdAt": "December 17. 2020",
+    "language": "JavaScript",
+    "htmlUrl": "https://github.com/Ces-D/Content-Calendar",
+    "coverImage": "https://images.unsplash.com/photo-1629486884082-18e5285d6f0e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyODIyNTN8MHwxfHNlYXJjaHwxNHx8SmF2YVNjcmlwdCUyQyUyMHByb2dyYW1taW5nfGVufDB8MHx8fDE2Mzk0NDMzNjU&ixlib=rb-1.2.1&q=80&w=1080"
+  },
+  {
+    "name": "CSV-to-HTML",
+    "fullName": "Ces-D/CSV-to-HTML",
+    "description": "Convert downloaded CSV files to HTML webpages",
+    "updatedAt": "April 5. 2021",
+    "createdAt": "July 29. 2020",
+    "language": "Python",
+    "htmlUrl": "https://github.com/Ces-D/CSV-to-HTML",
+    "coverImage": "https://images.unsplash.com/photo-1603354350317-6f7aaa5911c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyODIyNTN8MHwxfHNlYXJjaHwxM3x8UHl0aG9uJTJDJTIwcHJvZ3JhbW1pbmd8ZW58MHwwfHx8MTYzOTQ0MzM2NQ&ixlib=rb-1.2.1&q=80&w=1080"
+  },
+  {
+    "name": "Food-Engine",
+    "fullName": "Ces-D/Food-Engine",
+    "description": "Introduction to Node and Spoonacular API",
+    "updatedAt": "October 19. 2020",
+    "createdAt": "September 25. 2020",
+    "language": "JavaScript",
+    "htmlUrl": "https://github.com/Ces-D/Food-Engine",
+    "coverImage": "https://images.unsplash.com/photo-1593720218746-e13e4a422a3b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyODIyNTN8MHwxfHNlYXJjaHwxM3x8SmF2YVNjcmlwdCUyQyUyMHByb2dyYW1taW5nfGVufDB8MHx8fDE2Mzk0NDMzNjU&ixlib=rb-1.2.1&q=80&w=1080"
+  },
+  {
+    "name": "MyWorkout",
+    "fullName": "Ces-D/MyWorkout",
+    "description": "Learning while creating a workout tracker for myself",
+    "updatedAt": "February 10. 2021",
+    "createdAt": "January 24. 2021",
+    "language": "JavaScript",
+    "htmlUrl": "https://github.com/Ces-D/MyWorkout",
+    "coverImage": "https://images.unsplash.com/photo-1482062364825-616fd23b8fc1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyODIyNTN8MHwxfHNlYXJjaHwxMHx8SmF2YVNjcmlwdCUyQyUyMHByb2dyYW1taW5nfGVufDB8MHx8fDE2Mzk0NDMzNjU&ixlib=rb-1.2.1&q=80&w=1080"
+  },
+  {
+    "name": "pad-cogs",
+    "fullName": "Ces-D/pad-cogs",
+    "description": "Cogs for a Discord bot related to the mobile game Puzzle & Dragons",
+    "updatedAt": "July 19. 2021",
+    "createdAt": "July 19. 2021",
+    "language": "",
+    "htmlUrl": "https://github.com/Ces-D/pad-cogs",
+    "coverImage": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyODIyNTN8MHwxfHNlYXJjaHw2fHwlMkMlMjBwcm9ncmFtbWluZ3xlbnwwfDB8fHwxNjM5NDQzMzY1&ixlib=rb-1.2.1&q=80&w=1080"
+  },
+  {
+    "name": "pad-data-pipeline",
+    "fullName": "Ces-D/pad-data-pipeline",
+    "description": "Original repo: https://github.com/nachoapps/dadguide-data",
+    "updatedAt": "July 19. 2021",
+    "createdAt": "July 19. 2021",
+    "language": "",
+    "htmlUrl": "https://github.com/Ces-D/pad-data-pipeline",
+    "coverImage": "https://images.unsplash.com/photo-1508830524289-0adcbe822b40?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyODIyNTN8MHwxfHNlYXJjaHwyMHx8JTJDJTIwcHJvZ3JhbW1pbmd8ZW58MHwwfHx8MTYzOTQ0MzM2NQ&ixlib=rb-1.2.1&q=80&w=1080"
+  },
+  {
+    "name": "Palette",
+    "fullName": "Ces-D/Palette",
+    "description": "A color palette generator for quick and painless web design.",
+    "updatedAt": "December 10. 2021",
+    "createdAt": "September 27. 2021",
+    "language": "C#",
+    "htmlUrl": "https://github.com/Ces-D/Palette",
+    "coverImage": "https://images.unsplash.com/photo-1631376604944-ddb97deb9839?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyODIyNTN8MHwxfHNlYXJjaHwxMnx8QyUyMyUyQyUyMHByb2dyYW1taW5nfGVufDB8MHx8fDE2Mzk0NDMzNjU&ixlib=rb-1.2.1&q=80&w=1080"
+  },
+  {
+    "name": "Planner",
+    "fullName": "Ces-D/Planner",
+    "description": "A visual take on a student planner implementing Django as it's backend and React as it's frontend.",
+    "updatedAt": "September 2. 2020",
+    "createdAt": "August 23. 2020",
+    "language": "Python",
+    "htmlUrl": "https://github.com/Ces-D/Planner",
+    "coverImage": "https://images.unsplash.com/photo-1615494937408-7f4e41bf45d9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyODIyNTN8MHwxfHNlYXJjaHwxMXx8UHl0aG9uJTJDJTIwcHJvZ3JhbW1pbmd8ZW58MHwwfHx8MTYzOTQ0MzM2NQ&ixlib=rb-1.2.1&q=80&w=1080"
+  },
+  {
+    "name": "Puzzle-Dragons",
+    "fullName": "Ces-D/Puzzle-Dragons",
+    "description": "Puzzle and Dragons related project",
+    "updatedAt": "July 20. 2021",
+    "createdAt": "November 19. 2020",
+    "language": "Python",
+    "htmlUrl": "https://github.com/Ces-D/Puzzle-Dragons",
+    "coverImage": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyODIyNTN8MHwxfHNlYXJjaHw4fHxQeXRob24lMkMlMjBwcm9ncmFtbWluZ3xlbnwwfDB8fHwxNjM5NDQzMzY1&ixlib=rb-1.2.1&q=80&w=1080"
+  },
+  {
+    "name": "Snake-Follow",
+    "fullName": "Ces-D/Snake-Follow",
+    "description": "A follow along to building a snake game with pure javascript",
+    "updatedAt": "September 12. 2020",
+    "createdAt": "September 12. 2020",
+    "language": "JavaScript",
+    "htmlUrl": "https://github.com/Ces-D/Snake-Follow",
+    "coverImage": "https://images.unsplash.com/photo-1516101922849-2bf0be616449?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyODIyNTN8MHwxfHNlYXJjaHwxMXx8SmF2YVNjcmlwdCUyQyUyMHByb2dyYW1taW5nfGVufDB8MHx8fDE2Mzk0NDMzNjU&ixlib=rb-1.2.1&q=80&w=1080"
+  },
+  {
+    "name": "solid-oop",
+    "fullName": "Ces-D/solid-oop",
+    "description": "Working through and understanding the SOLID principles of OOP programming with examples in JS and CSharp",
+    "updatedAt": "September 13. 2021",
+    "createdAt": "September 9. 2021",
+    "language": "C#",
+    "htmlUrl": "https://github.com/Ces-D/solid-oop",
+    "coverImage": "https://images.unsplash.com/photo-1536859355448-76f92ebdc33d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyODIyNTN8MHwxfHNlYXJjaHw4fHxDJTIzJTJDJTIwcHJvZ3JhbW1pbmd8ZW58MHwwfHx8MTYzOTQ0MzM2NQ&ixlib=rb-1.2.1&q=80&w=1080"
+  },
+  {
+    "name": "Space-Invader-Bot",
+    "fullName": "Ces-D/Space-Invader-Bot",
+    "description": "Practicing with Discord.JS to make cool shoot",
+    "updatedAt": "July 20. 2021",
+    "createdAt": "May 10. 2021",
+    "language": "TypeScript",
+    "htmlUrl": "https://github.com/Ces-D/Space-Invader-Bot",
+    "coverImage": "https://images.unsplash.com/photo-1536859355448-76f92ebdc33d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyODIyNTN8MHwxfHNlYXJjaHw4fHxUeXBlU2NyaXB0JTJDJTIwcHJvZ3JhbW1pbmd8ZW58MHwwfHx8MTYzOTQ0MzM2NQ&ixlib=rb-1.2.1&q=80&w=1080"
+  },
+  {
+    "name": "Spotify-Chat-Web",
+    "fullName": "Ces-D/Spotify-Chat-Web",
+    "description": "Using Spotify API to create a chat web of most listened to songs",
+    "updatedAt": "June 15. 2020",
+    "createdAt": "June 14. 2020",
+    "language": "Jupyter Notebook",
+    "htmlUrl": "https://github.com/Ces-D/Spotify-Chat-Web",
+    "coverImage": "https://images.unsplash.com/photo-1501618669935-18b6ecb13d6d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyODIyNTN8MHwxfHNlYXJjaHwxNnx8SnVweXRlciUyME5vdGVib29rJTJDJTIwcHJvZ3JhbW1pbmd8ZW58MHwwfHx8MTYzOTQ0MzM2NQ&ixlib=rb-1.2.1&q=80&w=1080"
+  },
+  {
+    "name": "Spotify-Sentiment-Map",
+    "fullName": "Ces-D/Spotify-Sentiment-Map",
+    "description": "unfinished project accessing Spotify API to display sentiment map for recently listened to songs",
+    "updatedAt": "June 15. 2020",
+    "createdAt": "June 15. 2020",
+    "language": "Python",
+    "htmlUrl": "https://github.com/Ces-D/Spotify-Sentiment-Map",
+    "coverImage": "https://images.unsplash.com/photo-1485856407642-7f9ba0268b51?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyODIyNTN8MHwxfHNlYXJjaHwxN3x8UHl0aG9uJTJDJTIwcHJvZ3JhbW1pbmd8ZW58MHwwfHx8MTYzOTQ0MzM2NQ&ixlib=rb-1.2.1&q=80&w=1080"
+  },
+  {
+    "name": "Stock-Analysis",
+    "fullName": "Ces-D/Stock-Analysis",
+    "description": "introduction to timeseries graphs",
+    "updatedAt": "May 30. 2020",
+    "createdAt": "May 30. 2020",
+    "language": "Jupyter Notebook",
+    "htmlUrl": "https://github.com/Ces-D/Stock-Analysis",
+    "coverImage": "https://images.unsplash.com/photo-1607798748738-b15c40d33d57?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyODIyNTN8MHwxfHNlYXJjaHw2fHxKdXB5dGVyJTIwTm90ZWJvb2slMkMlMjBwcm9ncmFtbWluZ3xlbnwwfDB8fHwxNjM5NDQzMzY1&ixlib=rb-1.2.1&q=80&w=1080"
+  },
+  {
+    "name": "Stock-CLI",
+    "fullName": "Ces-D/Stock-CLI",
+    "description": "A cli tool that captures stock data and writes it to a file for ",
+    "updatedAt": "October 29. 2020",
+    "createdAt": "October 25. 2020",
+    "language": "Python",
+    "htmlUrl": "https://github.com/Ces-D/Stock-CLI",
+    "coverImage": "https://images.unsplash.com/photo-1557324232-b8917d3c3dcb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyODIyNTN8MHwxfHNlYXJjaHwxMHx8UHl0aG9uJTJDJTIwcHJvZ3JhbW1pbmd8ZW58MHwwfHx8MTYzOTQ0MzM2NQ&ixlib=rb-1.2.1&q=80&w=1080"
+  },
+  {
+    "name": "Translate-Chat",
+    "fullName": "Ces-D/Translate-Chat",
+    "description": "Simple flask chat app that translates text",
+    "updatedAt": "March 20. 2021",
+    "createdAt": "May 28. 2020",
+    "language": "Python",
+    "htmlUrl": "https://github.com/Ces-D/Translate-Chat",
+    "coverImage": "https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyODIyNTN8MHwxfHNlYXJjaHwyMHx8UHl0aG9uJTJDJTIwcHJvZ3JhbW1pbmd8ZW58MHwwfHx8MTYzOTQ0MzM2NQ&ixlib=rb-1.2.1&q=80&w=1080"
+  },
+  {
+    "name": "Twitter-Analysis",
+    "fullName": "Ces-D/Twitter-Analysis",
+    "description": "Finding a way to analyze twitter data",
+    "updatedAt": "October 3. 2020",
+    "createdAt": "September 1. 2020",
+    "language": "Python",
+    "htmlUrl": "https://github.com/Ces-D/Twitter-Analysis",
+    "coverImage": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyODIyNTN8MHwxfHNlYXJjaHw4fHxQeXRob24lMkMlMjBwcm9ncmFtbWluZ3xlbnwwfDB8fHwxNjM5NDQzMzY1&ixlib=rb-1.2.1&q=80&w=1080"
+  },
+  {
+    "name": "V2-MyWorkout",
+    "fullName": "Ces-D/V2-MyWorkout",
+    "description": "Version 2 of My Workout App",
+    "updatedAt": "February 21. 2021",
+    "createdAt": "February 13. 2021",
+    "language": "JavaScript",
+    "htmlUrl": "https://github.com/Ces-D/V2-MyWorkout",
+    "coverImage": "https://images.unsplash.com/photo-1506064764456-2bd1ef6a20f6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyODIyNTN8MHwxfHNlYXJjaHwxNXx8SmF2YVNjcmlwdCUyQyUyMHByb2dyYW1taW5nfGVufDB8MHx8fDE2Mzk0NDMzNjU&ixlib=rb-1.2.1&q=80&w=1080"
+  },
+  {
+    "name": "v3-myworkout",
+    "fullName": "Ces-D/v3-myworkout",
+    "description": "Another iteration of a workout app. Using Next, Prisma, and other stuff yet to be determined. ",
+    "updatedAt": "April 1. 2021",
+    "createdAt": "March 7. 2021",
+    "language": "TypeScript",
+    "htmlUrl": "https://github.com/Ces-D/v3-myworkout",
+    "coverImage": "https://images.unsplash.com/photo-1603354351226-d82bd4a635a3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyODIyNTN8MHwxfHNlYXJjaHwxNHx8VHlwZVNjcmlwdCUyQyUyMHByb2dyYW1taW5nfGVufDB8MHx8fDE2Mzk0NDMzNjU&ixlib=rb-1.2.1&q=80&w=1080"
+  },
+  {
+    "name": "website-copies",
+    "fullName": "Ces-D/website-copies",
+    "description": "Copies of websites",
+    "updatedAt": "November 5. 2020",
+    "createdAt": "November 4. 2020",
+    "language": "HTML",
+    "htmlUrl": "https://github.com/Ces-D/website-copies",
+    "coverImage": "https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyODIyNTN8MHwxfHNlYXJjaHw3fHxIVE1MJTJDJTIwcHJvZ3JhbW1pbmd8ZW58MHwwfHx8MTYzOTQ0MzM2NQ&ixlib=rb-1.2.1&q=80&w=1080"
+  }
+]

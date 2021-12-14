@@ -5,7 +5,7 @@ import markdownToHtml from "../markdownToHtml";
 import date from "date-and-time";
 import readingTime from "reading-time";
 
-export const CONTENT_DIRECTORY = path.join(process.cwd(), "content");
+export const CONTENT_DIRECTORY = path.join(process.cwd(), "content/blog");
 
 export default class GrayMatterData {
   protected _content: string;
@@ -20,7 +20,6 @@ export default class GrayMatterData {
 
   constructor(fileName: string) {
     const grayFile = this.GrayMatterRead(path.join(CONTENT_DIRECTORY, fileName));
-
     this._content = markdownToHtml(grayFile.content) || "";
 
     this._coverImage =

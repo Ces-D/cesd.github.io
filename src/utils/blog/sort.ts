@@ -1,13 +1,13 @@
-import { BlogCard } from "./data/CardData";
-import { BlogExcerpt } from "./data/ExcerptData";
+import { BlogCard } from "./models/CardData";
+import { BlogExcerpt } from "./models/ExcerptData";
 
 type SortFormat = "newest" | "oldest";
 
 type AcceptableContent = BlogCard[] | BlogExcerpt[];
 
-export function dateSort(format: SortFormat, content: BlogCard[]): BlogCard[];
-export function dateSort(format: SortFormat, content: BlogExcerpt[]): BlogExcerpt[];
-export function dateSort(format: SortFormat, content: AcceptableContent) {
+export function sortBlogPosts(format: SortFormat, content: BlogCard[]): BlogCard[];
+export function sortBlogPosts(format: SortFormat, content: BlogExcerpt[]): BlogExcerpt[];
+export function sortBlogPosts(format: SortFormat, content: AcceptableContent) {
   if (format === "newest") {
     return content.sort((a, b) => {
       const aDate = new Date(a.publishDate);
