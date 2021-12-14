@@ -44,7 +44,13 @@ type Props = {
 export default function ImageContainer(props: Props) {
   return (
     <Container height={props.height} width={props.width} cursor={props.cursor}>
-      <Image layout="fill" objectFit="cover" src={props.imgSrc} alt={props.imgAlt} />
+      <Image
+        priority
+        layout="fill"
+        objectFit="cover"
+        src={props.imgSrc}
+        alt={props.imgAlt}
+      />
     </Container>
   );
 }

@@ -47,6 +47,7 @@ export default class GithubRepoData {
       query: query,
       per_page: MAX_RESULTS,
     });
+    console.log("PHOTOS LENGTH: ", photos.results.length);
     const randomIndex = Math.floor(Math.random() * photos.results.length);
 
     if (photos.results.length === 0) {
@@ -58,7 +59,7 @@ export default class GithubRepoData {
   }
 
   async ToJson(): Promise<GithubRepo> {
-    this._cover_image = await this.addImage(this._language);
+    this._cover_image = await this.addImage(`${this._language}, programming`);
 
     return {
       name: this._name,

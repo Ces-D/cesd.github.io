@@ -92,7 +92,7 @@ export default function HomePage(props: HomePageProps) {
             </RepoCard>
             <RepoCard
               cardLink={thirdRepo.htmlUrl}
-              imgSrc={secondRepo.coverImage}
+              imgSrc={thirdRepo.coverImage}
               title={thirdRepo.name}
             >
               <>
@@ -125,12 +125,12 @@ export default function HomePage(props: HomePageProps) {
             <PostCard
               key={v4()}
               imgSrc={post.coverImage}
-              cardLink={`blog/${post.slug}`}
+              cardLink={`/blog/${post.slug}`}
               borderBottom={index !== props.posts.length - 1}
               title={post.title}
             >
               <>
-                <AnchorLink href={`blog/${post.slug}`}>
+                <AnchorLink href={`/blog/${post.slug}`}>
                   <H3>{post.title.toUpperCase()}</H3>
                 </AnchorLink>
                 <P3>

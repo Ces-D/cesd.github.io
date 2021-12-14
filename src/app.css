@@ -1,5 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap");
 
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #fdfdfd;
+  color: #101010;
+  font-family: "Roboto Mono", "monospace";
+  font-style: normal;
+  font-weight: normal;
+}
+
 /*
 Atom One Dark With support for ReasonML by Gidi Morris, based off work by Daniel Gamage
 Original One Dark Syntax theme from https://github.com/atom/one-dark-syntax

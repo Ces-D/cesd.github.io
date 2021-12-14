@@ -26,7 +26,7 @@ export default function Card(props: BlogCard) {
     laptop: "10em",
   };
 
-  const postHref = `blog/${props.slug}`;
+  const postHref = `/blog/${props.slug}`;
 
   return (
     <CardContainer>

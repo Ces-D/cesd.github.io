@@ -20,7 +20,6 @@ export default class GrayMatterData {
 
   constructor(fileName: string) {
     const grayFile = this.GrayMatterRead(path.join(CONTENT_DIRECTORY, fileName));
-
     this._content = markdownToHtml(grayFile.content) || "";
 
     this._coverImage =

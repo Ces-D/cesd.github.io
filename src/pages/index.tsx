@@ -17,7 +17,6 @@ const Home: NextPage<HomePageProps> = (props) => {
     <>
       <Meta title="Welcome" />
       <HomePage {...props} />
-      );
     </>
   );
 };
@@ -52,5 +51,3 @@ export const getStaticProps: GetStaticProps = async (): Promise<
     },
   };
 };
-
-// TODO: test everything and double check the designs responsiveness
