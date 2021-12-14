@@ -20,14 +20,13 @@
     "incremental": true,
     "sourceMap": true,
     "noUnusedLocals": true,
-    "noUnusedParameters": true,
+    "noUnusedParameters": false,
     "noFallthroughCasesInSwitch": true,
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "src/utils/writeRepos.js"
   ],
   "exclude": [
     "node_modules"
