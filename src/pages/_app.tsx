@@ -1,12 +1,50 @@
 import type { AppProps } from "next/app";
-import { theme } from "../UI/theme";
-import { ThemeProvider } from "styled-components";
-import "../app.css";
+import { createGlobalStyle, ThemeProvider } from "styled-components"
+import AppTheme from "@/styles/theme"
 
-export default function MyApp({ Component, pageProps }: AppProps) {
+const GlobalStyle = createGlobalStyle`
+  @font-face {
+  font-family: 'Cascadia Code';
+  src: url('assets/Caskaydia Cove Nerd Font Complete.ttf') format('ttf');
+  font-style: normal;
+  font-weight: 400;
+}
+
+  /* Set core root defaults */
+  html:focus-within {
+    scroll-behavior: smooth;
+  }
+
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    min-height: 100vh;
+    text-rendering: optimizeSpeed;
+    overflow-y: scroll;
+    font-family: 'Cascadia Code'
+  }
+
+  input,
+  button,
+  textarea,
+  select {
+    font: inherit;
+  }
+`
+
+export default function CustomApp({ Component, pageProps }: AppProps) {
   return (
-    <ThemeProvider theme={theme}>
-      <Component {...pageProps} />
-    </ThemeProvider>
-  );
+    <>
+      <GlobalStyle />
+      <ThemeProvider theme={AppTheme}>
+        <Component {...pageProps} />
+      </ThemeProvider>
+    </>
+  )
 }
