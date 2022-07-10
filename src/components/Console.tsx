@@ -13,12 +13,12 @@ const Row = styled.div<{ variant: "in" | "out" }>`
 
 
 type Props = {
-    variant: "in" | "out"
+  variant: "in" | "out"
 }
 const Console = ({ variant, children }: PropsWithChildren<Props>) => {
-    return <Row variant={variant}>
-        {children}
-    </Row>
+  return <Row variant={variant}>
+    {children}
+  </Row>
 }
 
 export default Console

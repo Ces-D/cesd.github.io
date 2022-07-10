@@ -1,24 +1,22 @@
-export type CommandLine = string[]
-type SupportedCommandLineTypes = boolean | number | string
+export type Console = string[]
+type SupportedCommandLineType = boolean | number | string
 
-export interface ICommand {
-	name: string
-	description: string
-	optionDefinitions: IOptionDefinition[]
-	handle: (params: CommandHandlerParams) => void | Promise<void>
+export interface Command {
+  name: string
+  description: string
+  optionDefinitions: IOptionDefinition[]
+  handle: (params: CommandHandlerParams) => void | Promise<void>
+}
+export interface CommandHandlerParams {
+  options: Option[]
 }
 
-export type CommandHandlerParams = { argument: SupportedCommandLineTypes, options: IOption[] }
+export type Option = Pick<Command, "name"> & { value: SupportedCommandLineType }
 
 export interface IOptionDefinition {
-	name: string
-	description: string
-	defaultValue?: SupportedCommandLineTypes
-	isRequired: boolean
+  name: string
+  description: string,
+  defaultValue?: SupportedCommandLineType
+  isRequired: boolean
+  validate: (value?: string) => SupportedCommandLineType | undefined
 }
-
-export interface IOption {
-	name: string
-	value: SupportedCommandLineTypes
-}
-

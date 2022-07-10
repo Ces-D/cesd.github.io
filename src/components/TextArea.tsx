@@ -11,12 +11,12 @@ const CustomArea = styled.textarea`
 `
 
 const TextArea = () => {
-    const resizeTextArea = (e: React.FormEvent<HTMLTextAreaElement>) => {
-        const height = `${e.currentTarget.scrollHeight}px`
-        e.currentTarget.style.height = height
-    }
+  const resizeTextArea = (e: React.FormEvent<HTMLTextAreaElement>) => {
+    const height = `${e.currentTarget.scrollHeight}px`
+    e.currentTarget.style.height = height
+  }
 
-    return <CustomArea autoFocus onInput={resizeTextArea} />
+  return <CustomArea autoFocus onInput={resizeTextArea} />
 }
 
 export default TextArea
