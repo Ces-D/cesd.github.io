@@ -3,10 +3,11 @@ import type { PropsWithChildren } from "react"
 
 const Row = styled.div<{ variant: "in" | "out" }>`
     display : flex;
+    height:"auto";
     
     ::before {
         content: '>';
-        color: ${props => props.variant === "in" ? props.theme.palette.minor.b : "transparent"};
+        color: ${props => props.variant === "in" ? props.theme.palette.light_french : "transparent"};
         margin-right: 0.75em;
     }
 `

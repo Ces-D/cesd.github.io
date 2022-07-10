@@ -1,24 +1,63 @@
 import styled from "styled-components"
+import React, { useRef } from "react"
 
 const CustomArea = styled.textarea`
     background-color: inherit;
     width: calc(100vw - 1em);
+    height: auto;
     outline: none;
     border: none;
     resize: none;
 
-    color: ${props => props.theme.palette.major.beta}
+    color: ${props => props.theme.palette.rhythm}
 `
 
 const TextArea = () => {
-  const resizeTextArea = (e: React.FormEvent<HTMLTextAreaElement>) => {
-    const height = `${e.currentTarget.scrollHeight}px`
-    e.currentTarget.style.height = height
+  const textAreaRef = useRef<HTMLTextAreaElement>(null)
+
+  const inputWidth = (el: HTMLTextAreaElement): string => {
+    const text = el.value || el.placeholder
+    const elementStyle = window.getComputedStyle(el)
+    const fontProperty = elementStyle.font
+
+    const canvas = document.createElement('canvas')
+    const context = canvas.getContext('2d');
+    if (context) context.font = fontProperty;
+    const textWidth = context?.measureText(text).width ?? 0
+    return textWidth + "px"
   }
 
-  return <CustomArea autoFocus onInput={resizeTextArea} />
+  const resizeElement = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const minRows = 1
+    const maxRows = 5
+
+    // store initial inline overflow property value in a variable for later reverting to original condition
+    const initialInlineOverflowY = e.target.style.overflowY;
+
+    // change overflow-y property value to hidden to overcome inconsistent width differences caused by any scrollbar width
+    e.target.style.overflowY = 'hidden';
+
+    const totalWidth = inputWidth(e.target);
+    e.target.style.width = totalWidth;
+
+    let rows = minRows;
+    e.target.setAttribute("rows", rows.toString());
+
+    while (rows <= maxRows && e.target.scrollHeight !== e.target.clientHeight) {
+      e.target.setAttribute("rows", rows.toString());
+      rows++;
+    }
+
+    // change overflow to its original condition
+    if (initialInlineOverflowY) {
+      e.target.style.overflowY = initialInlineOverflowY;
+    } else {
+      e.target.style.removeProperty("overflow-y");
+    }
+
+  }
+
+  return <CustomArea ref={textAreaRef} autoFocus maxLength={350} onInput={resizeElement} />
 }
 
 export default TextArea
-
-// TODO: should forward ref

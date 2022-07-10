@@ -3,7 +3,7 @@ import type { PropsWithChildren } from "react"
 import styled from "styled-components"
 
 const MainContainer = styled.main`
-    background-color: ${props => props.theme.palette.major.alpha};
+    background-color: ${props => props.theme.palette.eerie_black};
     min-height : 100vh;
     padding:1em;
 
