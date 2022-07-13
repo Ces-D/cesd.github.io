@@ -3,14 +3,14 @@ import create from "zustand"
 import { immer } from "zustand/middleware/immer"
 import CommandFactory from "./CommandFactory";
 import CommandLineParser from "./CommandLineParser";
-import { Option, Command } from "./definitions";
+import { Command, CommandHandlerParams } from "./definitions";
 
 const COMMANDS = CommandFactory.generateCommands()
 const MAX_HISTORY_LENGTH = 20
 
 interface ConsoleHistoryState {
   inputHistory: string[]
-  commandHistory: { command: Command, options: Option[] }[];
+  commandHistory: (Pick<Command, "name" | "handle"> & { handlerParams: CommandHandlerParams })[];
   enterCommand: (input: string) => void;
 }
 
@@ -23,17 +23,18 @@ const useConsoleHistory = create<ConsoleHistoryState, [["zustand/immer", never]]
       if (state.inputHistory.length === MAX_HISTORY_LENGTH) state.inputHistory.pop();
       if (state.commandHistory.length === MAX_HISTORY_LENGTH) state.commandHistory.pop();
 
-      state.inputHistory.push(input)
+      state.inputHistory.unshift(input)
 
       try {
         const parsedInput = new CommandLineParser(input, COMMANDS)
-        state.commandHistory.push({ command: parsedInput.Command, options: parsedInput.Options })
+        state.commandHistory.unshift({ name: parsedInput.Command().name, handle: parsedInput.Command().handle, handlerParams: { options: parsedInput.Options() } })
       } catch (err) {
         if (err instanceof CommandError) {
-          // TODO: how do I handle errors? 
+          const errObject = err.toObject()
+          state.commandHistory.unshift({ name: errObject.type, handle: (params: CommandHandlerParams) => { }, handlerParams: { options: [] } })
         }
-
       }
+
     })
   })))
 
