@@ -5,8 +5,13 @@ export interface Command {
   name: string
   description: string
   optionDefinitions: IOptionDefinition[]
-  handle: (params: CommandHandlerParams) => void | Promise<void>
+  handle: (params: CommandHandlerParams) => void
 }
+
+export const isCommand = (object: unknown): object is Command => {
+  return Object.prototype.hasOwnProperty.call(object, "name") && Object.prototype.hasOwnProperty.call(object, "description") && Object.prototype.hasOwnProperty.call(object, "handle")
+}
+
 export interface CommandHandlerParams {
   options: Option[]
 }

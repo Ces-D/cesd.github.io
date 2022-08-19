@@ -1,16 +1,5 @@
-import styled from "styled-components"
 import React, { useRef } from "react"
-
-const CustomArea = styled.textarea`
-    background-color: inherit;
-    width: calc(100vw - 1em);
-    height: auto;
-    outline: none;
-    border: none;
-    resize: none;
-
-    color: ${props => props.theme.palette.rhythm}
-`
+import Prompt from "./Prompt"
 
 const TextArea = () => {
   const textAreaRef = useRef<HTMLTextAreaElement>(null)
@@ -57,7 +46,15 @@ const TextArea = () => {
 
   }
 
-  return <CustomArea ref={textAreaRef} autoFocus maxLength={350} onInput={resizeElement} />
+  return (
+    <div className="flex w-full flex-row space-x-1">
+      <label htmlFor="prompt">
+        <Prompt />
+      </label>
+      <textarea id="prompt" ref={textAreaRef} autoFocus autoComplete="off" autoCorrect="off"
+        autoCapitalize="off" maxLength={150} onInput={resizeElement} className="bg-inherit text-sm text-emerald-300 outline-none grow py-2 px-1" />
+    </div>
+  )
 }
 
 export default TextArea
