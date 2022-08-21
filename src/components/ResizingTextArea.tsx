@@ -1,7 +1,6 @@
 import React, { useRef } from "react"
-import Prompt from "./Prompt"
 
-const TextArea = () => {
+const ResizingTextArea = ({ disabled, value }: Partial<Pick<HTMLTextAreaElement, "disabled" | "value">>) => {
   const textAreaRef = useRef<HTMLTextAreaElement>(null)
 
   const inputWidth = (el: HTMLTextAreaElement): string => {
@@ -47,14 +46,9 @@ const TextArea = () => {
   }
 
   return (
-    <div className="flex w-full flex-row space-x-1">
-      <label htmlFor="prompt">
-        <Prompt />
-      </label>
-      <textarea id="prompt" ref={textAreaRef} autoFocus autoComplete="off" autoCorrect="off"
-        autoCapitalize="off" maxLength={150} onInput={resizeElement} className="bg-inherit text-sm text-emerald-300 outline-none grow py-2 px-1" />
-    </div>
+    <textarea id="prompt" value={value} disabled={disabled} ref={textAreaRef} autoFocus autoComplete="off" autoCorrect="off"
+      autoCapitalize="off" maxLength={150} onInput={resizeElement} className="bg-inherit text-sm text-emerald-200 disabled:text-emerald-400 outline-none grow py-2 px-1" />
   )
 }
 
-export default TextArea
+export default ResizingTextArea

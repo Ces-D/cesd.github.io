@@ -6,10 +6,10 @@ const BlogPostOrder = {
     OLDEST: "old"
 }
 
-class BlogCommand implements Command {
-    public name = "posts"
-    public description = "Read some of the insights that I have gained working in this field!"
-    public optionDefinitions = [
+const BlogCommand: Command = {
+    name: "posts",
+    description: "Read some of the insights that I have gained working in this field!",
+    optionDefinitions: [
         {
             name: "order", description: "new to old or vice versa", defaultValue: BlogPostOrder.NEWEST, isRequired: false, validate: (value?: string) => {
                 if (!!value) return undefined
@@ -24,8 +24,8 @@ class BlogCommand implements Command {
                 return val
             }
         }
-    ]
-    public handle = (params: CommandHandlerParams) => {
+    ],
+    handle: (params: CommandHandlerParams) => {
         return {}
     }
 }

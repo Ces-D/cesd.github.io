@@ -1,10 +1,10 @@
 import type { Command } from "../definitions";
 
-class BleepBloopCommand implements Command {
-    public name = "bleep-bloop"
-    public description = "Bleep Bloop!"
-    public optionDefinitions = []
-    public handle = () => { }
+const BleepBloopCommand: Command = {
+    name: "bleep-bloop",
+    description: "Bleep Bloop!",
+    optionDefinitions: [],
+    handle: () => { }
 }
 
 export default BleepBloopCommand
