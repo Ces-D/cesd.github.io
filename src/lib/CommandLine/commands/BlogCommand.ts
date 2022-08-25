@@ -1,5 +1,5 @@
 import { CommandError } from "@/utils/errors";
-import { Command, CommandHandlerParams } from "../definitions";
+import { Command, HandlerTextResponse } from "../definitions";
 
 const BlogPostOrder = {
     NEWEST: "new",
@@ -25,8 +25,11 @@ const BlogCommand: Command = {
             }
         }
     ],
-    handle: (params: CommandHandlerParams) => {
-        return {}
+    handle: (params): HandlerTextResponse => {
+        return {
+            isError: false,
+            response: [{ labels: [], text: "This should handle all of its options first before handling the base" }]
+        }
     }
 }
 

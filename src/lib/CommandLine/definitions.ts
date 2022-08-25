@@ -5,7 +5,7 @@ export interface Command {
   name: string
   description: string
   optionDefinitions: IOptionDefinition[]
-  handle: (params: CommandHandlerParams) => TextCommandHandlerResponse | void
+  handle: (params: CommandHandlerParams) => HandlerTextResponse | HandlerGraphicResponse
 }
 
 export const isCommand = (object: unknown): object is Command => {
@@ -26,7 +26,6 @@ export interface IOptionDefinition {
   validate: (value?: string) => SupportedCommandLineType | undefined
 }
 
-export type TextCommandHandlerResponse = {
-  isError: boolean;
-  response: { labels?: string[]; text: string }[]
-}
+type HandlerBaseResponse = { isError: boolean }
+export type HandlerTextResponse = HandlerBaseResponse & { response: { labels: string[]; text: string }[] }
+export type HandlerGraphicResponse = HandlerBaseResponse & { response: { path: string; text: string } }

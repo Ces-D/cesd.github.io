@@ -1,15 +1,15 @@
 import { CommandError } from "@/utils/errors"
 import commands from "./commands"
-import { IOptionDefinition, isCommand } from "./definitions"
+import { HandlerTextResponse, isCommand } from "./definitions"
 import type { Command } from "./definitions"
 
 export default class CommandFactory {
   private commands: Command[] = commands
 
-  private addHelperOptionToCommands = (): CommandFactory => {
+  private addHelperOptionToCommands = () => {
     this.commands = this.commands.map(cmd => {
       if (isCommand(cmd)) {
-        cmd.optionDefinitions.push({
+        cmd.name !== 'banner' && cmd.optionDefinitions.push({
           name: "help",
           description: "Find out whats going on!",
           isRequired: false,
@@ -19,10 +19,8 @@ export default class CommandFactory {
           }
         })
       }
-
       return cmd
     })
-    return this
   }
 
   private createHelpCommand = () => {
@@ -30,7 +28,7 @@ export default class CommandFactory {
       name: "help",
       description: "Find out whats going on!",
       optionDefinitions: [],
-      handle: (params: IOptionDefinition) => ({
+      handle: (params): HandlerTextResponse => ({
         isError: false, response: this.commands.map(cmd => ({ labels: [cmd.name, ...cmd.optionDefinitions.map(opt => opt.name)], text: cmd.description }))
       })
     }

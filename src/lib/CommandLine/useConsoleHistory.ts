@@ -3,7 +3,7 @@ import produce from "immer"
 import { CommandError } from "@/utils/errors";
 import CommandFactory from "./CommandFactory";
 import CommandLineParser from "./CommandLineParser";
-import type { Command, CommandHandlerParams, TextCommandHandlerResponse } from "./definitions";
+import type { Command, CommandHandlerParams, HandlerTextResponse, } from "./definitions";
 
 const COMMANDS = CommandFactory.generateCommands()
 const MAX_HISTORY_LENGTH = 20
@@ -19,12 +19,13 @@ const useConsoleHistory = create<ConsoleHistoryState>((set) => ({
 
   commandHistory: [],
 
-  enterCommand: (input) => set(produce(state => {
+  enterCommand: (input) => set(produce<ConsoleHistoryState>(state => {
     if (state.commandHistory.length === MAX_HISTORY_LENGTH) state.commandHistory.pop();
+
     try {
       const parsedInput = new CommandLineParser(input, COMMANDS)
       state.commandHistory.unshift(
-        { name: parsedInput.Command().name, handle: parsedInput.Command().handle, handlerParams: { options: parsedInput.Options() }, input, id: crypto.randomUUID() }
+        { name: parsedInput.Command().name, handle: parsedInput.Command().handle, handlerParams: { options: parsedInput.Options() }, input, id: parsedInput.Command().name }
       )
     } catch (err) {
       if (err instanceof CommandError) {
@@ -32,7 +33,7 @@ const useConsoleHistory = create<ConsoleHistoryState>((set) => ({
         state.commandHistory.unshift(
           {
             name: errObject.type,
-            handle: (params: CommandHandlerParams): TextCommandHandlerResponse => ({
+            handle: (params: CommandHandlerParams): HandlerTextResponse => ({
               isError: true, response: [{ labels: [errObject.code.toString()], text: errObject.message }]
             }),
             handlerParams: { options: [] }, input, id: crypto.randomUUID()

@@ -1,10 +1,10 @@
-import type { Command, CommandHandlerParams } from "../definitions"
+import type { Command, HandlerTextResponse } from "../definitions"
 
 const IntroductionCommand: Command = {
     name: "intro",
     description: "Hi, Hello, How are you!",
     optionDefinitions: [],
-    handle: (params: CommandHandlerParams) => ({ introduction: "My name is Cesar. Thats all" })
+    handle: (params): HandlerTextResponse => ({ isError: false, response: [{ labels: [], text: "My name is Cesar. Thats all" }] })
 }
 
 export default IntroductionCommand

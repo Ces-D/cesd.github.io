@@ -1,9 +1,11 @@
 import React, { useRef, useState } from "react"
 import type { ChangeEventHandler, KeyboardEventHandler } from "react"
+import { useConsoleHistory } from "@/lib/CommandLine"
 
 const ResizingTextArea = ({ disabled, value }: Partial<Pick<HTMLTextAreaElement, "disabled" | "value">>) => {
   const textAreaRef = useRef<HTMLTextAreaElement>(null)
   const [textValue, setTextValue] = useState(value ?? '')
+  const enterCommand = useConsoleHistory(state => state.enterCommand)
   const MIN_ROWS = 1
   const MAX_ROWS = 5
 
@@ -58,6 +60,8 @@ const ResizingTextArea = ({ disabled, value }: Partial<Pick<HTMLTextAreaElement,
     if (e.key === 'Enter' || e.code === '13') {
       e.preventDefault()
       console.log('ENTER PRESSED')
+      enterCommand(textValue)
+
     }
     if (e.key === 'ArrowUp') {
       e.preventDefault()
@@ -73,7 +77,7 @@ const ResizingTextArea = ({ disabled, value }: Partial<Pick<HTMLTextAreaElement,
     <textarea id="prompt" value={textValue} disabled={disabled} ref={textAreaRef} rows={MIN_ROWS}
       autoFocus autoComplete="off" autoCorrect="off"
       autoCapitalize="off" maxLength={150}
-      onKeyDown={onKeyDownHandler}
+      onKeyDownCapture={onKeyDownHandler}
       onInput={e => setTextValue(e.currentTarget.value)}
       onChange={onChangeResizeElementHandler}
       className="bg-inherit text-sm text-emerald-200 disabled:text-emerald-400 outline-none grow py-2 px-1" />
