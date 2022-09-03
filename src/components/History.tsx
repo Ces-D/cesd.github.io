@@ -1,5 +1,6 @@
 import { useConsoleHistory } from "@/lib/CommandLine"
 import TerminalInput from "./TerminalInput"
+import type { HelpHandlerResponse } from "@/lib/CommandLine/definitions"
 
 const History = () => {
   const consoleHistory = useConsoleHistory(state => state.commandHistory)
@@ -14,23 +15,16 @@ const History = () => {
           return (
             <div key={consoleCommand.id}>
               <TerminalInput value={consoleCommand.input} disabled />
-              {handlerResponse.isError && <h2 className="text-red-500">Error</h2>}
-              {'path' in handlerResponse.response && (
-                <div>
-                  <img src={handlerResponse.response.path} />
-                  <h2>{handlerResponse.response.text}</h2>
-                </div>
-              )}
-              {Array.isArray(handlerResponse.response) && (
-                <div>
-                  {handlerResponse.response.map((item) => (
-                    <div className="mb-2">
-                      <p>{item.labels.join(', ')}</p>
-                      <p>{item.text}</p>
-                    </div>
-                  ))}
-                </div>
-              )}
+              {'error' in handlerResponse && <p className="text-red-500" >{handlerResponse.error}</p>}
+              {'text' in handlerResponse && <p>{handlerResponse.text}</p>}
+              {Array.isArray(handlerResponse) && 'command' in handlerResponse[0] &&
+                handlerResponse.map((helpItem: HelpHandlerResponse) => (
+                  <>
+                    <p>{helpItem.command}</p>
+                    <p>{JSON.stringify(helpItem.options)}</p>
+                  </>
+                ))
+              }
             </div>
           )
         })

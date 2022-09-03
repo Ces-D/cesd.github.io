@@ -3,7 +3,8 @@ import produce from "immer"
 import { CommandError } from "@/utils/errors";
 import CommandFactory from "./CommandFactory";
 import CommandLineParser from "./CommandLineParser";
-import type { Command, CommandHandlerParams, HandlerTextResponse, } from "./definitions";
+import type { Command, CommandHandlerParams, ErrorHandlerResponse } from "./definitions";
+import BannerCommand from "./commands/BannerCommand";
 
 const COMMANDS = CommandFactory.generateCommands()
 const MAX_HISTORY_LENGTH = 20
@@ -15,9 +16,7 @@ interface ConsoleHistoryState {
 
 
 const useConsoleHistory = create<ConsoleHistoryState>((set) => ({
-  inputHistory: [],
-
-  commandHistory: [],
+  commandHistory: [{ name: BannerCommand.name, handle: BannerCommand.handle, handlerParams: { options: [] }, input: BannerCommand.name, id: '1' }],
 
   enterCommand: (input) => set(produce<ConsoleHistoryState>(state => {
     if (state.commandHistory.length === MAX_HISTORY_LENGTH) state.commandHistory.pop();
@@ -25,20 +24,26 @@ const useConsoleHistory = create<ConsoleHistoryState>((set) => ({
     try {
       const parsedInput = new CommandLineParser(input, COMMANDS)
       state.commandHistory.unshift(
-        { name: parsedInput.Command().name, handle: parsedInput.Command().handle, handlerParams: { options: parsedInput.Options() }, input, id: parsedInput.Command().name }
+        {
+          name: parsedInput.Command().name, handle: parsedInput.Command().handle,
+          handlerParams: { options: parsedInput.Options() }, input, id: crypto.randomUUID()
+        }
       )
     } catch (err) {
       if (err instanceof CommandError) {
         const errObject = err.toObject()
         state.commandHistory.unshift(
           {
-            name: errObject.type,
-            handle: (params: CommandHandlerParams): HandlerTextResponse => ({
-              isError: true, response: [{ labels: [errObject.code.toString()], text: errObject.message }]
-            }),
+            name: errObject.type, handle: (_): ErrorHandlerResponse => ({ error: errObject.message }),
             handlerParams: { options: [] }, input, id: crypto.randomUUID()
           }
         )
+      }
+      else {
+        state.commandHistory.unshift({
+          name: 'UNKNOWN ERROR', handle: (_): ErrorHandlerResponse => ({ error: JSON.stringify(err) }),
+          handlerParams: { options: [] }, input, id: crypto.randomUUID()
+        })
       }
     }
   }))

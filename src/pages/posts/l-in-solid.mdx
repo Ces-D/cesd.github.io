@@ -1,10 +1,13 @@
----
-title: Understanding the L in SOLID Principles
-coverImage: https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80
-publishDate: 09/16/2021
-tags: typescript,SOLID,OOP
-description: Explaining Liskov-Substitution of SOLID principles in object-oriented programming.
----
+import Layout from "@/components/Layout"
+
+export const meta = {
+  title: "Understanding the L in SOLID Principles",
+  coverImage: "https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80",
+  publishDate: "09/16/2021",
+  tags: "typescript,SOLID,OOP",
+  description: "Explaining Liskov-Substitution of SOLID principles in object-oriented programming.",
+}
+
 
 The Liskov-Substitution principle states that objects created by a superclass should be replaceable with objects created by its subclasses, without breaking an application. The liskov substitution principle is an extension to the open-close principle which was written about in an earlier post. When writing code, you might run into an instance where you want to extend the functionality of one class in order to add further features to your application. In order to complete your task of expanding functionality, while still complying with the open-close principle, you will have to expand functionality by creating a new kind of subclass.
 
@@ -71,3 +74,5 @@ class FeaturePlaylists extends ClientCredentialsRequest {
 ```
 
 Typescript is not a perfect example for this pattern. For one your typescript compiler has to compile to es6 javascript otherwise you will receive many errors along the way. Additionally, typescript does ot let you declare an async function, but you can return an async return type aka `Promise<any>`.
+
+export default ({children})=> <Layout title={meta.title} description={meta.description} date={meta.publishDate}>{children}</Layout>

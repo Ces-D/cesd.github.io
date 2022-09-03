@@ -44,3 +44,5 @@ export default class CommandLineParser {
 
 }
 
+// TODO: the options parser needs to be redone, cases of required are not handled and if required but defualt value, this is also not handled
+

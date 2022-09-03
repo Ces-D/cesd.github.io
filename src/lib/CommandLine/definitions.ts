@@ -5,11 +5,7 @@ export interface Command {
   name: string
   description: string
   optionDefinitions: IOptionDefinition[]
-  handle: (params: CommandHandlerParams) => HandlerTextResponse | HandlerGraphicResponse
-}
-
-export const isCommand = (object: unknown): object is Command => {
-  return Object.prototype.hasOwnProperty.call(object, "name") && Object.prototype.hasOwnProperty.call(object, "description") && Object.prototype.hasOwnProperty.call(object, "handle")
+  handle: (params: CommandHandlerParams) => ErrorHandlerResponse | TextHandlerResponse | TextHandlerResponse[] | HelpHandlerResponse | HelpHandlerResponse[]
 }
 
 export interface CommandHandlerParams {
@@ -26,6 +22,6 @@ export interface IOptionDefinition {
   validate: (value?: string) => SupportedCommandLineType | undefined
 }
 
-type HandlerBaseResponse = { isError: boolean }
-export type HandlerTextResponse = HandlerBaseResponse & { response: { labels: string[]; text: string }[] }
-export type HandlerGraphicResponse = HandlerBaseResponse & { response: { path: string; text: string } }
+export type ErrorHandlerResponse = { error: string }
+export type TextHandlerResponse = { text: string[] }
+export type HelpHandlerResponse = { command: string[], options: string[][] }

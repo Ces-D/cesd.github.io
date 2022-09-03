@@ -4,8 +4,8 @@ import { useConsoleHistory } from "@/lib/CommandLine"
 
 const ResizingTextArea = ({ disabled, value }: Partial<Pick<HTMLTextAreaElement, "disabled" | "value">>) => {
   const textAreaRef = useRef<HTMLTextAreaElement>(null)
-  const [textValue, setTextValue] = useState(value ?? '')
   const enterCommand = useConsoleHistory(state => state.enterCommand)
+  const [textValue, setTextValue] = useState(value ?? '')
   const MIN_ROWS = 1
   const MAX_ROWS = 5
 
@@ -59,9 +59,8 @@ const ResizingTextArea = ({ disabled, value }: Partial<Pick<HTMLTextAreaElement,
     }
     if (e.key === 'Enter' || e.code === '13') {
       e.preventDefault()
-      console.log('ENTER PRESSED')
+      setTextValue('')
       enterCommand(textValue)
-
     }
     if (e.key === 'ArrowUp') {
       e.preventDefault()
