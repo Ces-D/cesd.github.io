@@ -2,7 +2,9 @@ import React, { useRef, useState } from "react"
 import type { ChangeEventHandler, KeyboardEventHandler } from "react"
 import { useConsoleHistory } from "@/lib/CommandLine"
 
-const ResizingTextArea = ({ disabled, value }: Partial<Pick<HTMLTextAreaElement, "disabled" | "value">>) => {
+export type TextAreaProps = Partial<Pick<HTMLTextAreaElement, "disabled" | "value" | "autofocus">>
+
+const ResizingTextArea = ({ disabled, value, autofocus }: TextAreaProps) => {
   const textAreaRef = useRef<HTMLTextAreaElement>(null)
   const enterCommand = useConsoleHistory(state => state.enterCommand)
   const [textValue, setTextValue] = useState(value ?? '')
@@ -74,12 +76,12 @@ const ResizingTextArea = ({ disabled, value }: Partial<Pick<HTMLTextAreaElement,
 
   return (
     <textarea id="prompt" value={textValue} disabled={disabled} ref={textAreaRef} rows={MIN_ROWS}
-      autoFocus autoComplete="off" autoCorrect="off"
-      autoCapitalize="off" maxLength={150}
+      autoFocus={autofocus} autoComplete="off"
+      autoCorrect="off" maxLength={150}
       onKeyDownCapture={onKeyDownHandler}
       onInput={e => setTextValue(e.currentTarget.value)}
       onChange={onChangeResizeElementHandler}
-      className="bg-inherit text-sm text-emerald-200 disabled:text-emerald-400 outline-none grow py-2 px-1" />
+      className="bg-inherit text-sm text-emerald-200 disabled:text-emerald-400 outline-none grow p-1" />
   )
 }
 

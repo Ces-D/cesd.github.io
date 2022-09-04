@@ -5,3 +5,6 @@ import { default as IntroductionCommand } from "./IntroductionCommand"
 
 const Commands = [BannerCommand, IntroductionCommand, BlogCommand, BleepBloopCommand]
 export default Commands
+
+
+// TODO: The terminal output should come from theses files

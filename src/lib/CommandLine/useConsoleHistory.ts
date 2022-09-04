@@ -19,11 +19,11 @@ const useConsoleHistory = create<ConsoleHistoryState>((set) => ({
   commandHistory: [{ name: BannerCommand.name, handle: BannerCommand.handle, handlerParams: { options: [] }, input: BannerCommand.name, id: '1' }],
 
   enterCommand: (input) => set(produce<ConsoleHistoryState>(state => {
-    if (state.commandHistory.length === MAX_HISTORY_LENGTH) state.commandHistory.pop();
+    if (state.commandHistory.length === MAX_HISTORY_LENGTH) state.commandHistory.shift();
 
     try {
       const parsedInput = new CommandLineParser(input, COMMANDS)
-      state.commandHistory.unshift(
+      state.commandHistory.push(
         {
           name: parsedInput.Command().name, handle: parsedInput.Command().handle,
           handlerParams: { options: parsedInput.Options() }, input, id: crypto.randomUUID()
@@ -32,7 +32,7 @@ const useConsoleHistory = create<ConsoleHistoryState>((set) => ({
     } catch (err) {
       if (err instanceof CommandError) {
         const errObject = err.toObject()
-        state.commandHistory.unshift(
+        state.commandHistory.push(
           {
             name: errObject.type, handle: (_): ErrorHandlerResponse => ({ error: errObject.message }),
             handlerParams: { options: [] }, input, id: crypto.randomUUID()
@@ -40,7 +40,7 @@ const useConsoleHistory = create<ConsoleHistoryState>((set) => ({
         )
       }
       else {
-        state.commandHistory.unshift({
+        state.commandHistory.push({
           name: 'UNKNOWN ERROR', handle: (_): ErrorHandlerResponse => ({ error: JSON.stringify(err) }),
           handlerParams: { options: [] }, input, id: crypto.randomUUID()
         })

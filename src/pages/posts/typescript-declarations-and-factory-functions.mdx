@@ -1,12 +1,7 @@
 import Layout from "@/components/Layout"
+import { BLOG_POSTS_META } from "@/lib/COmmandLine/constants"
 
-export const meta = {
-  title: "Handling TypeScript Return Declarations in Factory Functions",
-  coverImage: "https://images.unsplash.com/photo-1496247749665-49cf5b1022e9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1053&q=80",
-  publishDate: "09/08/2021",
-  tags: "Typescript,Factory,OOP,JavaScript,Type",
-  description: "Showing you how to declare multiple return types in TypeScript from a single function.",
-}
+export const meta = BLOG_POSTS_META.TYPESCRIPT_DECLARATIONS_AND_FACTORY_FUNCTIONS
 
 In this example I am going to walk through how to declare the multiple return types of factory functions written in Typescript, so that you can take advantage of your IDE's intellisense. JavaScript is not a statically typed language and any function can return any number of different values, making maintenance difficult and reformatting troublesome. Typescript extends Javascript by providing return types for the language, solving the issue of difficult maintenance.
 

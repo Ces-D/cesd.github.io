@@ -1,8 +1,7 @@
 import { CommandError } from "@/utils/errors";
 import CommandFactory from "../CommandFactory";
 import type { Command, HelpHandlerResponse, TextHandlerResponse } from "../definitions";
-import path from 'path'
-import { readdirSync } from "fs";
+import { BLOG_POSTS_META } from "../constants";
 
 const BlogCommand: Command = {
     name: "blog",
@@ -24,9 +23,11 @@ const BlogCommand: Command = {
     ],
     handle: (params): HelpHandlerResponse | TextHandlerResponse[] => {
         const optionNames = params.options.map(opt => opt.name)
-        const blogPostFiles = readdirSync(path.join(process.cwd(), 'src/pages/posts'), { encoding: "utf-8" })
-        const blogPosts = blogPostFiles.map((file) => file.split(".")[0])
-        const response: TextHandlerResponse[] = blogPosts.map(post => ({ text: [post, `post/${post}`] }))
+        const blogPostKeys = Object.keys(BLOG_POSTS_META)
+        const response: TextHandlerResponse[] = blogPostKeys.map((key) => {
+            const blogPostMeta = BLOG_POSTS_META[key]
+            return { text: [blogPostMeta.title, blogPostMeta.description, blogPostMeta.publishDate] }
+        })
 
         if (optionNames.includes('help')) {
             return CommandFactory.generateHelpCommandResponse(BlogCommand)
@@ -34,7 +35,9 @@ const BlogCommand: Command = {
 
         if (optionNames.includes('num')) {
             const opt = params.options.find(opt => opt.name === 'num')
-            if (opt) { return response.slice(0, Number(opt?.value)) }
+            if (opt) {
+                return response.slice(0, Number(opt?.value))
+            }
         }
         return response
     }
