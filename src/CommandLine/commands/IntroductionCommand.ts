@@ -1,10 +1,11 @@
 import type { Command, TextHandlerResponse } from "../definitions"
 
-const IntroductionCommand: Command = {
+export type IntroductionCommand = Command<TextHandlerResponse>
+const IntroductionCommand: IntroductionCommand = {
     name: "intro",
     description: "Hi, Hello, How are you!",
     optionDefinitions: [],
-    handle: (_): TextHandlerResponse => ({ text: ["My name is Cesar. Thats all"] })
+    handle: (_) => ({ text: ["My name is Cesar. Thats all"] })
 }
 
 export default IntroductionCommand

@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react"
 import type { ChangeEventHandler, KeyboardEventHandler } from "react"
-import { useConsoleHistory } from "@/lib/CommandLine"
+import { useConsoleHistory } from "@/CommandLine"
 
 export type TextAreaProps = Partial<Pick<HTMLTextAreaElement, "disabled" | "value" | "autofocus">>
 

@@ -1,33 +1,12 @@
-import { memo } from "react"
-import type { Command } from "@/CommandLine/definitions"
-import Image from "next/image"
+import type { HelpCommand } from "@/CommandLine/commands"
 
-const TerminalOutput = ({ output, name }: Pick<Command<unknown>, "name"> & { output: ReturnType<Command<unknown>["handle"]> }) => {
-  if ('error' in output) {
-    return (
-      <div className="w-full text-pink-700">
-        <p>{output.error}</p>
-      </div>
-    )
-  }
-
-  if (name === "banner" && "text" in output) {
-    return (
-      <>
-        <div className="relative h-64 my-1" style={{ maxWidth: "40rem" }}>
-          <Image src={output.text[0]} layout="fill" objectFit="contain" />
-        </div>
-        <p className="mb-1">{output.text[1]}</p>
-      </>
-    )
-  }
-
-  if (name === "help" && Array.isArray(output)) {
+const HelpCommandOutput = ({ response }: { response: ReturnType<HelpCommand["handle"]> }) => {
+  if (Array.isArray(response)) {
     return (
       <>
         <p className="pb-6"><b className="">Usage: </b>[command] [options]</p>
         {
-          (output as HelpHandlerResponse[]).map((out, index) => (
+          response.map((out, index) => (
             <div key={index} className="pb-5">
               <p><b className="text-gray-600">Command: </b>{out.command.name}</p>
               <p>{out.command.description}</p>
@@ -62,8 +41,6 @@ const TerminalOutput = ({ output, name }: Pick<Command<unknown>, "name"> & { out
       </>
     )
   }
-
-  return null
 }
 
-export default memo(TerminalOutput)
+export default HelpCommandOutput

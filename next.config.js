@@ -9,6 +9,9 @@ const withMDX = require('@next/mdx')({
 })
 
 module.exports = withMDX({
+  images: {
+    domains: ["media.giphy.com"]
+  },
   pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
   reactStrictMode: true,
 });

@@ -28,7 +28,7 @@ const Layout = ({ title, description, date, children }: PropsWithChildren<Props>
         <meta property="og:title" content={metaTags.title} />
         {metaTags.date && <meta property="article:published_time" content={metaTags.date} />}
       </Head>
-      <main className="bg-zinc-900 min-h-screen text-gray-50">
+      <main className="bg-zinc-900 min-h-screen text-gray-50 px-3 pt-5">
         {children}
       </main>
     </>

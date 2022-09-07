@@ -1,9 +1,11 @@
-import { CommandError } from "@/utils/errors";
-import CommandFactory from "../CommandFactory";
+import { CommandError } from "../utils/errors";
+import { generateHelpCommandResponse } from "../utils/generateHelpCommandResponse";
 import type { Command, HelpHandlerResponse, TextHandlerResponse } from "../definitions";
 import { BLOG_POSTS_META } from "../constants";
 
-const BlogCommand: Command = {
+export type BlogCommand = Command<HelpHandlerResponse | TextHandlerResponse[]>
+
+const BlogCommand: BlogCommand = {
     name: "blog",
     description: "Read some of the insights that I have gained working in this field!",
     optionDefinitions: [
@@ -21,7 +23,7 @@ const BlogCommand: Command = {
             }
         }
     ],
-    handle: (params): HelpHandlerResponse | TextHandlerResponse[] => {
+    handle: (params) => {
         const optionNames = params.options.map(opt => opt.name)
         const blogPostKeys = Object.keys(BLOG_POSTS_META)
         const response: TextHandlerResponse[] = blogPostKeys.map((key) => {
@@ -30,7 +32,7 @@ const BlogCommand: Command = {
         })
 
         if (optionNames.includes('help')) {
-            return CommandFactory.generateHelpCommandResponse(BlogCommand)
+            return generateHelpCommandResponse(BlogCommand)
         }
 
         if (optionNames.includes('num')) {
