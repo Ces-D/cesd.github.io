@@ -19,10 +19,8 @@ export default class CommandLineParser {
       this.tokens = consoleInput.split(' ')
       this.parseCommandFromInputTokens(this.tokens)
       this.parseOptionsFromFoundCommand(this.tokens, this.command)
-      this.emitParserEvent(ParserEventCode.PARSE_COMPLETE)
     } else {
       this.emitParserEvent(ParserEventCode.INPUT_NOT_RECEIVED)
-      this.emitParserEvent(ParserEventCode.PARSE_COMPLETE)
     }
   }
 

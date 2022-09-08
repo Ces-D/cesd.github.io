@@ -1,13 +1,13 @@
 import create from "zustand"
 import produce from "immer"
 import CommandLineParser from "./CommandLineParser";
-import type { Command, CommandHandlerParams } from "./definitions";
+import type { Command, CommandHandlerParams, ErrorHandlerResponse } from "./definitions";
 import BannerCommand from "./commands/BannerCommand";
 
 const MAX_HISTORY_LENGTH = 20
 
 interface ConsoleHistoryState {
-  commandHistory: (Pick<Command<unknown>, "name" | "handle"> & { handlerParams: CommandHandlerParams, input: string, id: string })[];
+  commandHistory: { name: Command<unknown>['name'] | 'error', handle: Command<unknown>['handle'], handlerParams: CommandHandlerParams, input: string, id: string }[];
   enterCommand: (input: string) => void;
 }
 
@@ -34,7 +34,12 @@ const useConsoleHistory = create<ConsoleHistoryState>((set) => ({
         handlerParams: { options: parsedInput.options, callStack: parsedInput.callStack }, input, id: crypto.randomUUID()
       })
     }
-// TODO: how do we handle the command not found
+    else {
+      state.commandHistory.push({
+        name: 'error', handle: (_): ErrorHandlerResponse => ({ error: `${parsedInput.consoleInput} Error: ${parsedInput.callStack[-1].toString()}` }),
+        handlerParams: { options: [], callStack: parsedInput.callStack }, input, id: crypto.randomUUID()
+      })
+    }
   }))
 
 }))

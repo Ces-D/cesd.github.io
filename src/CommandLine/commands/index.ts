@@ -1,9 +1,9 @@
+import { generateHelpCommandResponse } from "@/CommandLine/utils/generateHelpCommandResponse"
 import { default as BannerCommand } from "./BannerCommand"
 import { default as BleepBloopCommand } from "./BleepBloopCommand"
 import { default as BlogCommand } from "./BlogCommand"
 import { default as IntroductionCommand } from "./IntroductionCommand"
 import type { Command, HelpHandlerResponse } from "../definitions"
-import { generateHelpCommandResponse } from "../generateHelpCommandResponse"
 
 export type HelpCommand = Command<HelpHandlerResponse[]>
 
