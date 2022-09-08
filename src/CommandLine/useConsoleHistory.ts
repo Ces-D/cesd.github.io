@@ -2,6 +2,7 @@ import create from "zustand"
 import produce from "immer"
 import CommandLineParser from "./CommandLineParser";
 import type { Command, CommandHandlerParams, ErrorHandlerResponse } from "./definitions";
+import { ParserEventCode } from "./definitions";
 import BannerCommand from "./commands/BannerCommand";
 
 const MAX_HISTORY_LENGTH = 20
@@ -35,8 +36,9 @@ const useConsoleHistory = create<ConsoleHistoryState>((set) => ({
       })
     }
     else {
+      console.log(parsedInput.callStack)
       state.commandHistory.push({
-        name: 'error', handle: (_): ErrorHandlerResponse => ({ error: `${parsedInput.consoleInput} Error: ${parsedInput.callStack[-1].toString()}` }),
+        name: 'error', handle: (_): ErrorHandlerResponse => ({ error: `${parsedInput.consoleInput} Error: ${ParserEventCode[parsedInput.callStack[0]]}` }),
         handlerParams: { options: [], callStack: parsedInput.callStack }, input, id: crypto.randomUUID()
       })
     }

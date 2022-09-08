@@ -1,3 +1,4 @@
+import { CommandLineParser } from "@/CommandLine"
 import type { HelpCommand } from "@/CommandLine/commands"
 
 const HelpCommandOutput = ({ response }: { response: ReturnType<HelpCommand["handle"]> }) => {
@@ -25,10 +26,10 @@ const HelpCommandOutput = ({ response }: { response: ReturnType<HelpCommand["han
                     <tbody className="table-row-group">
                       {out.options.map((opt, index) => (
                         <tr key={index} className="table-row">
-                          <td className="table-cell text-left p-1">{opt.name}</td>
+                          <td className="table-cell text-left p-1">{`${CommandLineParser.OPTION_PREFIX}${opt.name}`}</td>
                           <td className="table-cell text-left p-1">{opt.description}</td>
                           <td className="table-cell text-left p-1">{Boolean(opt.isRequired).toString()}</td>
-                          <td className="table-cell text-left p-1">{opt.defaultValue || "N/A"}</td>
+                          <td className="table-cell text-left p-1">{!!opt.defaultValue ? opt.defaultValue?.toString() : "N/A"}</td>
                         </tr>
                       ))}
                     </tbody>
@@ -41,6 +42,8 @@ const HelpCommandOutput = ({ response }: { response: ReturnType<HelpCommand["han
       </>
     )
   }
+
+  return <></>
 }
 
 export default HelpCommandOutput

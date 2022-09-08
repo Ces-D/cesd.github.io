@@ -3,7 +3,7 @@ import { ParserEventCode } from "./definitions";
 import Commands from "./commands"
 
 export default class CommandLineParser {
-  private readonly OPTION_PREFIX = "-"
+  public static readonly OPTION_PREFIX = "-"
   public consoleInput?: string
   private tokens?: string[]
   public command?: Command<unknown>
@@ -17,8 +17,10 @@ export default class CommandLineParser {
       this.emitParserEvent(ParserEventCode.INPUT_RECEIVED)
       this.consoleInput = consoleInput
       this.tokens = consoleInput.split(' ')
-      this.parseCommandFromInputTokens(this.tokens)
-      this.parseOptionsFromFoundCommand(this.tokens, this.command)
+      const commandFound = this.parseCommandFromInputTokens(this.tokens)
+      if (commandFound) {
+        this.parseOptionsFromFoundCommand(this.tokens, this.command!)
+      }
     } else {
       this.emitParserEvent(ParserEventCode.INPUT_NOT_RECEIVED)
     }
@@ -31,74 +33,72 @@ export default class CommandLineParser {
     if (!!targetCommand) {
       this.emitParserEvent(ParserEventCode.COMMAND_FOUND)
       this.command = targetCommand
+      return true
     } else {
       this.emitParserEvent(ParserEventCode.COMMAND_NOT_FOUND)
+      return false
     }
   }
 
-  private parseOptionsFromFoundCommand = (tokens: string[], cmd?: Command<unknown>,) => {
-    if (!!cmd) {
-      const isOptionPrefixed = (token: string) => token.charAt(0) === this.OPTION_PREFIX
+  private parseOptionsFromFoundCommand = (tokens: string[], cmd: Command<unknown>,) => {
+    const isOptionPrefixed = (token: string) => token.charAt(0) === CommandLineParser.OPTION_PREFIX
 
-      const tkns = tokens.slice(1)
-      let index = 0
-      let requiresValue = true
+    const tkns = tokens.slice(1)
+    let index = 0
+    let requiresValue = true
 
-      const breakOutOfOptionSearchLoop = (error: "option" | "value") => {
-        error === "option" && this.emitParserEvent(ParserEventCode.OPTION_NOT_FOUND)
-        error === "value" && this.emitParserEvent(ParserEventCode.OPTION_VALUE_NOT_FOUND)
-        index = tkns.length
-      }
+    const breakOutOfOptionSearchLoop = (error: "option" | "value") => {
+      error === "option" && this.emitParserEvent(ParserEventCode.OPTION_NOT_FOUND)
+      error === "value" && this.emitParserEvent(ParserEventCode.OPTION_VALUE_NOT_FOUND)
+      index = tkns.length
+    }
 
-      const getValueByValidating = (optionDefinition: IOptionDefinition) => {
-        const possibleValue: string | undefined = isOptionPrefixed(tkns[index + 1] || this.OPTION_PREFIX) ? undefined : tkns[index + 1] // when indexing out of range you get undefined and if it is an option then its not a value
-        const validated = optionDefinition.validate(possibleValue)
-        return validated
-      }
+    const getValueByValidating = (optionDefinition: IOptionDefinition) => {
+      const possibleValue: string | undefined = isOptionPrefixed(tkns[index + 1] || CommandLineParser.OPTION_PREFIX) ? undefined : tkns[index + 1] // when indexing out of range you get undefined and if it is an option then its not a value
+      const validated = optionDefinition.validate(possibleValue)
+      return validated
+    }
 
-      while (index <= tkns.length - 1) {
-        const current = tkns[index]
+    while (index <= tkns.length - 1) {
+      const current = tkns[index]
 
-        if (!isOptionPrefixed(current) && index === 0) { breakOutOfOptionSearchLoop("option"); break; } // first item after command should be an option
+      if (!isOptionPrefixed(current) && index === 0) { breakOutOfOptionSearchLoop("option"); break; } // first item after command should be an option
 
-        if (isOptionPrefixed(current)) {
-          const possible = current.slice(1)
-          const possibleOptionDefinition = cmd.optionDefinitions.find(opt => opt.name === possible)
-          if (!!possibleOptionDefinition) {
-            this.emitParserEvent(ParserEventCode.OPTION_FOUND)
-            requiresValue = possibleOptionDefinition.isRequired && !Boolean(possibleOptionDefinition.defaultValue)
+      if (isOptionPrefixed(current)) {
+        const possible = current.slice(1)
+        const possibleOptionDefinition = cmd.optionDefinitions.find(opt => opt.name === possible)
+        if (!!possibleOptionDefinition) {
+          this.emitParserEvent(ParserEventCode.OPTION_FOUND)
+          requiresValue = possibleOptionDefinition.isRequired && !Boolean(possibleOptionDefinition.defaultValue)
 
-            if (requiresValue) {
-              const validatedValue = getValueByValidating(possibleOptionDefinition)
-              if (!!validatedValue) {
-                this.emitParserEvent(ParserEventCode.OPTION_VALUE_FOUND)
-                this.options.push({ name: possibleOptionDefinition.name, value: validatedValue })
-                index = index + 2
-                break;
-              } else { breakOutOfOptionSearchLoop("value"); break; } // value is not valid and is required
+          if (requiresValue) {
+            const validatedValue = getValueByValidating(possibleOptionDefinition)
+            if (!!validatedValue) {
+              this.emitParserEvent(ParserEventCode.OPTION_VALUE_FOUND)
+              this.options.push({ name: possibleOptionDefinition.name, value: validatedValue })
+              index = index + 2
+              break;
+            } else { breakOutOfOptionSearchLoop("value"); break; } // value is not valid and is required
+          } else {
+            const validatedValue = getValueByValidating(possibleOptionDefinition)
+            if (!!validatedValue) {
+              this.emitParserEvent(ParserEventCode.OPTION_VALUE_FOUND)
+              this.options.push({ name: possibleOptionDefinition.name, value: validatedValue })
+              index = index + 2
+              break;
             } else {
-              const validatedValue = getValueByValidating(possibleOptionDefinition)
-              if (!!validatedValue) {
+              if (!!possibleOptionDefinition.defaultValue) {
                 this.emitParserEvent(ParserEventCode.OPTION_VALUE_FOUND)
-                this.options.push({ name: possibleOptionDefinition.name, value: validatedValue })
-                index = index + 2
-                break;
+                this.options.push({ name: possibleOptionDefinition.name, value: possibleOptionDefinition.defaultValue })
+                index = index + 1
+                break
               } else {
-                if (!!possibleOptionDefinition.defaultValue) {
-                  this.emitParserEvent(ParserEventCode.OPTION_VALUE_FOUND)
-                  this.options.push({ name: possibleOptionDefinition.name, value: possibleOptionDefinition.defaultValue })
-                  index = index + 1
-                  break
-                } else {
-                  breakOutOfOptionSearchLoop("value")
-                }
+                breakOutOfOptionSearchLoop("value")
               }
             }
-          } else { breakOutOfOptionSearchLoop("option"); break; } // token is prefixed but it is not an option to this command
-        }
+          }
+        } else { breakOutOfOptionSearchLoop("option"); break; } // token is prefixed but it is not an option to this command
       }
-    } else {
-      this.emitParserEvent(ParserEventCode.OPTION_NOT_FOUND)
     }
   }
 

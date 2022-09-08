@@ -1,6 +1,7 @@
 import { memo } from "react"
-import type { Command } from "@/CommandLine/definitions"
-import Image from "next/image"
+import type { Command, HelpHandlerResponse, TextHandlerResponse } from "@/CommandLine/definitions"
+import BannerCommandOutput from "./BannerCommandOutput"
+import HelpCommandOutput from "./HelpCommandOutput"
 
 const TerminalOutput = ({ output, name }: Pick<Command<unknown>, "name"> & { output: ReturnType<Command<unknown>["handle"]> }) => {
   if ('error' in output) {
@@ -11,56 +12,12 @@ const TerminalOutput = ({ output, name }: Pick<Command<unknown>, "name"> & { out
     )
   }
 
-  if (name === "banner" && "text" in output) {
-    return (
-      <>
-        <div className="relative h-64 my-1" style={{ maxWidth: "40rem" }}>
-          <Image src={output.text[0]} layout="fill" objectFit="contain" />
-        </div>
-        <p className="mb-1">{output.text[1]}</p>
-      </>
-    )
+  if (name === "banner") {
+    return <BannerCommandOutput response={output as TextHandlerResponse} />
   }
 
-  if (name === "help" && Array.isArray(output)) {
-    return (
-      <>
-        <p className="pb-6"><b className="">Usage: </b>[command] [options]</p>
-        {
-          (output as HelpHandlerResponse[]).map((out, index) => (
-            <div key={index} className="pb-5">
-              <p><b className="text-gray-600">Command: </b>{out.command.name}</p>
-              <p>{out.command.description}</p>
-              {!!out.options.length && (
-                <>
-                  <p className="pt-1">Options:</p>
-                  <table className="table w-full">
-                    <thead className="table-header-group">
-                      <tr className="table-row">
-                        <th className="table-cell text-left p-1">Name</th>
-                        <th className="table-cell text-left p-1">Description</th>
-                        <th className="table-cell text-left p-1">Is Required</th>
-                        <th className="table-cell text-left p-1">Default Value</th>
-                      </tr>
-                    </thead>
-                    <tbody className="table-row-group">
-                      {out.options.map((opt, index) => (
-                        <tr key={index} className="table-row">
-                          <td className="table-cell text-left p-1">{opt.name}</td>
-                          <td className="table-cell text-left p-1">{opt.description}</td>
-                          <td className="table-cell text-left p-1">{Boolean(opt.isRequired).toString()}</td>
-                          <td className="table-cell text-left p-1">{opt.defaultValue || "N/A"}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </>
-              )}
-            </div>
-          ))
-        }
-      </>
-    )
+  if (name === "help") {
+    return <HelpCommandOutput response={output as HelpHandlerResponse[]} />
   }
 
   return null
