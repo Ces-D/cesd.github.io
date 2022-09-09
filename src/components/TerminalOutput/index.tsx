@@ -1,23 +1,31 @@
 import { memo } from "react"
-import type { Command, HelpHandlerResponse, TextHandlerResponse } from "@/CommandLine/definitions"
+import type { Command, ErrorHandlerResponse } from "@/CommandLine/definitions"
 import BannerCommandOutput from "./BannerCommandOutput"
 import HelpCommandOutput from "./HelpCommandOutput"
+import BlogCommandOutput from "./BlogCommandOutput"
+import type { BlogCommand } from "@/CommandLine/commands/BlogCommand"
+import { HelpCommand } from "@/CommandLine/commands"
+import { BannerCommand } from "@/CommandLine/commands/BannerCommand"
 
-const TerminalOutput = ({ output, name }: Pick<Command<unknown>, "name"> & { output: ReturnType<Command<unknown>["handle"]> }) => {
-  if ('error' in output) {
+const TerminalOutput = ({ output, name }: { name: Command<unknown>['name'] | 'error', output: ReturnType<Command<unknown>['handle']> }) => {
+  if (name === 'error') {
     return (
       <div className="w-full text-pink-700">
-        <p>{output.error}</p>
+        <p>{(output as ErrorHandlerResponse).error}</p>
       </div>
     )
   }
 
   if (name === "banner") {
-    return <BannerCommandOutput response={output as TextHandlerResponse} />
+    return <BannerCommandOutput response={output as ReturnType<BannerCommand["handle"]>} />
   }
 
   if (name === "help") {
-    return <HelpCommandOutput response={output as HelpHandlerResponse[]} />
+    return <HelpCommandOutput response={output as ReturnType<HelpCommand["handle"]>} />
+  }
+
+  if (name === 'blog') {
+    return <BlogCommandOutput response={output as ReturnType<BlogCommand['handle']>} />
   }
 
   return null

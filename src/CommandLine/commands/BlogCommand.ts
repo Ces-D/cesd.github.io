@@ -10,9 +10,9 @@ const BlogCommand: BlogCommand = {
   optionDefinitions: [
     {
       name: "num", description: "how many", defaultValue: 4, isRequired: false, validate: (value?: string) => {
-        if (!!value) return undefined
+        if (!value) return undefined
         try {
-          return parseInt(value!)
+          return parseInt(value)
         } catch (error) { return undefined }
       }
     }, {
@@ -26,7 +26,7 @@ const BlogCommand: BlogCommand = {
     const blogPostKeys = Object.keys(BLOG_POSTS_META)
     const response: TextHandlerResponse[] = blogPostKeys.map((key) => {
       const blogPostMeta = BLOG_POSTS_META[key]
-      return { text: [blogPostMeta.title, blogPostMeta.description, blogPostMeta.publishDate] }
+      return { text: [blogPostMeta.title, blogPostMeta.description, blogPostMeta.publishDate, blogPostMeta.slug] }
     })
 
     if (optionNames.includes('help')) {
