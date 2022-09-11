@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react"
+import React, { useRef, useState, useEffect } from "react"
 import type { ChangeEventHandler, KeyboardEventHandler } from "react"
 import { useConsoleHistory } from "@/CommandLine"
 
@@ -7,9 +7,18 @@ export type TextAreaProps = Partial<Pick<HTMLTextAreaElement, "disabled" | "valu
 const ResizingTextArea = ({ disabled, value, autofocus }: TextAreaProps) => {
   const textAreaRef = useRef<HTMLTextAreaElement>(null)
   const enterCommand = useConsoleHistory(state => state.enterCommand)
+  const consoleHistory = useConsoleHistory(state => state.commandHistory)
   const [textValue, setTextValue] = useState(value ?? '')
   const MIN_ROWS = 1
   const MAX_ROWS = 5
+
+  useEffect(() => {
+    if (!!textAreaRef.current) {
+      console.log("should scroll to input: ", textAreaRef.current.scrollHeight)
+      textAreaRef.current.scrollIntoView()
+      // textAreaRef.current.scrollTo(0, textAreaRef.current.scrollIntoView())
+    }
+  }, [consoleHistory])
 
   const inputWidth = (el: HTMLTextAreaElement): string => {
     const text = el.value || el.placeholder
@@ -81,7 +90,7 @@ const ResizingTextArea = ({ disabled, value, autofocus }: TextAreaProps) => {
       onKeyDownCapture={onKeyDownHandler}
       onInput={e => setTextValue(e.currentTarget.value)}
       onChange={onChangeResizeElementHandler}
-      className="bg-inherit text-sm text-emerald-200 disabled:text-emerald-400 outline-none grow p-1" />
+      className="bg-inherit text-sm text-emerald-200 outline-none focus:outline-none grow" />
   )
 }
 

@@ -11,10 +11,10 @@ const Home: NextPage = () => {
     <Layout>
       {
         consoleHistory.map((consoleCommand) => {
-          console.log(consoleCommand)
           const handleResponse = consoleCommand.handle(consoleCommand.handlerParams)
+
           return (
-            <div key={consoleCommand.id}>
+            <div key={consoleCommand.id} className="mb-8">
               <TerminalInput disabled={true} autofocus={false} value={consoleCommand.input} />
               <TerminalOutput output={handleResponse} name={consoleCommand.name} />
             </div>

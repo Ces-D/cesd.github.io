@@ -4,6 +4,15 @@
 
 @layer base {
 
+  html,
+  body,
+  body>div:first-child,
+  div#__next,
+  div#__next>main {
+    height: 100%;
+    overflow: auto;
+  }
+
   /* Set core root defaults */
   html:focus-within {
     scroll-behavior: smooth;
@@ -14,14 +23,18 @@
     box-sizing: border-box;
   }
 
-  body {
-    margin: 0;
-    padding: 0;
+  * {
     box-sizing: border-box;
-    min-height: 100vh;
-    text-rendering: optimizeSpeed;
-    overflow-y: scroll;
-    font-family: 'Cascadia Code'
+    font-family: 'Cascadia Code';
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 5px;
   }
 
   input,

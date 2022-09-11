@@ -14,4 +14,5 @@ module.exports = withMDX({
   },
   pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
   reactStrictMode: true,
+  swcMinify: true,
 });

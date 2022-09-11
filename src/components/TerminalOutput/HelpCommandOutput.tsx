@@ -1,44 +1,56 @@
+import { memo } from "react"
 import { CommandLineParser } from "@/CommandLine"
 import type { HelpCommand } from "@/CommandLine/commands"
+import type { HelpHandlerResponse } from "@/CommandLine/definitions"
+
+export const HelpResponseOutput = memo(({ response, borderBottom = false }: { response: HelpHandlerResponse; borderBottom?: boolean }) => {
+  return (
+    <div className={borderBottom ? "py-2 my-1 border-b-gray-700 border-solid border-b" : "py-2 my-1"}>
+      <p className="text-yellow-200 w-32 inline-block">{response.command.name}</p>
+      <p className="inline-block pl-4">{response.command.description}</p>
+      {!!response.options.length && (
+        <div className="ml-36">
+          <p className="text-yellow-100">Options:</p>
+          <table className="table w-full">
+            <thead className="table-row-group">
+              <tr className="table-row">
+                <th></th>
+                <th className="table-cell text-left">Description</th>
+                <th className="table-cell text-left">Required</th>
+                <th className="table-cell text-left">Default Value</th>
+              </tr>
+            </thead>
+            <tbody className="table-row-group">
+              {response.options.map((opt, index) => (
+                <tr key={index} className="table-row">
+                  <td className="table-cell text-left p-1">{`${CommandLineParser.OPTION_PREFIX}${opt.name}`}</td>
+                  <td className="table-cell text-left p-1">{opt.description}</td>
+                  <td className="table-cell text-left p-1">{opt.isRequired.toString()}</td>
+                  <td className="table-cell text-left p-1">{!!opt.defaultValue ? opt.defaultValue?.toString() : "N/A"}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+    </div>
+  )
+})
 
 const HelpCommandOutput = ({ response }: { response: ReturnType<HelpCommand["handle"]> }) => {
   if (Array.isArray(response)) {
     return (
       <>
-        <p className="pb-6"><b className="">Usage: </b>[command] [options]</p>
-        {
-          response.map((out, index) => (
-            <div key={index} className="pb-5">
-              <p><b className="text-gray-600">Command: </b>{out.command.name}</p>
-              <p>{out.command.description}</p>
-              {!!out.options.length && (
-                <>
-                  <p className="pt-1">Options:</p>
-                  <table className="table w-full">
-                    <thead className="table-header-group">
-                      <tr className="table-row">
-                        <th className="table-cell text-left p-1">Name</th>
-                        <th className="table-cell text-left p-1">Description</th>
-                        <th className="table-cell text-left p-1">Is Required</th>
-                        <th className="table-cell text-left p-1">Default Value</th>
-                      </tr>
-                    </thead>
-                    <tbody className="table-row-group">
-                      {out.options.map((opt, index) => (
-                        <tr key={index} className="table-row">
-                          <td className="table-cell text-left p-1">{`${CommandLineParser.OPTION_PREFIX}${opt.name}`}</td>
-                          <td className="table-cell text-left p-1">{opt.description}</td>
-                          <td className="table-cell text-left p-1">{Boolean(opt.isRequired).toString()}</td>
-                          <td className="table-cell text-left p-1">{!!opt.defaultValue ? opt.defaultValue?.toString() : "N/A"}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </>
-              )}
-            </div>
-          ))
-        }
+        <p>Usage:</p>
+        <p className="ml-6 pb-2 text-yellow-200">[command] [options]</p>
+        <p>Commands:</p>
+        <div className="ml-6 mb-3">
+          {
+            response.map((out, index) => (
+              <HelpResponseOutput response={out} key={index} borderBottom={index !== response.length - 1 ? true : false} />
+            ))
+          }
+        </div>
       </>
     )
   }
