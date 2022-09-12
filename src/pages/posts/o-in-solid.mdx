@@ -80,4 +80,10 @@ Here you can see how I am enforcing the creation of the method `AuthorizationFlo
 
 The Open Close principle is great because it allows to expand your codes features while avoiding the possibility of introducing bugs into existing and functioning code. If your code has similar functions or solves similar problems but solves it in different ways, this could be a signal to abstract away the functions in case responsibilities change.
 
-export default ({children})=> <Layout title={meta.title} description={meta.description} date={meta.publishDate}>{children}</Layout>
+export default ({children})=> (
+  <Layout title={meta.title} description={meta.description} date={meta.publishDate}>
+    <BlogLayout title={meta.title}>
+      {children}
+    </BlogLayout>
+  </Layout>
+)

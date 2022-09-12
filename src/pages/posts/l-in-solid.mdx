@@ -1,4 +1,5 @@
 import Layout from "@/components/Layout"
+import BlogLayout from "@/components/BlogLayout"
 import { BLOG_POSTS_META } from "@/CommandLine/constants"
 
 export const meta = BLOG_POSTS_META.L_IN_SOLID
@@ -67,6 +68,13 @@ class FeaturePlaylists extends ClientCredentialsRequest {
 }
 ```
 
-Typescript is not a perfect example for this pattern. For one your typescript compiler has to compile to es6 javascript otherwise you will receive many errors along the way. Additionally, typescript does ot let you declare an async function, but you can return an async return type aka `Promise<any>`.
+Typescript is not a perfect example for this pattern. For one your typescript compiler has to compile to es6 javascript otherwise you will receive many errors along the way. 
+Additionally, typescript does ot let you declare an async function, but you can return an async return type aka `Promise<any>`.
 
-export default ({children})=> <Layout title={meta.title} description={meta.description} date={meta.publishDate}>{children}</Layout>
+export default ({children})=> (
+  <Layout title={meta.title} description={meta.description} date={meta.publishDate}>
+    <BlogLayout title={meta.title}>
+      {children}
+    </BlogLayout>
+  </Layout>
+)

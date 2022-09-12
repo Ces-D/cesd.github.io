@@ -119,4 +119,10 @@ Lastly we have a function that is in charge of requesting the feature playlists 
 
 As a summary. The single responsibility principle represents a good way of identifying functions during the design phase and it reminds us to think of all the ways the class can evolve. A good separation of responsibilities is done when the full picture of how the application should work is understood.
 
-export default ({children})=> <Layout title={meta.title} description={meta.description} date={meta.publishDate}>{children}</Layout>
+export default ({children})=> (
+  <Layout title={meta.title} description={meta.description} date={meta.publishDate}>
+    <BlogLayout title={meta.title}>
+      {children}
+    </BlogLayout>
+  </Layout>
+)

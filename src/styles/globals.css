@@ -28,6 +28,10 @@
     font-family: 'Cascadia Code';
   }
 
+  code {
+    font-family: 'Cascadia Code';
+  }
+
   ::-webkit-scrollbar {
     width: 10px;
     height: 10px;
@@ -45,4 +49,14 @@
   }
 }
 
-@layer components {}
+@layer components {
+  .font-open-sans {
+    font-family: 'Open Sans', sans-serif;
+  }
+
+  .font-code {
+    font-family: 'Cascadia Code';
+  }
+}
+
+@layer utilities {}
