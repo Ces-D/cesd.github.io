@@ -74,7 +74,6 @@ const ResizingTextArea = ({ disabled, value, autofocus }: TextAreaProps) => {
     if (e.key === 'c' && e.ctrlKey) {
       e.preventDefault()
       setTextValue('')
-      console.log('CTRL C PRESSED')
     }
     if (e.key === 'Tab') {
       e.preventDefault()
@@ -88,12 +87,10 @@ const ResizingTextArea = ({ disabled, value, autofocus }: TextAreaProps) => {
     if (e.key === 'ArrowUp') {
       e.preventDefault()
       setTextValue(inputUpOrDown(currentInputIndex, true) || '')
-      console.log('ARROW UP PRESSED')
     }
     if (e.key === 'ArrowDown') {
       e.preventDefault()
       setTextValue(inputUpOrDown(currentInputIndex, false) || '')
-      console.log('ARROW DOWN PRESSED')
     }
   }
 

@@ -72,9 +72,7 @@ Typescript is not a perfect example for this pattern. For one your typescript co
 Additionally, typescript does ot let you declare an async function, but you can return an async return type aka `Promise<any>`.
 
 export default ({children})=> (
-  <Layout title={meta.title} description={meta.description} date={meta.publishDate}>
-    <BlogLayout title={meta.title}>
-      {children}
-    </BlogLayout>
-  </Layout>
+  <BlogLayout title={meta.title} description={meta.description} date={meta.publishDate} articles={meta.articles}>
+    {children}
+  </BlogLayout>
 )

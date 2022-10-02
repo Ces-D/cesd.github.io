@@ -76,8 +76,8 @@
     @apply font-open-sans
   }
 
-  .article > h1 {
-    @apply text-amber-200
+  .article>p {
+    @apply text-justify
   }
 
   .article>pre {

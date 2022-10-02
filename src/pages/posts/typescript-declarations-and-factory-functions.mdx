@@ -1,4 +1,4 @@
-import Layout from "@/components/Layout"
+import BlogLayout from "@/components/BlogLayout"
 import { BLOG_POSTS_META } from "@/COmmandLine/constants"
 
 export const meta = BLOG_POSTS_META.TYPESCRIPT_DECLARATIONS_AND_FACTORY_FUNCTIONS
@@ -60,9 +60,7 @@ In this example the factory function is deciding on the return type based on the
 I should note that our `BlogDataFactory` is a class with one static method and this could just as easily be a function. I chose to place this as a static class because these design patterns are typically coded using object oriented languages.
 
 export default ({children})=> (
-  <Layout title={meta.title} description={meta.description} date={meta.publishDate}>
-    <BlogLayout title={meta.title}>
-      {children}
-    </BlogLayout>
-  </Layout>
+  <BlogLayout title={meta.title} description={meta.description} date={meta.publishDate} articles={meta.articles}>
+    {children}
+  </BlogLayout>
 )
