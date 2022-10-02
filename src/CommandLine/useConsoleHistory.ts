@@ -29,21 +29,21 @@ const useConsoleHistory = create<ConsoleHistoryState>((set) => ({
         }
       )
     }
-    else if (!CommandLineParser.isSuccessfulParse(parsedInput) && !!parsedInput.command) {
+    else if (!CommandLineParser.isSuccessfulParse(parsedInput) && !!parsedInput.command) { // THIS IS PRETTY USELESS
       state.commandHistory.push({
         name: parsedInput.command.name, handle: parsedInput.command.handle,
         handlerParams: { options: parsedInput.options, callStack: parsedInput.callStack }, input, id: crypto.randomUUID()
       })
     }
     else {
-      console.log(parsedInput.callStack)
       state.commandHistory.push({
         name: 'error', handle: (_): ErrorHandlerResponse => ({ error: `${parsedInput.consoleInput} Error: ${ParserEventCode[parsedInput.callStack[0]]}` }),
         handlerParams: { options: [], callStack: parsedInput.callStack }, input, id: crypto.randomUUID()
       })
     }
-  }))
+  })),
 
-}))
+})
+)
 
 export { useConsoleHistory }

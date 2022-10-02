@@ -6,3 +6,7 @@ export default function CustomApp({ Component, pageProps }: AppProps) {
     <Component {...pageProps} />
   )
 }
+
+
+////https://vanslaars.io/articles/support-syntax-highlighting-and-heading-links-with-mdx-rehype
+// https://github.com/hashicorp/next-mdx-remote

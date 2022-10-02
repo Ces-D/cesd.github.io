@@ -8,6 +8,18 @@ const ResizingTextArea = ({ disabled, value, autofocus }: TextAreaProps) => {
   const textAreaRef = useRef<HTMLTextAreaElement>(null)
   const enterCommand = useConsoleHistory(state => state.enterCommand)
   const consoleHistory = useConsoleHistory(state => state.commandHistory)
+  const [currentInputIndex, setCurrentInputIndex] = useState(!!consoleHistory.length ? consoleHistory.length - 1 : 0)
+
+  const inputUpOrDown = (previousIndex: number, arrowUp: boolean) => {
+    let index = arrowUp ? previousIndex - 1 : previousIndex + 1 // these are in reverse because we pushed, so last is most recent
+
+    if (index > consoleHistory.length - 1) { index = 0 }
+    if (index < 0) { index = consoleHistory.length - 1 }
+    setCurrentInputIndex(index)
+
+    return consoleHistory.at(index)?.input
+  }
+
   const [textValue, setTextValue] = useState(value ?? '')
   const MIN_ROWS = 1
   const MAX_ROWS = 5
@@ -75,10 +87,12 @@ const ResizingTextArea = ({ disabled, value, autofocus }: TextAreaProps) => {
     }
     if (e.key === 'ArrowUp') {
       e.preventDefault()
+      setTextValue(inputUpOrDown(currentInputIndex, true) || '')
       console.log('ARROW UP PRESSED')
     }
     if (e.key === 'ArrowDown') {
       e.preventDefault()
+      setTextValue(inputUpOrDown(currentInputIndex, false) || '')
       console.log('ARROW DOWN PRESSED')
     }
   }

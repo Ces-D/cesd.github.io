@@ -57,6 +57,32 @@
   .font-code {
     font-family: 'Cascadia Code';
   }
+
+  .article {
+    @apply prose max-w-4xl m-auto prose-invert;
+  }
+
+  .article>h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  em,
+  strong,
+  li,
+  ul {
+    @apply font-open-sans
+  }
+
+  .article > h1 {
+    @apply text-amber-200
+  }
+
+  .article>pre {
+    @apply font-code
+  }
 }
 
 @layer utilities {}
