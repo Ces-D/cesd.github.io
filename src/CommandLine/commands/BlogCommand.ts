@@ -1,8 +1,10 @@
 import { generateHelpCommandResponse } from "../utils/generateHelpCommandResponse";
-import type { Command, HelpHandlerResponse, TextHandlerResponse } from "../definitions";
+import { ParserEventCode } from '@/CommandLine/definitions'
+
+import type { Command, ErrorHandlerResponse, HelpHandlerResponse, TextHandlerResponse } from "../definitions";
 import { BLOG_POSTS_META } from "../constants";
 
-export type BlogCommand = Command<HelpHandlerResponse | TextHandlerResponse[]>
+export type BlogCommand = Command<HelpHandlerResponse | TextHandlerResponse[] | ErrorHandlerResponse>
 
 const BlogCommand: BlogCommand = {
   name: "blog",
@@ -21,9 +23,13 @@ const BlogCommand: BlogCommand = {
       }
     }
   ],
-  handle: (params) => {
-    const optionNames = params.options.map(opt => opt.name)
+  handle: ({ options, callStack }) => {
+    if (!!callStack) {
+      return { error: ParserEventCode[callStack[0]] }
+    }
+
     const blogPostKeys = Object.keys(BLOG_POSTS_META)
+    const optionNames = options.map(opt => opt.name)
     const response: TextHandlerResponse[] = blogPostKeys.map((key) => {
       const blogPostMeta = BLOG_POSTS_META[key]
       return { text: [blogPostMeta.title, blogPostMeta.description, blogPostMeta.publishDate, blogPostMeta.slug] }
@@ -34,7 +40,7 @@ const BlogCommand: BlogCommand = {
     }
 
     if (optionNames.includes('num')) {
-      const opt = params.options.find(opt => opt.name === 'num')
+      const opt = options.find(opt => opt.name === 'num')
       if (opt) {
         return response.slice(0, Number(opt.value))
       }

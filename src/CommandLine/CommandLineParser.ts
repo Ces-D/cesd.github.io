@@ -104,8 +104,13 @@ export default class CommandLineParser {
 
   public static isSuccessfulParse = (parserOutput: CommandLineParser) => {
     const intersects = (a: ParserEventCode[], b: ParserEventCode[]) => a.filter(Set.prototype.has, new Set(b))
-    const CAUSE_FOR_FAILURE = [ParserEventCode.COMMAND_NOT_FOUND, ParserEventCode.INPUT_NOT_RECEIVED, ParserEventCode.OPTION_NOT_FOUND, ParserEventCode.OPTION_VALUE_NOT_FOUND]
+    const CAUSE_FOR_FAILURE = [
+      ParserEventCode.COMMAND_NOT_FOUND, ParserEventCode.INPUT_NOT_RECEIVED, ParserEventCode.OPTION_NOT_FOUND, ParserEventCode.OPTION_VALUE_NOT_FOUND
+    ]
 
     return intersects(parserOutput.callStack, CAUSE_FOR_FAILURE).length === 0 ? true : false
   }
 }
+
+// TODO: If option value is not acceptable then throw an error
+// TODO: Add the error outputs to the Help and Intro and bleep bloop commands. The latter also need outputs

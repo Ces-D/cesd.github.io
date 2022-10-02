@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { BlogCommand } from "@/CommandLine/commands/BlogCommand";
 import { HelpResponseOptionsOutput } from "./HelpCommandOutput";
+import ErrorCommandOutput from "./ErrorCommandOutput";
 
 const BlogCommandOutput = ({ response }: { response: ReturnType<BlogCommand['handle']> }) => {
   if ('command' in response && 'options' in response) {
@@ -41,7 +42,11 @@ const BlogCommandOutput = ({ response }: { response: ReturnType<BlogCommand['han
     )
   }
 
-  return <></>
+  if ("error" in response)  {
+    return <ErrorCommandOutput response={response} />
+  }
+
+  return null
 }
 
 export default BlogCommandOutput

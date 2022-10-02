@@ -1,19 +1,19 @@
 import { memo } from "react"
-import type { Command, ErrorHandlerResponse } from "@/CommandLine/definitions"
-import BannerCommandOutput from "./BannerCommandOutput"
-import HelpCommandOutput from "./HelpCommandOutput"
-import BlogCommandOutput from "./BlogCommandOutput"
-import type { BlogCommand } from "@/CommandLine/commands/BlogCommand"
+
 import { HelpCommand } from "@/CommandLine/commands"
 import { BannerCommand } from "@/CommandLine/commands/BannerCommand"
 
+import type { Command, ErrorHandlerResponse } from "@/CommandLine/definitions"
+import type { BlogCommand } from "@/CommandLine/commands/BlogCommand"
+
+import ErrorCommandOutput from "./ErrorCommandOutput"
+import BannerCommandOutput from "./BannerCommandOutput"
+import HelpCommandOutput from "./HelpCommandOutput"
+import BlogCommandOutput from "./BlogCommandOutput"
+
 const TerminalOutput = ({ output, name }: { name: Command<unknown>['name'] | 'error', output: ReturnType<Command<unknown>['handle']> }) => {
   if (name === 'error') {
-    return (
-      <div className="w-full text-pink-700">
-        <p>{(output as ErrorHandlerResponse).error}</p>
-      </div>
-    )
+    return <ErrorCommandOutput response={output as ErrorHandlerResponse} />
   }
 
   if (name === "banner") {

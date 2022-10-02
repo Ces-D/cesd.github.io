@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import { BannerCommand } from "@/CommandLine/commands/BannerCommand"
+import ErrorCommandOutput from "./ErrorCommandOutput"
 
 const BannerCommandOutput = ({ response }: { response: ReturnType<BannerCommand["handle"]> }) => {
   if ("text" in response) {
@@ -13,7 +14,11 @@ const BannerCommandOutput = ({ response }: { response: ReturnType<BannerCommand[
     )
   }
 
-  return <></>
+  if ("error" in response) {
+    return <ErrorCommandOutput response={response} />
+  }
+
+  return null
 }
 
 export default BannerCommandOutput
