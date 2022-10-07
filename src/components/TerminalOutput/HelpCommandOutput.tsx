@@ -1,7 +1,10 @@
 import { memo } from "react"
 import { CommandLineParser } from "@/CommandLine"
+
 import type { HelpCommand } from "@/CommandLine/commands"
 import type { HelpHandlerResponse } from "@/CommandLine/definitions"
+
+import ErrorCommandOutput from "./ErrorCommandOutput";
 
 export const HelpResponseOptionsOutput = memo(({ options, ml = true }: Pick<HelpHandlerResponse, "options"> & { ml?: boolean }) => {
   return (
@@ -61,7 +64,11 @@ const HelpCommandOutput = ({ response }: { response: ReturnType<HelpCommand["han
     )
   }
 
-  return <></>
+  if ('error' in response) {
+    <ErrorCommandOutput response={response} />
+  }
+
+  return null
 }
 
 export default HelpCommandOutput

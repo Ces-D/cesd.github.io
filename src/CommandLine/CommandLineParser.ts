@@ -113,4 +113,4 @@ export default class CommandLineParser {
 }
 
 // TODO: If option value is not acceptable then throw an error
-// TODO: Add the error outputs to the Help and Intro and bleep bloop commands. The latter also need outputs
+// TODO: Add the error outputs to Intro and bleep bloop commands. The latter also need outputs
