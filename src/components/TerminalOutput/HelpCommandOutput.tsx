@@ -6,7 +6,7 @@ import type { HelpHandlerResponse } from "@/CommandLine/definitions"
 
 import ErrorCommandOutput from "./ErrorCommandOutput";
 
-export const HelpResponseOptionsOutput = memo(({ options, ml = true }: Pick<HelpHandlerResponse, "options"> & { ml?: boolean }) => {
+export const HelpResponseOptionsOutput = memo(function ResponseOptions({ options, ml = true }: Pick<HelpHandlerResponse, "options"> & { ml?: boolean }) {
   return (
     <div className={ml ? "ml-36" : ""}>
       <p className="text-yellow-100">Options:</p>
@@ -34,7 +34,7 @@ export const HelpResponseOptionsOutput = memo(({ options, ml = true }: Pick<Help
   )
 })
 
-export const HelpResponseOutput = memo(({ response, borderBottom = false }: { response: HelpHandlerResponse; borderBottom?: boolean }) => {
+export const HelpResponseOutput = memo(function ResponseOutput({ response, borderBottom = false }: { response: HelpHandlerResponse; borderBottom?: boolean }) {
   return (
     <div className={borderBottom ? "py-2 my-1 border-b-gray-700 border-solid border-b" : "py-2 my-1"}>
       <p className="text-yellow-200 w-32 inline-block">{response.command.name}</p>
