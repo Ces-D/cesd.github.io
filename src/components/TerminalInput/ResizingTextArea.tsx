@@ -102,6 +102,7 @@ const ResizingTextArea = ({ disabled, value, autofocus }: TextAreaProps) => {
       onInput={e => setTextValue(e.currentTarget.value)}
       onChange={onChangeResizeElementHandler}
       className="bg-inherit text-sm text-emerald-200 outline-none focus:outline-none grow" />
+
   )
 }
 

@@ -14,7 +14,7 @@ const Home: NextPage = () => {
           const handleResponse = consoleCommand.handle(consoleCommand.handlerParams)
 
           return (
-            <div key={consoleCommand.id} className="mb-9">
+            <div key={consoleCommand.id} className="mb-9 terminal">
               <TerminalInput disabled={true} autofocus={false} value={consoleCommand.input} />
               <TerminalOutput output={handleResponse} name={consoleCommand.name} />
             </div>
