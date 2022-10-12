@@ -1,12 +1,12 @@
 import type { AppProps } from "next/app";
-import { theme } from "../UI/theme";
-import { ThemeProvider } from "styled-components";
-import "../app.css";
+import "@/styles/globals.css"
 
-export default function MyApp({ Component, pageProps }: AppProps) {
+export default function CustomApp({ Component, pageProps }: AppProps) {
   return (
-    <ThemeProvider theme={theme}>
-      <Component {...pageProps} />
-    </ThemeProvider>
-  );
+    <Component {...pageProps} />
+  )
 }
+
+
+////https://vanslaars.io/articles/support-syntax-highlighting-and-heading-links-with-mdx-rehype
+// https://github.com/hashicorp/next-mdx-remote

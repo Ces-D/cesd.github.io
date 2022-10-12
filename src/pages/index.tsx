@@ -1,53 +1,29 @@
-import type { GetServerSidePropsResult, GetStaticProps, NextPage } from "next";
-import { readdirSync } from "fs";
-import { CONTENT_DIRECTORY } from "../utils/blog/models/GrayMatterData";
-import BlogDataFactory from "../utils/blog/BlogDataFactory";
-import { sortBlogPosts } from "../utils/blog/sort";
-import { sortRepos } from "../utils/repos/sort";
-import { BlogExcerpt } from "../utils/blog/models/ExcerptData";
-import GithubAccessor from "../utils/repos/GithubAccessor";
-import { GithubRepo } from "../utils/repos/models/GithubRepoData";
-import HomePage from "../components/Home";
-import Meta from "../components/common/Meta";
+import type { NextPage } from "next"
+import { useConsoleHistory } from "@/CommandLine"
+import Layout from "@/components/Layout"
+import TerminalInput from "@/components/TerminalInput"
+import TerminalOutput from "@/components/TerminalOutput"
 
-export type HomePageProps = { posts: BlogExcerpt[]; repos: GithubRepo[] };
+const Home: NextPage = () => {
+  const consoleHistory = useConsoleHistory(state => state.commandHistory)
 
-const Home: NextPage<HomePageProps> = (props) => {
   return (
-    <>
-      <Meta title="Welcome" />
-      <HomePage {...props} />
-    </>
-  );
-};
+    <Layout>
+      {
+        consoleHistory.map((consoleCommand) => {
+          const handleResponse = consoleCommand.handle(consoleCommand.handlerParams)
 
-export default Home;
+          return (
+            <div key={consoleCommand.id} className="mb-9 terminal">
+              <TerminalInput disabled={true} autofocus={false} value={consoleCommand.input} />
+              <TerminalOutput output={handleResponse} name={consoleCommand.name} />
+            </div>
+          )
+        })
+      }
+      <TerminalInput autofocus={true} />
+    </Layout>
+  )
+}
 
-// Grab minimalist data for the Highlight blog posts and repos
-export const getStaticProps: GetStaticProps = async (): Promise<
-  GetServerSidePropsResult<HomePageProps>
-> => {
-  const REPO_LIMIT = 3;
-  const POST_LIMIT = 4;
-
-  const blogFiles = readdirSync(CONTENT_DIRECTORY, { encoding: "utf-8" });
-  const blogPosts = blogFiles.map(
-    async (blogFile) => await BlogDataFactory.returnData("Excerpt", blogFile)
-  );
-  const dateSortedBlogPosts = await Promise.all(blogPosts).then((res) =>
-    sortBlogPosts("newest", res)
-  );
-
-  const githubAccess = new GithubAccessor(true); // FIXME: turn to false when testing to save free api calls
-
-  const dateSortedGithubRepos = await githubAccess
-    .accessRepoData()
-    .then((res) => sortRepos("newest", res));
-
-  return {
-    props: {
-      posts: dateSortedBlogPosts.slice(0, POST_LIMIT),
-      repos: dateSortedGithubRepos.slice(0, REPO_LIMIT),
-    },
-  };
-};
+export default Home 

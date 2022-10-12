@@ -1,9 +1,18 @@
 // @ts-check
 
-/** @type {import('next').NextConfig} */
-module.exports = {
-  reactStrictMode: true,
+const withMDX = require('@next/mdx')({
+  extension: /\.mdx?$/,
+  options: {
+    remarkPlugins: [],
+    rehypePlugins: [],
+  }
+})
+
+module.exports = withMDX({
   images: {
-    domains: ["images.unsplash.com"],
+    domains: ["media.giphy.com"]
   },
-};
+  pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
+  reactStrictMode: true,
+  swcMinify: true,
+});
