@@ -73,7 +73,31 @@ export const BLOG_POSTS_META: Record<string, BlogMeta> = {
     tags: "rust,learning",
     description: "Building a hello world program with rust",
     articles: {
+      next: () => ({ title: BLOG_POSTS_META.LEARNING_RUST_DAY_3.title, slug: BLOG_POSTS_META.LEARNING_RUST_DAY_3.slug }),
       prev: () => ({ title: BLOG_POSTS_META.LEARNING_RUST_DAY_1.title, slug: BLOG_POSTS_META.LEARNING_RUST_DAY_1.slug })
+    }
+  },
+
+  LEARNING_RUST_DAY_3: {
+    title: "Learning Rust: Day 3",
+    slug: "learning-rust-day-3",
+    publishDate: "10/5/2022",
+    tags: "rust,learning",
+    description: "Rust data types",
+    articles: {
+      next: () => ({ title: BLOG_POSTS_META.LEARNING_RUST_DAY_4.title, slug: BLOG_POSTS_META.LEARNING_RUST_DAY_4.slug }),
+      prev: () => ({ title: BLOG_POSTS_META.LEARNING_RUST_DAY_2.title, slug: BLOG_POSTS_META.LEARNING_RUST_DAY_2.slug })
+    }
+  },
+
+  LEARNING_RUST_DAY_4: {
+    title: "Learning Rust: Day 4",
+    slug: "learning-rust-day-4",
+    publishDate: "10/5/2022",
+    tags: "rust,learning",
+    description: "More data types in rust",
+    articles: {
+      prev: () => ({ title: BLOG_POSTS_META.LEARNING_RUST_DAY_3.title, slug: BLOG_POSTS_META.LEARNING_RUST_DAY_3.slug })
     }
   }
 }

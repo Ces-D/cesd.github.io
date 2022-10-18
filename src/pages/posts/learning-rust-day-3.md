@@ -1,3 +1,10 @@
+import Layout from "@/components/Layout"
+import BlogLayout from "@/components/BlogLayout"
+import { BLOG_POSTS_META } from "@/CommandLine/constants"
+
+export const meta = BLOG_POSTS_META.LEARNING_RUST_DAY_3
+
+
 ### constants
 - they are always immutable, not just immutable by default.
 - declare using the `const` keyword, instead of `let` keyword. The type of the variable must be annotated.
@@ -70,3 +77,9 @@ Unlike a tuple, every element in an array must have the same type. In Rust, arra
 let a: [i32; 5] = [1, 2, 3, 4, 5];
 ```
 This is how you write an arrays type. If you index outside the length of an array, the program will panic and throw a _runtime error_.
+
+export default ({children})=> (
+  <BlogLayout title={meta.title} description={meta.description} date={meta.publishDate} articles={meta.articles}>
+    {children}
+  </BlogLayout>
+  )

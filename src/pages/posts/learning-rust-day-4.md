@@ -1,3 +1,10 @@
+import Layout from "@/components/Layout"
+import BlogLayout from "@/components/BlogLayout"
+import { BLOG_POSTS_META } from "@/CommandLine/constants"
+
+export const meta = BLOG_POSTS_META.LEARNING_RUST_DAY_4
+
+
 Functions are declared using the `fn` keyword. Rust does not care where the function is defined, only that it is defined somewhere in the scope that can be seen by the caller.
 
 ## Statements and Expressions 
@@ -38,3 +45,8 @@ Because `if` is an expression, we can use it on the right side of a `let` statem
 let number = if condition { 5 } else { 6 }
 ```
 
+export default ({children})=> (
+  <BlogLayout title={meta.title} description={meta.description} date={meta.publishDate} articles={meta.articles}>
+    {children}
+  </BlogLayout>
+)
