@@ -49,7 +49,55 @@ export const BLOG_POSTS_META: Record<string, BlogMeta> = {
     tags: "typescript,SOLID,OOP",
     description: "Explaining Liskov-Substitution of SOLID principles in object-oriented programming.",
     articles: {
-      prev: () => ({ title: BLOG_POSTS_META.O_IN_SOLID.title, slug: BLOG_POSTS_META.O_IN_SOLID.slug })
+      next: () => ({ title: BLOG_POSTS_META.LEARNING_RUST_DAY_1.title, slug: BLOG_POSTS_META.LEARNING_RUST_DAY_1.slug }),
+      prev: () => ({ title: BLOG_POSTS_META.O_IN_SOLID.title, slug: BLOG_POSTS_META.O_IN_SOLID.slug }),
     }
   },
+
+  LEARNING_RUST_DAY_1: {
+    title: "Learning Rust: Day 1",
+    slug: "learning-rust-day-1",
+    publishDate: "10/13/2022",
+    tags: "rust,learning",
+    description: "Can I make it through 30 days of rust?",
+    articles: {
+      next: () => ({ title: BLOG_POSTS_META.LEARNING_RUST_DAY_2.title, slug: BLOG_POSTS_META.LEARNING_RUST_DAY_2.slug }),
+      prev: () => ({ title: BLOG_POSTS_META.L_IN_SOLID.title, slug: BLOG_POSTS_META.L_IN_SOLID.slug })
+    }
+  },
+
+  LEARNING_RUST_DAY_2: {
+    title: "Learning Rust: Day 2",
+    slug: "learning-rust-day-2",
+    publishDate: "10/14/2022",
+    tags: "rust,learning",
+    description: "Building a hello world program with rust",
+    articles: {
+      next: () => ({ title: BLOG_POSTS_META.LEARNING_RUST_DAY_3.title, slug: BLOG_POSTS_META.LEARNING_RUST_DAY_3.slug }),
+      prev: () => ({ title: BLOG_POSTS_META.LEARNING_RUST_DAY_1.title, slug: BLOG_POSTS_META.LEARNING_RUST_DAY_1.slug })
+    }
+  },
+
+  LEARNING_RUST_DAY_3: {
+    title: "Learning Rust: Day 3",
+    slug: "learning-rust-day-3",
+    publishDate: "10/5/2022",
+    tags: "rust,learning",
+    description: "Rust data types",
+    articles: {
+      next: () => ({ title: BLOG_POSTS_META.LEARNING_RUST_DAY_4.title, slug: BLOG_POSTS_META.LEARNING_RUST_DAY_4.slug }),
+      prev: () => ({ title: BLOG_POSTS_META.LEARNING_RUST_DAY_2.title, slug: BLOG_POSTS_META.LEARNING_RUST_DAY_2.slug })
+    }
+  },
+
+  LEARNING_RUST_DAY_4: {
+    title: "Learning Rust: Day 4",
+    slug: "learning-rust-day-4",
+    publishDate: "10/5/2022",
+    tags: "rust,learning",
+    description: "More data types in rust",
+    articles: {
+      prev: () => ({ title: BLOG_POSTS_META.LEARNING_RUST_DAY_3.title, slug: BLOG_POSTS_META.LEARNING_RUST_DAY_3.slug })
+    }
+  }
 }
