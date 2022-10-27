@@ -1,0 +1,60 @@
+import Layout from "@/components/Layout"
+import BlogLayout from "@/components/BlogLayout"
+import { BLOG_POSTS_META } from "@/CommandLine/constants"
+
+export const meta = BLOG_POSTS_META.LEARNING_RUST_DAY_6
+
+
+## References and Borrowing
+A _reference_ is similar to a _pointer_ in that it's an address that can be follwed to access the data stored at an address in memory. However, unlike a pointer, a reference is guaranteed to point to a valid value of a particular type for the life of a reference.
+
+``` rust
+fn main() {
+    let s1 = String::from("hello");
+
+    let len = calculate_length(&s1);
+
+    println!("The length of '{}' is {}.", s1, len);
+}
+
+fn calculate_length(s: &String) -> usize {
+    s.len()
+}
+```
+
+The `&` symbols represent _references_, and they allow us to refer to certain values without taking ownership of it. 
+The opposite of `&` referencing is called _dereferencing_ and is accomplished with the `*` symbol. 
+
+Functions that are passed references to variabels, instead of ownership, are considered _borrowing_ the variable instead of _moving_ ownership.
+
+### Mutable References 
+Just as variables are immutable by default, so are references. We can make borrowed variables mutable by adding the `mut` keyword right after the `&` reference symbol. 
+
+
+``` rust
+fn main() {
+    let mut s = String::from("hello");
+
+    change(&mut s);
+}
+
+fn change(some_string: &mut String) {
+    some_string.push_str(", world");
+}
+```
+
+Mutable references are restricted in that only one reference is allowed at a time. The benefit of having this restriction is that Rust can prevent data races at compile time. A _data race_ is similar to a race condition and happens when two or more pointers access the same data at the same time, at least one of the pointers is being used to write to the data, and when there is no mechanism being used to synchronize access to data. Remember. that we can always create another scope allowing for multiple mutable references, just not simultaneous ones. We cannot have a mutable reference while we have an immutable one within the same scope. 
+
+### Dangling References
+A _dangling pointer_ is a pointer that references a location in memory that may have been given to someone else -- by freeing some memory while preserving a pointer to that memory. In Rust, the compiler guarantees that references will never be dangling references. The compiler will ensure that the data will not go out of scope before the reference to the data does. 
+
+## Recap
+
+- At any given time, you can have either one mutable reference or any number of immutable references.
+- References must always be valid.
+
+export default ({children})=> (
+  <BlogLayout title={meta.title} description={meta.description} date={meta.publishDate} articles={meta.articles}>
+    {children}
+  </BlogLayout>
+)

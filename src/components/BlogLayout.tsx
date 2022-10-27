@@ -38,7 +38,7 @@ const BlogLayout = (
   return (
     <Layout title={title} description={description} date={publishDate}>
       <MDXProvider components={components}>
-        <h1 className="text-amber-200 text-4xl max-w-5xl py-4 text-center">{title}</h1>
+        <h1 className="text-amber-200 text-4xl max-w-5xl py-4 text-center m-auto">{title}</h1>
         <article className="article">
           {children}
         </article>

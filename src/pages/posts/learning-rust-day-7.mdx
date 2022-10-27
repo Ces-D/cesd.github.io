@@ -1,0 +1,38 @@
+import Layout from "@/components/Layout"
+import BlogLayout from "@/components/BlogLayout"
+import { BLOG_POSTS_META } from "@/CommandLine/constants"
+
+export const meta = BLOG_POSTS_META.LEARNING_RUST_DAY_7
+
+
+A _crate_ is the smallest amount of code that the Rust compiler considers at a time. Crates can contain modules, and the modules may be defined in other files that get compiled with the crate. The _crate root_ is a source file that the Rust compiler starts from and makes up the root module of your crate. A _package_ is a bundle of one or more crates that provides a set of functionality. A package contains a _Cargo.toml_ file that describes how to build those crates. A package can contain as many binary crates, but at most only a single library crate.
+
+After runnning `cargo new`, we can see the files that are created from the Cargo cli tool. There's a _src_ directory that contains _main.rs_. A _main.rs_ file means this package is a binary crate, whereas a _lib.rs_ means this package is a library crate.
+
+## Defining Modules to Control Scope and Privacy
+The `use` keyword brings a path into scope; and the `pub` keyword makes items public.
+
+- __Declaring Modules__ - In the crate root (_main.rs or _lib.rs_) you declare using the `mod` keyword. The compiler will look for the module's code in the following places: `mod garden;`
+  - inline, within curly brackets that replace the semicolon following `mod garden`
+  - in the file _src/garden.rs_
+  - in the file _src/garden/mod.rs_
+
+- __Declaring SubModules__ - In any file other than the crate root, submodules can be declared using the `mod` keyword. For example `mod pickle` can be declared in _src/garden.rs_. The code for these submodules can be found in the folloing places:
+  - inline, within curly brackets that replace the semicolon following `mod pickle`
+  - in the file _src/garden/pickle.rs_
+  - in the file _src/garden/pickle/mod.rs_
+
+- __Paths to Code in Modules__ - Once a module is part of the crate, you can refer to code in a module from anywhere in the same crate, as long as the privacy rules allow, us the path to the code. For example, a `Cherry` type in the garden module would be found at `crate::garden::Cherry`.
+
+- __Private vs Public__ - Code within a module is private from its parent modules by default. To make a module public, declare it with `pub mode`. To make items within a public module public as well, use pub before their declarations.
+
+- __`Use` Keyword__ - Within a scope, the `use` keyword creates shortcuts to items to reduce repetition or long paths. Only the public functions or modules can be scoped. 
+
+## Grouping Related Code in Modules
+Modules are great for both organizing the code within a crate and for readability and reuse, but also for controlling the privacy of the items in the code.
+
+export default ({children})=> (
+  <BlogLayout title={meta.title} description={meta.description} date={meta.publishDate} articles={meta.articles}>
+    {children}
+  </BlogLayout>
+)

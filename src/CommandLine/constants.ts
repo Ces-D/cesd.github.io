@@ -3,6 +3,8 @@ export type BlogMeta = Article & {
   publishDate: string, tags: string, description: string, articles?: { next?: () => Article; prev?: () => Article; }
 }
 
+const pickArticle = (meta: BlogMeta): Article => ({ title: meta.title, slug: meta.slug })
+
 export const BLOG_POSTS_META: Record<string, BlogMeta> = {
   TYPESCRIPT_DECLARATIONS_AND_FACTORY_FUNCTIONS: {
     title: "Handling TypeScript Return Declarations in Factory Functions",
@@ -11,7 +13,7 @@ export const BLOG_POSTS_META: Record<string, BlogMeta> = {
     tags: "Typescript,Factory,OOP,JavaScript,Type",
     description: "Showing you how to declare multiple return types in TypeScript from a single function.",
     articles: {
-      next: () => ({ title: BLOG_POSTS_META.S_IN_SOLID.title, slug: BLOG_POSTS_META.S_IN_SOLID.slug }),
+      next: () => pickArticle(BLOG_POSTS_META.S_IN_SOLID),
     }
   },
 
@@ -22,11 +24,8 @@ export const BLOG_POSTS_META: Record<string, BlogMeta> = {
     tags: "Typescript,SOLID,OOP,JavaScript",
     description: "Explaining the Single-Responsibility of SOLID principles in object-oriented programming.",
     articles: {
-      next: () => ({ title: BLOG_POSTS_META.O_IN_SOLID.title, slug: BLOG_POSTS_META.O_IN_SOLID.slug }),
-      prev: () => ({
-        title: BLOG_POSTS_META.TYPESCRIPT_DECLARATIONS_AND_FACTORY_FUNCTIONS.title,
-        slug: BLOG_POSTS_META.TYPESCRIPT_DECLARATIONS_AND_FACTORY_FUNCTIONS.slug
-      })
+      next: () => pickArticle(BLOG_POSTS_META.O_IN_SOLID),
+      prev: () => pickArticle(BLOG_POSTS_META.TYPESCRIPT_DECLARATIONS_AND_FACTORY_FUNCTIONS)
     }
   },
 
@@ -37,8 +36,8 @@ export const BLOG_POSTS_META: Record<string, BlogMeta> = {
     tags: "cSharp,SOLID,OOP",
     description: "Explaining the Open-Closed of SOLID principles in object-oriented programming.",
     articles: {
-      next: () => ({ title: BLOG_POSTS_META.L_IN_SOLID.title, slug: BLOG_POSTS_META.L_IN_SOLID.slug }),
-      prev: () => ({ title: BLOG_POSTS_META.S_IN_SOLID.title, slug: BLOG_POSTS_META.S_IN_SOLID.slug })
+      next: () => pickArticle(BLOG_POSTS_META.L_IN_SOLID),
+      prev: () => pickArticle(BLOG_POSTS_META.S_IN_SOLID)
     }
   },
 
@@ -49,8 +48,8 @@ export const BLOG_POSTS_META: Record<string, BlogMeta> = {
     tags: "typescript,SOLID,OOP",
     description: "Explaining Liskov-Substitution of SOLID principles in object-oriented programming.",
     articles: {
-      next: () => ({ title: BLOG_POSTS_META.LEARNING_RUST_DAY_1.title, slug: BLOG_POSTS_META.LEARNING_RUST_DAY_1.slug }),
-      prev: () => ({ title: BLOG_POSTS_META.O_IN_SOLID.title, slug: BLOG_POSTS_META.O_IN_SOLID.slug }),
+      next: () => pickArticle(BLOG_POSTS_META.LEARNING_RUST_DAY_1),
+      prev: () => pickArticle(BLOG_POSTS_META.O_IN_SOLID),
     }
   },
 
@@ -61,8 +60,8 @@ export const BLOG_POSTS_META: Record<string, BlogMeta> = {
     tags: "rust,learning",
     description: "Can I make it through 30 days of rust?",
     articles: {
-      next: () => ({ title: BLOG_POSTS_META.LEARNING_RUST_DAY_2.title, slug: BLOG_POSTS_META.LEARNING_RUST_DAY_2.slug }),
-      prev: () => ({ title: BLOG_POSTS_META.L_IN_SOLID.title, slug: BLOG_POSTS_META.L_IN_SOLID.slug })
+      next: () => pickArticle(BLOG_POSTS_META.LEARNING_RUST_DAY_2),
+      prev: () => pickArticle(BLOG_POSTS_META.L_IN_SOLID)
     }
   },
 
@@ -73,8 +72,8 @@ export const BLOG_POSTS_META: Record<string, BlogMeta> = {
     tags: "rust,learning",
     description: "Building a hello world program with rust",
     articles: {
-      next: () => ({ title: BLOG_POSTS_META.LEARNING_RUST_DAY_3.title, slug: BLOG_POSTS_META.LEARNING_RUST_DAY_3.slug }),
-      prev: () => ({ title: BLOG_POSTS_META.LEARNING_RUST_DAY_1.title, slug: BLOG_POSTS_META.LEARNING_RUST_DAY_1.slug })
+      next: () => pickArticle(BLOG_POSTS_META.LEARNING_RUST_DAY_3),
+      prev: () => pickArticle(BLOG_POSTS_META.LEARNING_RUST_DAY_1)
     }
   },
 
@@ -85,8 +84,8 @@ export const BLOG_POSTS_META: Record<string, BlogMeta> = {
     tags: "rust,learning",
     description: "Rust data types",
     articles: {
-      next: () => ({ title: BLOG_POSTS_META.LEARNING_RUST_DAY_4.title, slug: BLOG_POSTS_META.LEARNING_RUST_DAY_4.slug }),
-      prev: () => ({ title: BLOG_POSTS_META.LEARNING_RUST_DAY_2.title, slug: BLOG_POSTS_META.LEARNING_RUST_DAY_2.slug })
+      next: () => pickArticle(BLOG_POSTS_META.LEARNING_RUST_DAY_4),
+      prev: () => pickArticle(BLOG_POSTS_META.LEARNING_RUST_DAY_2)
     }
   },
 
@@ -97,7 +96,43 @@ export const BLOG_POSTS_META: Record<string, BlogMeta> = {
     tags: "rust,learning",
     description: "More data types in rust",
     articles: {
-      prev: () => ({ title: BLOG_POSTS_META.LEARNING_RUST_DAY_3.title, slug: BLOG_POSTS_META.LEARNING_RUST_DAY_3.slug })
+      next: () => pickArticle(BLOG_POSTS_META.LEARNING_RUST_DAY_5),
+      prev: () => pickArticle(BLOG_POSTS_META.LEARNING_RUST_DAY_3)
     }
-  }
+  },
+
+  LEARNING_RUST_DAY_5: {
+    title: "Learning Rust: Day 5",
+    slug: "learning-rust-day-5",
+    publishDate: "10/6/2022",
+    tags: "rust,learning",
+    description: "Loops, clone, scopes, and ownership in rust",
+    articles: {
+      next: () => pickArticle(BLOG_POSTS_META.LEARNING_RUST_DAY_6),
+      prev: () => pickArticle(BLOG_POSTS_META.LEARNING_RUST_DAY_4)
+    }
+  },
+
+  LEARNING_RUST_DAY_6: {
+    title: "Learning Rust: Day 6",
+    slug: "learning-rust-day-6",
+    publishDate: "10/7/2022",
+    tags: "rust, learning",
+    description: "Concept of reference and borrowing in rust",
+    articles: {
+      next: () => pickArticle(BLOG_POSTS_META.LEARNING_RUST_DAY_7),
+      prev: () => pickArticle(BLOG_POSTS_META.LEARNING_RUST_DAY_5)
+    }
+  },
+
+  LEARNING_RUST_DAY_7: {
+    title: "Learning Rust: Day 7",
+    slug: "learning-rust-day-7",
+    publishDate: "10/8/2022",
+    tags: "rust, learning",
+    description: "Packages and crates in rust",
+    articles: {
+      prev: () => pickArticle(BLOG_POSTS_META.LEARNING_RUST_DAY_6)
+    }
+  },
 }
