@@ -1,0 +1,76 @@
+import Layout from "@/components/Layout"
+import BlogLayout from "@/components/BlogLayout"
+import { BLOG_POSTS_META } from "@/CommandLine/constants"
+
+export const meta = BLOG_POSTS_META.LEARNING_RUST_DAY_5
+
+
+## Loops
+An interesting control flow type in Rust is the `loop`. `loop` allows the user to run pieces of code without end unless there is a system crash or the user explicitly ends the program. One of the most interesting features of a `loop` is the ability to return a value by specifying that value after the `break` statement. Unlike with expressions, the return value does require a `;`. A `loop` can also contain a label to disambiguate which loop is 'broken' from.
+
+``` rust 
+fn main() {
+    println!('hello')
+    let mut counter = 0;
+
+    let world = loop {
+      counter += 1;
+      
+      if counter == 3 {
+          break 'world'; 
+        }
+      };
+
+      println!(world);
+  }
+```
+
+## Ownership
+The concept of ownership the unique solution to Garbage Collection and the complex problem of memory safety which Rust implements.
+
+### Stack and Heap
+- _Stack_ - Store values in the order it gets them and removes the values in the opposite order. _Last In, First Out_. Pushing to the stack is faster than reading from the heap, because there is less travel time to the actual value.
+- _Heap_ - When you put data on the heap, you request a certain amount of space. The memory allocator allocates an empty spot in the heap, marks it as used, and returns a pointer to that address in memory. The pointer can be stored in the stack, but in order to retrieve the actual value, you must follow the pointer.
+
+### Scope
+A scope is the range within a program in which it is valid. String literals have a valid scope within the function they are created in.
+
+In the case of strings, if we want to mutate strings into an unknown size we must allocate space on the heap instead of in the stack. If an item that has been assigned to the heap is reassigned to another variable, this can become a cause for potential memory corruptions which have caused many C++ developers many headaches. 
+
+In Rust, variables and data interactions _move_ instead of being reassigned. The last variable that holds reference to the heap pointer is in charge of deallocating the memory for that instance. For example `String`, a class for managing heap interactions of strings, is made up of three parts: a pointer to the memory that holds the contents of the string, a length, and a capacity. Length and capacity matter but not for understanding ownership.
+
+``` rust
+fn main() {
+    let s1 = String::from("hello");
+    let s2 = s1;
+
+    println!("{}, world!", s1);
+}
+```
+
+In the above code, we reassign the pointer for `String::from("hello")` to the variable s2. This _moving_ of pointers makes s2 in charge of deallocating the memory for this pointer. This is commonly called _shallow copying_, but becuase Rust also invalidates s1, it is called _move_. 
+
+### Clone
+If we want to complete a deep copy of the item in the heap, we use a method called `clone`. 
+``` rust
+fn main() {
+    let s1 = String::from("hello");
+    let s2 = s1.clone();
+
+    println!("s1 = {}, s2 = {}", s1, s2);
+}
+```
+
+Integers are always deep copied because they are a fixed size so copying is not expensive to complete. Typically all Scalar values can implement `Copy`. 
+
+### Ownership and Functions
+The mechanics of moving ownership between functions is the same as that between variables. The last function to use a variable has ownership of deallocating it. 
+
+### Ownership and Returning Values
+The return value of a function returns the reference back to whatever variable is being assigned the return value. That variable now has ownserhip of deallocating itself.
+
+export default ({children})=> (
+  <BlogLayout title={meta.title} description={meta.description} date={meta.publishDate} articles={meta.articles}>
+    {children}
+  </BlogLayout>
+)
