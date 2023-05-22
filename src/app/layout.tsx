@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import '@/global.css'
 
 // TODO: improve the metadata
 export const metadata: Metadata = {

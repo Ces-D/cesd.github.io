@@ -1,0 +1,82 @@
+:root {
+  --grey-1: #999d93;
+  --grey-2: #abb4aa;
+  --grey-3: #727b73;
+  --grey-4: #a7abac;
+  --grey-5: #656b65;
+
+  --light-brown: #bfb39b;
+  --rust-red: #972303;
+  --swamp-green: #1f2719;
+
+  --light-color: #f5f3f7;
+  --dark-color: #0c0f0a;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Allow percentage based heights */
+html,
+body {
+  height: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: inherit;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: var(--dark-color);
+    color: var(--light-color);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  body {
+    background-color: var(--light-color);
+    color: var(--dark-color);
+  }
+}
