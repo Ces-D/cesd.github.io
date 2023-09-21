@@ -1,0 +1,3 @@
+:root {
+  --container-inline-spacing: clamp(0.313rem, 0.25rem + 0.333vw, 0.625rem);
+}

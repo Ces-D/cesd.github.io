@@ -1,0 +1,17 @@
+:root {
+  --background-color: #f7f6f3;
+  --text-color: #181610;
+  --brand-color: #2c3639;
+  --brand-complement-color: #dcd7c9;
+  --accent-color: #3f4e4f;
+  --accent-complement-color: #a27b5c;
+}
+
+[data-theme="dark"] {
+  --background-color: #181610;
+  --text-color: #f7f6f3;
+  --brand-color: #dcd7c9;
+  --brand-complement-color: #2c3639;
+  --accent-color: #a27b5c;
+  --accent-complement-color: #3f4e4f;
+}
