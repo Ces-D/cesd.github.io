@@ -1,14 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect , useState } from "react";
 import { BookOpen, Menu, Inbox, Moon, Sun } from "react-feather";
-
-import styles from "./mastHead.module.css";
-
 import { useTogglePreferredColorScheme } from "@/utils/useTogglePreferredColorscheme";
 import { appRoutes } from "@/utils/routes";
-import { useState } from "react";
+import styles from "./mastHead.module.css";
 
 export default function ActionButtons() {
   const { colorScheme, toggleColorScheme } = useTogglePreferredColorScheme();
@@ -28,34 +25,34 @@ export default function ActionButtons() {
       }
     };
     document.addEventListener("click", clickedAwayFromMenu);
-    return () => document.removeEventListener("click", clickedAwayFromMenu);
+    return () => { document.removeEventListener("click", clickedAwayFromMenu); };
   }, [menuButtonRef, menuRef]);
 
   return (
     <section content={styles["content-container"]}>
       <button
-        ref={menuButtonRef}
         className={styles["content-mobile-menu-button"]}
-        onClick={() => setOpenActionsMenu(!openActionsMenu)}
+        onClick={() => { setOpenActionsMenu(!openActionsMenu); }}
+        ref={menuButtonRef}
       >
         <Menu />
       </button>
       <menu
-        ref={menuRef}
-        data-open={openActionsMenu}
         className={styles["content-menu"]}
+        data-open={openActionsMenu}
+        ref={menuRef}
       >
-        <Link href={appRoutes.articles} className={styles["content-item"]}>
+        <Link className={styles["content-item"]} href={appRoutes.articles}>
           <BookOpen />
           articles
         </Link>
-        <Link href={appRoutes.contact} className={styles["content-item"]}>
+        <Link className={styles["content-item"]} href={appRoutes.contact}>
           <Inbox />
           contact
         </Link>
         <button
-          onClick={toggleColorScheme}
           className={styles["colorscheme-button"]}
+          onClick={toggleColorScheme}
         >
           {colorScheme === "dark" ? <Moon /> : <Sun />}
           {colorScheme}

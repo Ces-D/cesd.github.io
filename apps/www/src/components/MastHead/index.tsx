@@ -1,8 +1,6 @@
 import Link from "next/link";
-
-import styles from "./mastHead.module.css";
-
 import { appRoutes } from "@/utils/routes";
+import styles from "./mastHead.module.css";
 import ActionButtons from "./ActionButtons";
 
 export default function MastNavigation() {

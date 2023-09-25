@@ -1,0 +1,63 @@
+
+> www@0.1.0 build /Users/cesardiaz/Documents/projects/cesd.github.io/apps/www
+> next build
+
+   Creating an optimized production build...
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|javascript/auto|/Users/cesardiaz/Documents/projects/cesd.github.io/node_modules/.pnpm/next@13.5.1_react-dom@18.2.0_react@18.2.0/node_modules/next/dist/build/webpack/loaders/next-flight-css-loader.js??ruleSet[1].rules[14].oneOf[7].use[0]!/Users/cesardiaz/Documents/projects/cesd.github.io/node_modules/.pnpm/next@13.5.1_react-dom@18.2.0_react@18.2.0/node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[7].use[1]!/Users/cesardiaz/Documents/projects/cesd.github.io/node_modules/.pnpm/next@13.5.1_react-dom@18.2.0_react@18.2.0/node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[7].use[2]!/Users/cesardiaz/Documents/projects/cesd.github.io/apps/www/src/components/MastHead/mastHead.module.css|rsc': No serializer registered for Warning
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> Array { 1 items } -> webpack/lib/ModuleWarning -> Warning
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|javascript/auto|/Users/cesardiaz/Documents/projects/cesd.github.io/node_modules/.pnpm/next@13.5.1_react-dom@18.2.0_react@18.2.0/node_modules/next/dist/build/webpack/loaders/next-flight-css-loader.js??ruleSet[1].rules[14].oneOf[7].use[0]!/Users/cesardiaz/Documents/projects/cesd.github.io/node_modules/.pnpm/next@13.5.1_react-dom@18.2.0_react@18.2.0/node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[7].use[1]!/Users/cesardiaz/Documents/projects/cesd.github.io/node_modules/.pnpm/next@13.5.1_react-dom@18.2.0_react@18.2.0/node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[7].use[2]!/Users/cesardiaz/Documents/projects/cesd.github.io/apps/www/src/components/MastHead/mastHead.module.css|ssr': No serializer registered for Warning
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> Array { 1 items } -> webpack/lib/ModuleWarning -> Warning
+ ⚠ Compiled with warnings
+
+./src/components/MastHead/mastHead.module.css
+Warning
+
+(49:5) autoprefixer: start value has mixed support, consider using flex-start instead
+
+Import trace for requested module:
+./src/components/MastHead/mastHead.module.css
+./src/components/MastHead/index.tsx
+./src/app/layout.tsx
+
+./src/components/MastHead/mastHead.module.css
+Warning
+
+(49:5) autoprefixer: start value has mixed support, consider using flex-start instead
+
+Import trace for requested module:
+./src/components/MastHead/mastHead.module.css
+./src/components/MastHead/ActionButtons.tsx
+
+   Linting and checking validity of types...
+
+./src/app/layout.tsx
+1:1  Warning: There should be no empty line between import groups  import/order
+
+./src/components/MastHead/ActionButtons.tsx
+33:7  Warning: Missing an explicit type attribute for button  react/button-has-type
+53:9  Warning: Missing an explicit type attribute for button  react/button-has-type
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
+   Collecting page data...
+   Generating static pages (0/4)...
+   Generating static pages (1/4)
+
+   Generating static pages (2/4)
+
+   Generating static pages (3/4)
+
+ ✓ Generating static pages (4/4)
+   Finalizing page optimization...
+
+Route (app)                              Size     First Load JS
+┌ ○ /                                    1.24 kB        80.5 kB
+└ ○ /_not-found                          876 B          80.1 kB
++ First Load JS shared by all            79.2 kB
+  ├ chunks/345-284dbef2a0923518.js       26.5 kB
+  ├ chunks/4fdb158a-b325d0dcd69c849f.js  50.8 kB
+  ├ chunks/main-app-f2bf14d5cce9b11c.js  218 B
+  └ chunks/webpack-fcb45b5c9451f87a.js   1.7 kB
+
+
+○  (Static)  automatically rendered as static HTML (uses no initial props)
+

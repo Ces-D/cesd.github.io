@@ -1,0 +1,25 @@
+.sprouting-container[data-theme="light"] {
+  --alpha: hsl(183, 39%, 67%);
+  --omega: hsl(19, 83%, 58%);
+  --leaf-hsl: 123, 39%, 31%;
+}
+
+.sprouting-container[data-theme="dark"] {
+  --alpha: hsl(183, 36%, 47%);
+  --omega: hsl(19, 80%, 38%);
+  --leaf-hsl: 123, 39%, 41%;
+}
+
+.sprouting-container {
+  --leaf: hsl(var(--leaf-hsl));
+  --leaf-10: hsla(var(--leaf-hsl), 10%);
+  --leaf-70: hsla(var(--leaf-hsl), 70%);
+}
+
+.content {
+  width: 100%;
+  max-width: 550px;
+  height: min(75vh, 90vmin);
+  margin-inline: auto;
+  outline: solid 1px blue;
+}
