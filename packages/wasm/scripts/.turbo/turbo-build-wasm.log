@@ -1,0 +1,32 @@
+
+> @wasm/scripts@0.1.0 build-wasm /Users/cesardiaz/Documents/projects/cesd.github.io/packages/wasm/scripts
+> pnpm run build-mega-utils
+
+
+> @wasm/scripts@0.1.0 build-mega-utils /Users/cesardiaz/Documents/projects/cesd.github.io/packages/wasm/scripts
+> bash build_wasm.sh mega-utils
+
+[INFO]: 🎯  Checking for the Wasm target...
+[INFO]: 🌀  Compiling to Wasm...
+   Compiling mega-utils v0.1.0 (/Users/cesardiaz/Documents/projects/cesd.github.io/packages/wasm/mega-utils)
+warning: function `set_panic_hook` is never used
+ --> src/utils.rs:1:8
+  |
+1 | pub fn set_panic_hook() {
+  |        ^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(dead_code)]` on by default
+
+warning: struct `Data` is never constructed
+ --> src/svg/path/mod.rs:3:12
+  |
+3 | pub struct Data {}
+  |            ^^^^
+
+warning: `mega-utils` (lib) generated 2 warnings
+    Finished release [optimized] target(s) in 0.36s
+[INFO]: ⬇️  Installing wasm-bindgen...
+[INFO]: Optimizing wasm binaries with `wasm-opt`...
+[INFO]: Optional fields missing from Cargo.toml: 'description', 'repository', and 'license'. These are not necessary, but recommended
+[INFO]: ✨   Done in 0.57s
+[INFO]: 📦   Your wasm pkg is ready to publish at /Users/cesardiaz/Documents/projects/cesd.github.io/packages/wasm/mega-utils/pkg.

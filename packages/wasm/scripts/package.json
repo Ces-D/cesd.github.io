@@ -1,0 +1,10 @@
+{
+  "name": "@wasm/scripts",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build-wasm": "pnpm run build-mega-utils",
+    "build-mega-utils": "bash build_wasm.sh mega-utils",
+    "build-mega-utils-prod": "bash build_wasm.sh mega-utils -r"
+  }
+}
