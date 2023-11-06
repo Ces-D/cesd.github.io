@@ -1,0 +1,123 @@
+$border-radius: 0.5rem;
+
+.layout {
+  max-width: 1700px;
+  margin-inline: auto;
+  margin-block: var(--container-block-spacing-lg);
+}
+
+.article-previews {
+  overflow-x: auto;
+  display: flex;
+  flex-wrap: nowrap;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+
+  &__box {
+    flex-grow: 1;
+    padding: 1rem 2rem;
+    border-right: 1px solid var(--brand-color);
+    border-left: 1px solid var(--brand-color);
+
+    &__link {
+      width: 20rem;
+      display: block;
+      border-radius: $border-radius;
+
+      &:hover {
+        color: var(--accent-color);
+        text-decoration: underline;
+      }
+    }
+
+    &:first-child {
+      border-left: 1px solid transparent;
+    }
+    &:last-child {
+      border-right: 1px solid transparent;
+    }
+
+    &__image {
+      position: relative;
+      height: 10rem;
+      margin-bottom: 1rem;
+    }
+
+    &__text {
+      overflow: hidden;
+      text-align: center;
+      display: -webkit-box;
+      -webkit-line-clamp: 3; /* number of lines to show */
+      line-clamp: 3;
+      -webkit-box-orient: vertical;
+    }
+  }
+}
+
+.search-bar {
+  display: block;
+  position: relative;
+  width: max(350px, 50vw);
+  margin-inline: auto;
+  margin-block: var(--container-block-spacing);
+
+  &:focus-within {
+    > ul:last-child {
+      display: initial;
+    }
+  }
+
+  &__keyboard {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    border: 1px solid var(--brand-complement-color);
+    border-radius: $border-radius;
+    padding: 10px 15px;
+
+    &:focus-within {
+      border-color: var(--brand-color);
+    }
+
+    > input {
+      flex-grow: 1;
+      background-color: inherit;
+      outline: none;
+      border: none;
+      font-size: var(--font-size-md);
+    }
+  }
+
+  &__results {
+    list-style-type: none;
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 40vh;
+    overflow-y: auto;
+    border-radius: $border-radius;
+    background-color: var(--brand-color);
+    color: var(--brand-complement-color);
+
+    &__item {
+      &:first-child {
+        &:hover {
+          border-top-left-radius: $border-radius;
+          border-top-right-radius: $border-radius;
+        }
+      }
+
+      & > a {
+        display: flex;
+        gap: 1rem;
+        padding: 10px 15px;
+      }
+
+      &:hover {
+        background-color: var(--accent-color);
+        color: var(--accent-complement-color);
+      }
+    }
+  }
+}

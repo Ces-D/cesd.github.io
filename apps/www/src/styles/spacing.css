@@ -1,3 +1,7 @@
 :root {
   --container-inline-spacing: clamp(0.313rem, 0.25rem + 0.333vw, 0.625rem);
+  --container-inline-spacing-lg: clamp(1rem, -0.25rem + 3.333vw, 2.75rem);
+
+  --container-block-spacing: clamp(0.313rem, 0.25rem + 0.333vw, 0.625rem);
+  --container-block-spacing-lg: clamp(1rem, -0.25rem + 3.333vh, 2.75rem);
 }

@@ -1,0 +1,104 @@
+$media-size: 900px;
+
+.layout {
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  gap: var(--container-inline-spacing);
+}
+
+.side-nav {
+  margin-top: var(--container-block-spacing-lg);
+  padding-left: 2rem;
+  position: relative;
+
+  &__list {
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    overflow-y: auto;
+    list-style: none;
+    margin-inline: var(--container-inline-spacing);
+
+    &__item {
+      border-left: 5px dotted var(--brand-complement-color);
+      padding-left: 10px;
+      padding-block: 1rem;
+      font-size: var(--font-size-xsm);
+
+      &::before {
+        content: '';
+        display: inline-block;
+        width: 2rem;
+        margin-right: var(--container-inline-spacing);
+        border-bottom: 5px dotted var(--brand-complement-color);
+      }
+    }
+  }
+}
+
+.article-container {
+  padding-inline: var(--container-block-spacing);
+  margin-block: var(--container-block-spacing-lg);
+
+  &__title {
+    text-align: center;
+  }
+
+  &__article {
+    display: flex;
+    flex-direction: column;
+    gap: var(--container-block-spacing-lg);
+    max-width: 900px;
+    margin-inline: auto;
+  }
+}
+
+.article-nav {
+  margin-block: var(--container-block-spacing-lg);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--container-block-spacing-lg);
+  max-width: 90%;
+  margin-inline: auto;
+
+  &__action {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 1rem 2rem;
+    width: calc(100% - 20px);
+    border-top: 1px solid var(--brand-color);
+
+    &:last-child {
+      border-top-right-radius: 0.35rem;
+      border-right: 1px solid var(--brand-color);
+      place-self: end;
+    }
+    &:first-child {
+      border-top-left-radius: 0.35rem;
+      border-left: 1px solid var(--brand-color);
+    }
+
+    &:hover {
+      border-color: var(--accent-color);
+      color: var(--accent-color);
+    }
+  }
+}
+
+@media (max-width: $media-size) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .side-nav {
+    display: none;
+  }
+}
+
+@media (max-width: calc($media-size
++ 300px)) {
+  .article-nav {
+    grid-template-columns: 1fr;
+    max-width: 97%;
+  }
+}
