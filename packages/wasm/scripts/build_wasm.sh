@@ -24,5 +24,5 @@ do
 done
 
 getWasmCrate
-wasm-pack build $wasmCrate --scope WORKSPACE_SCOPE --release $release_build
+wasm-pack build $wasmCrate --scope $WORKSPACE_SCOPE --release $release_build
 
