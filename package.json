@@ -1,17 +1,19 @@
 {
   "private": true,
   "scripts": {
-    "build": "turbo run lint build",
+    "build": "turbo run format lint build",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "build-wasm": "turbo build-wasm"
+    "build:wasm": "turbo build-wasm",
+    "upgrade:all": "pnpm upgrade -r",
+    "outdated:all": "pnpm outdated -r"
   },
   "devDependencies": {
-    "eslint": "^8.50.0",
+    "eslint": "^8.53.0",
     "prettier": "^3.0.3",
     "tsconfig": "workspace:*",
-    "turbo": "^1.10.14"
+    "turbo": "^1.10.16"
   },
   "packageManager": "pnpm@8.8.0"
 }

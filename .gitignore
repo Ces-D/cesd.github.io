@@ -33,6 +33,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# turbo
+.turbo*
+
 # typescript
 *.tsbuildinfo
 
@@ -45,5 +48,6 @@ pnpm-lock.yaml
 /scripts/
 
 # wasm
-*/pkg
-*/target
+**/pkg
+**/target
+Cargo.lock
