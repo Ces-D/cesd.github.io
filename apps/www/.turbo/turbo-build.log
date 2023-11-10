@@ -1,38 +1,0 @@
-
-> www@0.1.0 build /Users/cesardiaz/Documents/projects/cesd.github.io/apps/www
-> next build
-
-   ▲ Next.js 14.0.1
-
-   Creating an optimized production build ...
- ✓ Compiled successfully
-   Linting and checking validity of types ...
-
-./src/app/articles/[article]/_components/SideNavigation.tsx
-10:63  Warning: Do not use Array index in keys  react/no-array-index-key
-
-info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
-   Collecting page data ...
-   Generating static pages (0/5) ...
-   Generating static pages (1/5) 
-   Generating static pages (2/5) 
-   Generating static pages (3/5) 
- ✓ Generating static pages (5/5) 
-   Finalizing page optimization ...
-   Collecting build traces ...
-
-Route (app)                              Size     First Load JS
-┌ ○ /                                    1.28 kB        86.4 kB
-├ ○ /_not-found                          883 B            86 kB
-├ ○ /articles                            5.48 kB        97.6 kB
-└ λ /articles/[article]                  137 B          85.3 kB
-+ First Load JS shared by all            85.2 kB
-  ├ chunks/63c487a0-b6cc8dc5c3080ca4.js  53.2 kB
-  ├ chunks/857-24a19ae9c824de42.js       30 kB
-  ├ chunks/main-app-a14f608875940833.js  231 B
-  └ chunks/webpack-5f37bbde5ab346da.js   1.8 kB
-
-
-○  (Static)   prerendered as static HTML
-λ  (Dynamic)  server-rendered on demand using Node.js
-
