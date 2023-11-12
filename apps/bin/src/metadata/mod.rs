@@ -6,8 +6,13 @@ use std::path::Path;
 use std::path::PathBuf;
 
 mod article_metadata;
+mod cache;
 
-#[derive(Debug)]
+// TODO: create a metdata cache file. This should store all the articles added and their metadata.
+// Its a db for our cli. This will be read whenever we instantiate a new metadata manager. This
+// metadata file should be in this repo.
+
+#[derive(Debug, Clone, Copy, clap::ValueEnum)]
 pub enum Category {
     Programming,
     BehindTheScenes,
@@ -56,7 +61,7 @@ impl MetaDataManager {
         let analytics = article_metadata::AnalyticsData::new(&content, &path);
         let interest = article_metadata::InterestData::new(category);
 
-        let slug = article_metadata::Slug(title.clone());
+        let slug = article_metadata::Slug::new(&title);
 
         let metadata = article_metadata::GrayMatterData::new(
             title,

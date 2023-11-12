@@ -1,6 +1,7 @@
 use chrono::{DateTime, Utc};
 use estimated_read_time;
 use keyphrases::KeyPhraseExtractor;
+use slugify_rs::slugify;
 use std::path::Path;
 use std::{collections::HashSet, fmt::Display};
 
@@ -8,6 +9,19 @@ use super::{Category, PublicationFormat};
 
 #[derive(Hash, Eq, PartialEq, Clone)]
 pub struct Slug(pub String);
+
+impl Slug {
+    pub fn new(title: &String) -> Slug {
+        let slug = slugify!(title);
+        Slug(slug)
+    }
+}
+
+impl Display for Slug {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", &self.0)
+    }
+}
 
 pub struct GrayMatterData {
     title: String,
@@ -60,7 +74,7 @@ impl Display for GrayMatterData {
             "Title: {}\nDescription: {}\nSlug: {}\nLength in words: {}\nReading time in minutes: {}\nKeywords: {}\nPublication format: {:?}\nCurated links: {}\nRelated posts: {}\nCategory: {:?}\nPublished: {}",
             self.title,
             self.description,
-            self.slug.0,
+            self.slug(),
             self.analytics.length_in_words,
             self.analytics.reading_time_in_minutes,
             keywords,
@@ -85,7 +99,7 @@ impl AnalyticsData {
         let reading_options = estimated_read_time::Options::new();
         let reading_time = estimated_read_time::text(content, &reading_options);
 
-        let phrase_extractor = KeyPhraseExtractor::new(content, 10);
+        let phrase_extractor = KeyPhraseExtractor::new(content, 4);
         let keywords: Vec<String> = phrase_extractor
             .get_keywords()
             .iter()
