@@ -1,100 +1,44 @@
-use std::collections::HashMap;
-use std::fs::File;
-use std::io::prelude::*;
-use std::io::BufReader;
-use std::path::Path;
-use std::path::PathBuf;
+use serde::{Deserialize, Serialize};
+use slugify_rs::slugify;
 
-mod article_metadata;
-mod cache;
+pub mod analytics;
+pub mod interest;
 
-// TODO: create a metdata cache file. This should store all the articles added and their metadata.
-// Its a db for our cli. This will be read whenever we instantiate a new metadata manager. This
-// metadata file should be in this repo.
-
-#[derive(Debug, Clone, Copy, clap::ValueEnum)]
-pub enum Category {
-    Programming,
-    BehindTheScenes,
-}
-
-#[derive(Debug)]
-pub enum PublicationFormat {
-    Markdown,
-    Text,
-    Excel,
-}
-
-fn read_file_contents(file_path: &Path) -> String {
-    let file = File::open(file_path).expect("File not found");
-    let mut buf_reader = BufReader::new(file);
-    let mut contents = String::new();
-    buf_reader
-        .read_to_string(&mut contents)
-        .expect("Could not read file");
-    contents
-}
-
-pub struct MetaDataManager {
-    article_metadata: HashMap<article_metadata::Slug, article_metadata::GrayMatterData>,
-}
-
-impl MetaDataManager {
-    pub fn new(
-        metadata: Option<HashMap<article_metadata::Slug, article_metadata::GrayMatterData>>,
-    ) -> MetaDataManager {
-        MetaDataManager {
-            article_metadata: metadata.or_else(|| Some(HashMap::new())).unwrap(),
-        }
+#[derive(Serialize, Deserialize, Debug, Clone, Eq, PartialEq, Hash)]
+pub struct Slug(String);
+impl Slug {
+    pub fn new(s: &str) -> Slug {
+        Slug(slugify!(s, randomness = true, randomness_length = 2).to_owned())
     }
+}
 
-    /// Add this articles metadata to the metadata manager
-    pub fn add_article(
-        &mut self,
-        title: String,
-        description: String,
-        category: Category,
-        file_path: PathBuf,
-    ) -> article_metadata::Slug {
-        let path = Path::new(&file_path);
-        let content = read_file_contents(&path);
-        let analytics = article_metadata::AnalyticsData::new(&content, &path);
-        let interest = article_metadata::InterestData::new(category);
+impl std::fmt::Display for Slug {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        write!(f, "{}", &self.0)
+    }
+}
 
-        let slug = article_metadata::Slug::new(&title);
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Metadata {
+    title: String,
+    pub description: Option<String>,
+    slug: Slug,
+    pub analytics: analytics::AnalyticsData,
+    pub interest: interest::InterestData,
+}
 
-        let metadata = article_metadata::GrayMatterData::new(
+impl Metadata {
+    pub fn new(title: String) -> Metadata {
+        Metadata {
             title,
-            description,
-            slug.clone(),
-            analytics,
-            interest,
-            chrono::Utc::now(),
-        );
-
-        if self.article_metadata.contains_key(&metadata.slug()) {
-            panic!("Duplicate article slug found: {}", metadata.slug().0);
+            description: None,
+            slug: Slug::new(&title),
+            analytics: analytics::AnalyticsData::default(),
+            interest: interest::InterestData::default(),
         }
-        self.article_metadata.insert(metadata.slug(), metadata);
-
-        slug
     }
 
-    pub fn remove_article(&mut self, slug: article_metadata::Slug) {
-        self.article_metadata.remove(&slug);
-        self.article_metadata.values_mut().for_each(|article| {
-            if article.interest.contains_related_post(&slug) {
-                let mut updated_related = article.interest.read_related_posts();
-                updated_related.remove(&slug);
-                article.interest.set_related_posts(updated_related);
-            }
-        })
-    }
-
-    pub fn get_article_metadata(
-        &self,
-        slug: &article_metadata::Slug,
-    ) -> &article_metadata::GrayMatterData {
-        &self.article_metadata.get(slug).expect("Article not found")
+    pub fn slug(&self) -> Slug {
+        self.slug.clone()
     }
 }

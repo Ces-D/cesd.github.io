@@ -1,5 +1,7 @@
 mod cesdia;
+mod manager;
 mod metadata;
+mod ollama;
 
 fn main() {
     let cmd = clap::Command::new("cesdia-site")
@@ -11,7 +13,7 @@ fn main() {
     match matches.subcommand() {
         Some(("article", article_matches)) => {
             cesdia::article_command::handle_command_matches(article_matches)
-        }
+        },
         _ => panic!("Unknown subcommand"),
     }
 }

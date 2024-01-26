@@ -1,5 +1,7 @@
 use clap::{ArgMatches, Command};
 mod add_command;
+mod list_command;
+mod remove_command;
 
 pub fn create_command() -> Command {
     Command::new("article")
@@ -7,11 +9,15 @@ pub fn create_command() -> Command {
         .about("Manage articles in the cesdia website. Controls setting metadata for selected blog posts from wherever in the file susare located.")
         .subcommand_required(true)
         .subcommand(add_command::create_command())
+        .subcommand(remove_command::create_command())
+        .subcommand(list_command::create_command())
 }
 
 pub fn handle_command_matches(matches: &ArgMatches) {
     match matches.subcommand() {
         Some(("add", add_matches)) => add_command::handle_command_matches(add_matches),
+        Some(("remove", remove_matches)) => remove_command::handle_command_matches(remove_matches),
+        Some(("list", list_matches)) => list_command::handle_command_matches(list_matches),
         _ => panic!("Unknown article subcommmand"),
     }
 }

@@ -1,6 +1,5 @@
+use crate::metadata::{article_metadata::Category, MetadataStore};
 use clap::{Arg, ArgAction, ArgMatches, Command};
-
-use crate::metadata::{Category, MetaDataManager};
 
 pub fn create_command() -> Command {
     Command::new("add")
@@ -21,6 +20,7 @@ pub fn create_command() -> Command {
         )
         .arg(
             Arg::new("description")
+                .short('d')
                 .help("description of the article")
                 .action(ArgAction::Set)
                 .default_value("")
@@ -28,6 +28,7 @@ pub fn create_command() -> Command {
         )
         .arg(
             Arg::new("category")
+                .short('c')
                 .help("article category")
                 .action(ArgAction::Set)
                 .default_value("behind-the-scenes")
@@ -36,20 +37,14 @@ pub fn create_command() -> Command {
 }
 
 pub fn handle_command_matches(matches: &ArgMatches) {
-    let target = matches
-        .get_one::<std::path::PathBuf>("target")
-        .expect("target file is required");
-    let title = matches
-        .get_one::<String>("title")
-        .expect("title of article is required");
-    let description = matches
-        .get_one::<String>("description")
-        .expect("description should have a default value");
-    let category = matches
-        .get_one::<Category>("category")
-        .expect("category should have a default value");
+    let target = matches.get_one::<std::path::PathBuf>("target").expect("target file is required");
+    let title = matches.get_one::<String>("title").expect("title of article is required");
+    let description =
+        matches.get_one::<String>("description").expect("description should have a default value");
+    let category =
+        matches.get_one::<Category>("category").expect("category should have a default value");
 
-    let mut manager = MetaDataManager::new(None);
+    let mut manager = MetaDataManager::new();
     let slug = manager.add_article(
         title.to_string(),
         description.to_owned(),
@@ -58,6 +53,7 @@ pub fn handle_command_matches(matches: &ArgMatches) {
     );
 
     let added = manager.get_article_metadata(&slug);
+    manager.save();
 
     println!("Added article with slug:\n\n {}", added);
 }
