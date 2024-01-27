@@ -1,0 +1,81 @@
+.horizontal-intrigue {
+  width: 100%;
+  max-width: 300px;
+  height: 1rem;
+  border-bottom: 2px solid var(--accent-color);
+  position: relative;
+}
+.horizontal-intrigue__bar1 {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 40%;
+  height: 2px;
+  background-color: var(--accent-color);
+  border-radius: 0.35rem;
+}
+.horizontal-intrigue__bar2 {
+  position: absolute;
+  left: 50%;
+  bottom: 2px;
+  transform: translateX(-50%);
+  width: 10%;
+  height: 2px;
+  background-color: var(--accent-color);
+  border-radius: 0.35rem;
+}
+
+.dotted-intrigue {
+  width: 100%;
+  max-width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+.dotted-intrigue__lollipop {
+  display: flex;
+  align-items: center;
+}
+.dotted-intrigue__lollipop__stick {
+  width: 100px;
+  height: 2px;
+  background-color: var(--accent-color);
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-right-radius: 0.35rem;
+  border-bottom-right-radius: 0.35rem;
+}
+.dotted-intrigue__lollipop__stick:first-child {
+  border-top-left-radius: 0.35rem;
+  border-bottom-left-radius: 0.35rem;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.dotted-intrigue__lollipop__candy {
+  width: 20px;
+  aspect-ratio: 1;
+  border-radius: 100%;
+  background-color: var(--accent-color);
+}
+.dotted-intrigue__circle {
+  height: 20px;
+  aspect-ratio: 1;
+  border-radius: 100%;
+  background-color: var(--accent-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dotted-intrigue__circle > div {
+  height: 20px;
+  aspect-ratio: 1;
+  background: radial-gradient(
+    circle,
+    transparent 0px,
+    transparent 5px,
+    var(--background-color) 5px
+  );
+  border-radius: 100%;
+}

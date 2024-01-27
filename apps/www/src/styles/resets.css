@@ -19,6 +19,8 @@ body {
   color: var(--text-color);
   -webkit-font-smoothing: antialiased;
   font-size: var(--font-size-md);
+  min-height: 100vh;
+  min-width: 350px;
 }
 
 * {

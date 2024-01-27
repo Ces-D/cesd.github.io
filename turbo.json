@@ -3,7 +3,7 @@
   "globalDependencies": ["**/.env.*local"],
   "pipeline": {
     "build": {
-      "dependsOn": ["^build", "build-wasm"],
+      "dependsOn": ["^build"],
       "outputs": [".next/**", "!.next/cache/**"]
     },
     "lint": {},
@@ -11,7 +11,6 @@
     "dev": {
       "cache": false,
       "persistent": true
-    },
-    "build-wasm": {}
+    }
   }
 }
