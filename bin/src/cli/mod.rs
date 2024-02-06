@@ -1,8 +1,10 @@
-use std::io::Write;
+use core::panic;
 
+use convert_case::{Case, Casing};
 use slugify_rs::slugify;
 use tabled;
 
+use crate::files::{articles, metadata};
 use crate::models::{
     AddArticlePresentation, AnalyticsData, InterestData, Metadata, MetadataSimple, Slug,
 };
@@ -13,60 +15,6 @@ use crate::ollama::{
 mod add_article_command;
 mod delete_article_command;
 mod list_article_command;
-
-pub fn articles_dir() -> std::path::PathBuf {
-    let dir = "projects/cesdia.github.io/www/src/articles";
-    let document_dir = dirs::document_dir().unwrap();
-    let articles_dir = document_dir.join(dir);
-    if !articles_dir.exists() {
-        std::fs::create_dir(&articles_dir)
-            .expect(format!("Failed to create articles directory at: {}", dir).as_str());
-    }
-    return articles_dir;
-}
-
-pub fn articles_metadata() -> std::path::PathBuf {
-    let articles_dir = articles_dir();
-    let metdata_path = articles_dir.join("articlesMetadata.json");
-    if !metdata_path.is_file() {
-        std::fs::File::create(&metdata_path).unwrap();
-    }
-    return metdata_path;
-}
-
-pub fn copy_article_to_articles_dir(
-    from: &std::path::PathBuf,
-    slug: &String,
-) -> std::path::PathBuf {
-    let to = articles_dir().join(format!("{}.md", slug));
-    std::fs::copy(from, to.clone()).unwrap();
-    to
-}
-
-pub fn read_articles_metadata_file() -> Vec<Metadata> {
-    let contents = std::fs::read_to_string(articles_metadata()).unwrap();
-    let metadata: Vec<Metadata> = serde_json::from_str(&contents).unwrap();
-    return metadata;
-}
-
-pub fn write_articles_metadata_file(metadata: &Vec<Metadata>) {
-    let mut file =
-        std::fs::OpenOptions::new().write(true).create(true).open(articles_metadata()).unwrap();
-    let contents = serde_json::to_string(metadata).unwrap();
-    file.write_all(contents.as_bytes()).unwrap();
-}
-
-pub fn article_already_published(slug: &Slug, metadata: &Vec<Metadata>) -> bool {
-    let article_path = articles_dir().join(format!("{}.md", slug.0));
-    return article_path.exists() && metadata.iter().any(|m| m.slug == slug.clone());
-}
-
-pub fn read_article_file(path: &std::path::PathBuf) -> String {
-    if path.extension().unwrap() != "md" {
-        panic!("File is not a markdown file");
-    }
-    std::fs::read_to_string(path).unwrap()
-}
 
 pub async fn generate_analytics_data(contents: &String) -> AnalyticsData {
     let reading_options = estimated_read_time::Options::default();
@@ -100,7 +48,8 @@ pub async fn run() {
 
     match cli.subcommand() {
         Some((list_article_command::LIST_COMMAND_NAME, _)) => {
-            let metadata = read_articles_metadata_file();
+            // This should either check or create the metadata file
+            let metadata = metadata::read_metadata_file();
             let metadata = metadata.iter().map(|m| MetadataSimple::from(m));
             let presentation = tabled::Table::new(metadata);
             print!("{}", presentation);
@@ -109,21 +58,29 @@ pub async fn run() {
         Some((add_article_command::ADD_COMAND_NAME, matches)) => {
             let (path, title) = add_article_command::parse_matches(matches);
             let slug = Slug(slugify!(title.as_str()));
-            let mut metadata = read_articles_metadata_file();
-            if article_already_published(&slug, &metadata) {
-                panic!("Article already exists with slug: {}", slug.0);
+            let mut metadata = metadata::read_metadata_file();
+
+            if !articles::is_accepted_format(&path) {
+                panic!("Orignal source is not in accepted format")
             }
-            let copied_path = copy_article_to_articles_dir(&path, &slug.0);
-            let contents = read_article_file(&copied_path);
+            if articles::article_published(&slug) {
+                panic!("Article previously added: {}", slug);
+            }
+            if metadata::is_metadata_captured(&slug, &metadata) {
+                panic!("Article metadata previously captured: {}", slug)
+            }
+
+            let copied_path = articles::mv_to(&path, &slug);
+            let contents = articles::read_article_file(&copied_path);
             let data = Metadata {
-                title,
+                title: title.to_case(Case::Title),
                 description: generate_article_description(&contents).await,
                 slug,
                 interest: generate_interest_data(&contents).await,
                 analytics: generate_analytics_data(&contents).await,
             };
             metadata.push(data.clone());
-            write_articles_metadata_file(&metadata);
+            metadata::write_articles_metadata_file(&metadata);
             let presentation = tabled::Table::new(vec![AddArticlePresentation {
                 title: data.title,
                 from_path: path.to_str().unwrap_or("n/a").to_string(),
@@ -134,9 +91,28 @@ pub async fn run() {
 
         Some((delete_article_command::DELETE_COMMAND_NAME, matches)) => {
             let slug = delete_article_command::parse_matches(matches);
-            todo!()
+            let mut metadata = metadata::read_metadata_file();
+
+            if !articles::article_published(&slug) {
+                panic!("Article not previously added: {}", slug);
+            }
+            if !metadata::is_metadata_captured(&slug, &metadata) {
+                panic!("Article metadata not previously captured: {}", slug)
+            }
+
+            let target_index = metadata.iter().position(|r| &r.slug == &slug).unwrap();
+            metadata.swap_remove(target_index);
+            match articles::rm_from(&slug) {
+                Ok(_) => {
+                    metadata::write_articles_metadata_file(&metadata);
+                    print!("Success removing file");
+                },
+                Err(_) => {
+                    panic!("Error removing articles file")
+                },
+            }
         },
         None => print!("No subcommand was used\n"),
-        _ => print!("Unknow subcommand was used\n"),
+        _ => print!("Unknown subcommand was used\n"),
     }
 }

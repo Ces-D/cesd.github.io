@@ -1,12 +1,26 @@
 use serde::{Deserialize, Serialize};
-use std::collections::HashSet;
+use std::{collections::HashSet, fmt::Display};
 use tabled::Tabled;
 
 #[derive(Serialize, Deserialize, Debug, Clone, Eq, PartialEq, Hash)]
 pub struct Slug(pub String);
 
+impl Display for Slug {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.0)
+    }
+}
+
 #[derive(
-    Serialize, Deserialize, Debug, Clone, Eq, PartialEq, clap::ValueEnum, strum_macros::Display,
+    Serialize,
+    Deserialize,
+    Debug,
+    Clone,
+    Eq,
+    PartialEq,
+    clap::ValueEnum,
+    strum_macros::Display,
+    strum_macros::EnumIter,
 )]
 pub enum Category {
     ComebackAndRead,
