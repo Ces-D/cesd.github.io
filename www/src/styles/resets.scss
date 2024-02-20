@@ -10,13 +10,13 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
-html[data-theme='dark'] {
+html[data-theme="dark"] {
   color-scheme: dark;
 }
 
 body {
-  background-color: var(--background-color);
-  color: var(--text-color);
+  background-color: var(--base-100);
+  color: var(--base-content);
   -webkit-font-smoothing: antialiased;
   font-size: var(--font-size-md);
   min-height: 100vh;
@@ -28,7 +28,6 @@ body {
   padding: 0;
   font: inherit;
   color: inherit;
-  font-family: 'JetBrains Mono';
 }
 
 p,
@@ -47,31 +46,37 @@ h1 {
   font-style: normal;
   font-size: var(--font-size-4xl);
 }
+
 h2 {
   font-weight: 700;
   font-style: normal;
   font-size: var(--font-size-3xl);
 }
+
 h3 {
   font-weight: 600;
   font-style: normal;
   font-size: var(--font-size-2xl);
 }
+
 h4 {
   font-weight: 700;
   font-style: normal;
   font-size: var(--font-size-xl);
 }
+
 h5 {
   font-weight: 300;
   font-style: normal;
   font-size: var(--font-size-lg);
 }
+
 h6 {
   font-weight: 100;
   font-style: normal;
   font-size: var(--font-size-lg);
 }
+
 p {
   font-weight: 400;
   font-style: normal;
@@ -95,9 +100,9 @@ select {
 
 /** Correct the inability to style clickable types in iOS and Safari. */
 button,
-[type='button'],
-[type='reset'],
-[type='submit'] {
+[type="button"],
+[type="reset"],
+[type="submit"] {
   appearance: button;
   -webkit-appearance: button;
   cursor: pointer;
@@ -110,13 +115,14 @@ a {
   text-decoration: none;
   cursor: pointer;
 }
+
 a :is(p, h1, h2, h3, h4, h5, h6) {
   cursor: inherit;
 }
 
 /** Adjust outline */
 * {
-  outline-color: var(--accent-color);
+  outline-color: var(--accent);
 }
 
 /** Remove the default vertical scrollbar in IE 10+. */
