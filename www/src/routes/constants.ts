@@ -1,6 +1,5 @@
 export const route = {
   Home: "/",
-  Articles: "/articles",
   Article: {
     static: "/article/:slug",
     dynamic: (slug: string) => `/article/${encodeURIComponent(slug)}`,

@@ -4,4 +4,8 @@
 
   --container-block-spacing: clamp(0.313rem, 0.25rem + 0.333vw, 0.625rem);
   --container-block-spacing-lg: clamp(1rem, -0.25rem + 3.333vh, 2.75rem);
+
+  --mobile: 375px;
+  --laptop: 1440px;
+  --desktop: 1920px;
 }

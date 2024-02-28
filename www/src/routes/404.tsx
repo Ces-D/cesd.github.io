@@ -1,7 +1,9 @@
+import { Main } from "../components/Container";
+
 export default function NotFoundRoute() {
   return (
-    <div>
+    <Main>
       <div>Not Found Page</div>
-    </div>
+    </Main>
   );
 }

@@ -1,0 +1,37 @@
+[
+  {
+    "title": "Intro To Rtc",
+    "description": " WebRTC (Web Real-Time Communications) is an open-source project that enables real-time voice, text, and video communication capabilities in web browsers and mobile devices. It uses JavaScript, APIs, and HTML5 to embed communications within web browsers, allowing users to initiate, monitor, and end P2P connections between devices for bidirectional data transfer. WebRTC supports various network scenarios including those with NAT firewalls, using STUN or TURN servers for IP translation. Before audio and video files are sent, they are compressed using codecs. Common use cases include video chats, healthcare, security, online gaming, and education. Pros of WebRTC include being open-source and free, supported by major browsers, eliminating manual integration work, adjusting communication quality, not requiring third-party components, and direct P2P connections. Cons include lack of support on some browsers and mobile devices, establishing P2P browser connections causing bandwidth issues, high maintenance costs for powerful servers, unclear security and privacy standards, and inconsistent video or audio quality over the internet due to lacking definitive quality of service standards.",
+    "slug": "intro-to-rtc",
+    "interest": {
+      "curated_links": [],
+      "related_posts": [],
+      "category": "Other",
+      "keywords": [
+        "[\n{\"key\": \"WebRTC\"",
+        "\"description\": \"open source project for real-time communication in web browsers\"}",
+        "{\"key\": \"Real-time communication\"",
+        "\"description\": \"voice",
+        "text",
+        "and video communication through APIs\"}",
+        "{\"key\": \"P2P communications\"",
+        "\"description\": \"direct device-to-device connections\"}",
+        "{\"key\": \"STUN",
+        "TURN servers\"",
+        "\"description\": \"used for IP address translation and traffic relaying\"}",
+        "{\"key\": \"Use cases\"",
+        "\"description\": \"video chats",
+        "telehealth",
+        "home security",
+        "online gaming",
+        "online education\"}\n]"
+      ]
+    },
+    "analytics": {
+      "length_in_words": 793,
+      "reading_time_in_minutes": 3,
+      "published_on": "2024-02-27T19:16:06.112616971Z",
+      "updated_on": "2024-02-27T19:16:06.112622639Z"
+    }
+  }
+]

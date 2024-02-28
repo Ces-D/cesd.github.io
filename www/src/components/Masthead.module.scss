@@ -1,0 +1,33 @@
+.masthead {
+  padding-inline: var(--container-inline-spacing);
+  padding-block: var(--container-block-spacing);
+
+  &_container {
+    margin-inline: auto;
+    max-width: var(--desktop);
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+
+    &_heading {
+      line-height: 1;
+    }
+
+    &_nav {
+      display: flex;
+      justify-items: end;
+      gap: 1rem;
+
+      &_link {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        &:hover {
+          text-decoration: underline;
+          color: var(--accent);
+        }
+      }
+    }
+  }
+}

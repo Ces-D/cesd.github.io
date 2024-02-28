@@ -1,0 +1,21 @@
+
+.dialog_search {
+  min-height: 50vh;
+  padding-inline: var(--container-inline-spacing-lg);
+  padding-block: var(--container-block-spacing-lg);
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  &_label {
+    padding-block: var(--container-block-spacing);
+  }
+}
+
+// TODO: Update the styles for the article_content
+.article_content {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: start;
+}

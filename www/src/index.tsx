@@ -11,7 +11,6 @@ import "./styles/spacing.scss";
 import "./styles/resets.scss";
 
 const HomeRoute = lazy(() => import("./routes/Home"));
-const ArticlesRoute = lazy(() => import("./routes/Articles"));
 const ArticleRoute = lazy(() => import("./routes/Article"));
 const NotFoundRoute = lazy(() => import("./routes/404"));
 
@@ -28,7 +27,6 @@ render(
     <MetaProvider>
       <Router>
         <Route path={route.Home} component={HomeRoute} />
-        <Route path={route.Articles} component={ArticlesRoute} />
         <Route path={route.Article.static} component={ArticleRoute} />
         <Route path={route[404]} component={NotFoundRoute} />
       </Router>
