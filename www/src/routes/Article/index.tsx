@@ -1,10 +1,20 @@
 import { useParams } from "@solidjs/router";
-import { lazy, onCleanup, onMount, Suspense } from "solid-js";
+import {
+  lazy,
+  onCleanup,
+  onMount,
+  Suspense,
+  createSignal,
+  createDeferred,
+} from "solid-js";
+import { Icon } from "solid-heroicons";
+import { magnifyingGlass } from "solid-heroicons/solid";
 
 import { Article, Dialog, Main } from "../../components/Container";
 import { MetaData } from "../../components/MetaData";
 import { Masthead } from "../../components/Masthead";
 import { SearchInput } from "../../components/SearchBar";
+import { SearchResults } from "../../components/SearchResults";
 
 import articleMetadata from "../../articles/articlesMetadata.json";
 
@@ -17,19 +27,21 @@ type TArticleParams = {
 };
 
 export default function ArticleRoute() {
-  let readonlySearchInput: HTMLInputElement;
   let modalRef: HTMLDialogElement;
 
   const params = useParams<TArticleParams>();
-  const targetArticle = articleMetadata.find(
-    (article) => article.slug === params.slug,
-  );
+  const targetArticle = articleMetadata.find((article) => article.slug === params.slug);
 
   if (targetArticle === undefined) {
     throw new Error("Article not found");
   }
 
-  const onSearchInputButtonClick = (e: MouseEvent) => {
+  const [searchQuery, setSearchQuery] = createSignal("");
+  const deferredSearchValue = createDeferred(() => searchQuery(), {
+    timeoutMs: 750,
+  });
+
+  const onSearchButtonClick = (e: MouseEvent) => {
     e.stopPropagation();
     modalRef.showModal();
   };
@@ -41,33 +53,28 @@ export default function ArticleRoute() {
   };
 
   onMount(() => {
-    readonlySearchInput.addEventListener("click", onSearchInputButtonClick);
     modalRef.addEventListener("click", closeModalOnClick);
     onCleanup(() => {
-      readonlySearchInput.removeEventListener(
-        "click",
-        onSearchInputButtonClick,
-      );
       modalRef.removeEventListener("click", closeModalOnClick);
     });
   });
 
   return (
     <>
-      <MetaData
-        title={targetArticle.title}
-        description={targetArticle.description}
-      />
+      <MetaData title={targetArticle.title} description={targetArticle.description} />
       <Masthead>
-        <SearchInput readonly ref={readonlySearchInput!} />
+        <button onClick={onSearchButtonClick}>
+          <Icon path={magnifyingGlass} />
+        </button>
       </Masthead>
       <Dialog ref={modalRef!}>
         <form class={styles.dialog_search}>
           <p class={styles.dialog_search_label}>
             Find an interesting article or whatever!
           </p>
-          <SearchInput autofocus />
+          <SearchInput onChange={(e) => setSearchQuery(e.target.value)} />
         </form>
+        <SearchResults searchQuery={deferredSearchValue()} />
       </Dialog>
       <Main>
         <Article>

@@ -8,5 +8,10 @@ export type TSearchInputProps = Omit<
 >;
 
 export const SearchInput = (props: TSearchInputProps) => {
-  return <input {...props} class={styles.search} placeholder="Search" />;
+  return (
+    <div class={styles.search}>
+      <input {...props} class={styles.search_input} placeholder="Search" />
+      <div class={styles.search_enter}>Enter</div>
+    </div>
+  );
 };

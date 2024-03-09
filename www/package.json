@@ -1,4 +1,5 @@
 {
+  "$schema": "https://json.schemastore.org/package.json",
   "name": "www",
   "version": "0.0.0",
   "description": "",
@@ -6,25 +7,46 @@
     "scss-types:build": "typed-scss-modules src -n all --outputFolder __generated__",
     "scss-types:watch": "typed-scss-modules src -w -n all --outputFolder __generated__",
     "start": "vite",
+    "lint:fix": "eslint --fix",
+    "pretty:fix": "prettier ./src/ --write",
     "dev": "vite",
-    "build": "pnpm run scss-types:build && vite build",
+    "build": "pnpm run scss-types:build && pnpm run lint:fix && vite build",
     "serve": "vite preview"
   },
   "license": "MIT",
   "devDependencies": {
+    "eslint": "^8.57.0",
+    "eslint-plugin-solid": "^0.13.1",
+    "prettier": "^3.2.5",
     "sass": "^1.71.1",
     "solid-devtools": "^0.29.3",
     "typed-scss-modules": "^8.0.0",
-    "typescript": "^5.3.3",
-    "vite": "^5.1.4",
+    "typescript": "^5.4.2",
+    "vite": "^5.1.5",
     "vite-plugin-solid": "^2.10.1"
   },
   "dependencies": {
     "@solidjs/meta": "^0.29.3",
-    "@solidjs/router": "^0.12.4",
+    "@solidjs/router": "^0.13.0",
     "remark-gfm": "3.0.1",
+    "rxjs": "^7.8.1",
     "solid-heroicons": "^3.2.4",
     "solid-js": "^1.8.15",
     "solid-markdown": "^2.0.0"
+  },
+  "eslintConfig": {
+    "files": [
+      "**/*.{ts,tsx}"
+    ],
+    "plugins": [
+      "solid"
+    ],
+    "extends": [
+      "eslint:recommended",
+      "plugin:solid/recommended"
+    ]
+  },
+  "prettier": {
+    "printWidth": 88
   }
 }

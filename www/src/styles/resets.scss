@@ -16,7 +16,7 @@ html[data-theme="dark"] {
 
 body {
   background-color: var(--base-100);
-  color: var(--base-content);
+  color: var(--neutral);
   -webkit-font-smoothing: antialiased;
   font-size: var(--font-size-md);
   font-family: "Poppins", sans-serif;
@@ -134,6 +134,10 @@ a :is(p, h1, h2, h3, h4, h5, h6) {
 /** Remove the default vertical scrollbar in IE 10+. */
 textarea {
   overflow: auto;
+}
+
+li {
+  list-style-position: inside;
 }
 
 /** Add the correct display in IE 10. */

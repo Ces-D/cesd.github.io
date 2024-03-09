@@ -1,0 +1,17 @@
+.results {
+  margin-top: var(--container-block-spacing);
+  border-radius: 0.5rem;
+  padding: var(--container-inline-spacing);
+  background-color: var(--base-100);
+  border: 1px solid var(--secondary);
+
+  &:hover {
+    color: var(--secondary);
+  }
+
+  &_item {
+    list-style-type: none;
+    padding: var(--container-inline-spacing);
+    border-radius: 0.5rem;
+  }
+}
