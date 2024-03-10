@@ -1,5 +1,5 @@
 .masthead {
-  padding-inline: var(--container-inline-spacing);
+  padding-inline: var(--container-inline-spacing-lg);
   padding-block: var(--container-block-spacing);
 
   &_container {
@@ -7,7 +7,7 @@
     max-width: var(--desktop);
     display: flex;
     justify-content: space-between;
-    align-items: end;
+    align-items: center;
 
     &_heading {
       line-height: 1;

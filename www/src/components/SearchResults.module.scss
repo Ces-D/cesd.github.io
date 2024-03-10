@@ -1,17 +1,22 @@
 .results {
-  margin-top: var(--container-block-spacing);
-  border-radius: 0.5rem;
   padding: var(--container-inline-spacing);
   background-color: var(--base-100);
-  border: 1px solid var(--secondary);
-
-  &:hover {
-    color: var(--secondary);
-  }
+  border-radius: 0.5rem;
+  // border: 1px solid var(--secondary);
 
   &_item {
     list-style-type: none;
-    padding: var(--container-inline-spacing);
-    border-radius: 0.5rem;
+
+    & > a {
+      display: block;
+      padding: var(--container-inline-spacing);
+      border-radius: 0.5rem;
+      width: 100%;
+
+      &:hover {
+        color: var(--secondary);
+        background-color: var(--base-300);
+      }
+    }
   }
 }

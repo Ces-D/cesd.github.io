@@ -1,9 +1,10 @@
-import { lazy } from "solid-js";
+import { ErrorBoundary, lazy, Suspense } from "solid-js";
 import { render } from "solid-js/web";
 import { MetaProvider } from "@solidjs/meta";
 import { Route, Router } from "@solidjs/router";
 
 import { route } from "./routes/constants";
+import Loading from "./routes/Loading";
 
 import "./styles/font.scss";
 import "./styles/palette.scss";
@@ -13,6 +14,7 @@ import "./styles/resets.scss";
 const HomeRoute = lazy(() => import("./routes/Home"));
 const ArticleRoute = lazy(() => import("./routes/Article"));
 const NotFoundRoute = lazy(() => import("./routes/404"));
+const ErrorBoundaryRoute = lazy(() => import("./routes/ErrorBoundary"));
 
 const root = document.getElementById("root");
 
@@ -25,11 +27,15 @@ if (import.meta.env.DEV && !(root instanceof HTMLElement)) {
 render(
   () => (
     <MetaProvider>
-      <Router>
-        <Route path={route.Home} component={HomeRoute} />
-        <Route path={route.Article.static} component={ArticleRoute} />
-        <Route path={route[404]} component={NotFoundRoute} />
-      </Router>
+      <Suspense fallback={<Loading />}>
+        <ErrorBoundary fallback={(error) => <ErrorBoundaryRoute error={error} />}>
+          <Router>
+            <Route path={route.Home} component={HomeRoute} />
+            <Route path={route.Article.static} component={ArticleRoute} />
+            <Route path={route[404]} component={NotFoundRoute} />
+          </Router>
+        </ErrorBoundary>
+      </Suspense>
     </MetaProvider>
   ),
   root!,

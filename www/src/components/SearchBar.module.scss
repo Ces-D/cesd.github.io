@@ -19,12 +19,4 @@
     outline: none;
     border: none;
   }
-
-  &_enter {
-    border: 1px solid var(--base-200);
-    border-radius: 0.75rem;
-    padding: 5px 8px;
-    font-size: var(--font-size-xsm);
-    color: var(--base-300);
-  }
 }

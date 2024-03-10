@@ -1,12 +1,5 @@
 import { useParams } from "@solidjs/router";
-import {
-  lazy,
-  onCleanup,
-  onMount,
-  Suspense,
-  createSignal,
-  createDeferred,
-} from "solid-js";
+import { lazy, onCleanup, onMount, Suspense, createSignal, Show } from "solid-js";
 import { Icon } from "solid-heroicons";
 import { magnifyingGlass } from "solid-heroicons/solid";
 
@@ -15,6 +8,8 @@ import { MetaData } from "../../components/MetaData";
 import { Masthead } from "../../components/Masthead";
 import { SearchInput } from "../../components/SearchBar";
 import { SearchResults } from "../../components/SearchResults";
+import { ArticleNotFoundError } from "../../errors";
+import Loading from "../Loading";
 
 import articleMetadata from "../../articles/articlesMetadata.json";
 
@@ -33,13 +28,10 @@ export default function ArticleRoute() {
   const targetArticle = articleMetadata.find((article) => article.slug === params.slug);
 
   if (targetArticle === undefined) {
-    throw new Error("Article not found");
+    throw new ArticleNotFoundError(params.slug);
   }
 
   const [searchQuery, setSearchQuery] = createSignal("");
-  const deferredSearchValue = createDeferred(() => searchQuery(), {
-    timeoutMs: 750,
-  });
 
   const onSearchButtonClick = (e: MouseEvent) => {
     e.stopPropagation();
@@ -63,7 +55,7 @@ export default function ArticleRoute() {
     <>
       <MetaData title={targetArticle.title} description={targetArticle.description} />
       <Masthead>
-        <button onClick={onSearchButtonClick}>
+        <button class={styles.masthead_btn} onClick={onSearchButtonClick}>
           <Icon path={magnifyingGlass} />
         </button>
       </Masthead>
@@ -72,13 +64,31 @@ export default function ArticleRoute() {
           <p class={styles.dialog_search_label}>
             Find an interesting article or whatever!
           </p>
-          <SearchInput onChange={(e) => setSearchQuery(e.target.value)} />
+          <SearchInput autofocus oninput={(e) => setSearchQuery(e.target.value)} />
+          <Show when={searchQuery().length > 0}>
+            <SearchResults searchAccessor={searchQuery} />
+          </Show>
         </form>
-        <SearchResults searchQuery={deferredSearchValue()} />
       </Dialog>
       <Main>
         <Article>
-          <Suspense fallback={<p>Loading...</p>}>
+          <h1 class={styles.article_heading}>{targetArticle.title}</h1>
+          <ul class={styles.article_heading_analytics}>
+            <li>
+              Published:
+              <span>
+                {new Date(targetArticle.analytics.published_on).toDateString()}
+              </span>
+            </li>
+            <li>
+              Length:<span>{targetArticle.analytics.length_in_words}</span>
+            </li>
+            <li>
+              Reading Time:
+              <span>{targetArticle.analytics.reading_time_in_minutes}mins</span>
+            </li>
+          </ul>
+          <Suspense fallback={<Loading />}>
             <DynamicArticleContent slug={params.slug} />
           </Suspense>
         </Article>

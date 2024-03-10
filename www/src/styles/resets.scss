@@ -138,6 +138,32 @@ textarea {
 
 li {
   list-style-position: inside;
+  list-style-type: bengali;
+  margin-block: 0.5rem;
+}
+
+table {
+  border-top: 1px solid var(--neutral);
+  border-bottom: 1px solid var(--neutral);
+  text-align: start;
+  background-color: var(--base-100);
+}
+thead th {
+  background-color: var(--base-100);
+  border-bottom: 1px dotted var(--neutral);
+  position: sticky;
+  top: 0;
+}
+th,
+td {
+  padding-block: var(--container-block-spacing);
+}
+th {
+  text-align: start;
+  font-size: var(--font-size-md);
+}
+td {
+  vertical-align: top;
 }
 
 /** Add the correct display in IE 10. */

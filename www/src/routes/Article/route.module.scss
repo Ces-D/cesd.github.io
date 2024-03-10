@@ -1,3 +1,19 @@
+.masthead {
+  &_btn {
+    height: 2.5rem;
+    width: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1rem;
+
+    & > svg {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+}
+
 .dialog_search {
   min-height: 50vh;
   padding-inline: var(--container-inline-spacing-lg);
@@ -10,7 +26,31 @@
   }
 }
 
-// TODO: Update the styles for the article_content
+.article_heading {
+  padding-top: var(--container-block-spacing-lg);
+  border-top: 1px dashed var(--primary);
+  text-align: center;
+
+  &_analytics {
+    display: flex;
+    flex: 1 1 auto;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    column-gap: 2rem;
+    border-bottom: 1px dashed var(--primary);
+    padding-bottom: var(--container-block-spacing-lg);
+    margin-bottom: var(--container-block-spacing-lg);
+    color: var(--primary);
+    font-size: var(--font-size-sm);
+
+    & span {
+      margin-left: 0.5rem;
+    }
+  }
+}
+
 .article_content {
   display: flex;
   flex-grow: 1;
