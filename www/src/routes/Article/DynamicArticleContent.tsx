@@ -1,6 +1,7 @@
 import { SolidMarkdown } from "solid-markdown";
 import { createResource } from "solid-js";
 import remarkGfm from "remark-gfm";
+import rehypeHighlight from "rehype-highlight";
 
 import styles from "./route.module.scss";
 
@@ -13,6 +14,7 @@ export default function DynamicArticleContent({ slug }: { slug: string }) {
   return (
     <SolidMarkdown
       remarkPlugins={[remarkGfm]}
+      rehypePlugins={[rehypeHighlight, {"languages":{""}}]}
       class={styles.article_content}
       children={article()}
     />

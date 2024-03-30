@@ -1,11 +1,10 @@
 import { Accessor, For, Switch, Match, observable, createSignal } from "solid-js";
 import { from } from "rxjs";
+import Fuse from "fuse.js";
 
 import articleMetadata from "../articles/articlesMetadata.json";
 import styles from "./SearchResults.module.scss";
 import { route } from "../routes/constants";
-
-const normalize = (txt: string) => txt.trim().toLowerCase();
 
 export type TSearchResultProps = {
   searchAccessor: Accessor<string>;
@@ -16,12 +15,16 @@ export const SearchResults = ({ searchAccessor }: TSearchResultProps) => {
   const [results, setResults] = createSignal<Array<{ title: string; slug: string }>>(
     [],
   );
+  const fuse = new Fuse(articleMetadata, {
+    keys: [
+      { name: "title", weight: 0.6 },
+      { name: "description", weight: 0.4 },
+    ],
+  });
 
   obsv$.subscribe((searchValue) => {
-    const r = articleMetadata
-      .filter((article) => normalize(article.title).includes(normalize(searchValue)))
-      .map((r) => ({ title: r.title, slug: r.slug }));
-    setResults(r);
+    const r = fuse.search(searchValue);
+    setResults(r.map((r) => ({ title: r.item.title, slug: r.item.slug })));
   });
 
   return (

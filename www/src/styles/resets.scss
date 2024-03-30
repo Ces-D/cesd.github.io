@@ -166,6 +166,20 @@ td {
   vertical-align: top;
 }
 
+pre {
+  width: 100%;
+  white-space: break-spaces;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  background-color: var(--accent);
+  color: var(--base-200);
+}
+
+code {
+  font-family: "Fira Code", monospace;
+  font-size: var(--font-size-sm);
+}
+
 /** Add the correct display in IE 10. */
 [hidden] {
   display: none;
