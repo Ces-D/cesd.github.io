@@ -6,7 +6,7 @@ export default {
     './src/**/*.{html,js,svelte,ts}',
     './node_modules/flowbite-svelte/**/*.{html,js,svelte,ts}',
   ],
-  darkMode: 'selector',
+  darkMode: 'class',
   theme: {
     screens: {
       sm: '640px',
@@ -24,12 +24,21 @@ export default {
     },
     colors: {
       'gray-black': '#403f43',
+      'gray-black-dark': '#323135',
       'gray-white': '#d4d3e0',
+      'gray-white-lite': '#EBEAF0',
     },
     fontFamily: {
-      lato: ['Lato', 'sans-serif'],
+      lato: ['Lato', 'serif'],
+      cookie: ['Cookie', 'serif'],
     },
     extend: {
+      width: {
+        110: '28rem',
+        120: '32rem',
+        130: '36rem',
+        140: '40rem',
+      },
       colors: {
         white: '#eeedf9',
         black: '#1b1a1c',
@@ -45,6 +54,27 @@ export default {
         700: '#EB4F27',
         800: '#CC4522',
         900: '#A5371B',
+      },
+      outlineColor: {
+        300: '#FFD5CC',
+      },
+      ringColor: {
+        primary: {
+          300: '#FFD5CC',
+          800: '#CC4522',
+        },
+      },
+      textColor: {
+        primary: {
+          400: '#FFBCAD',
+          500: '#FE795D',
+          900: '#A5371B',
+        },
+      },
+      borderColor: {
+        primary: {
+          900: '#A5371B',
+        },
       },
     },
   },

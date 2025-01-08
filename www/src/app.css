@@ -5,6 +5,7 @@
 @layer base {
   code,
   input,
+  textarea,
   p {
     @apply text-md font-normal;
   }
@@ -33,5 +34,20 @@
   h4,
   h5 {
     @apply font-lato text-black dark:text-white;
+  }
+}
+
+@layer components {
+  .outline-primary:focus-within {
+    @apply ring outline-none ring-primary-800 !important;
+  }
+  .outline-primary:focus-within:is(.dark *) {
+    @apply ring-primary-300 !important;
+  }
+
+  .outline-none:is(textarea) {
+    border-color: inherit;
+    -webkit-box-shadow: none;
+    box-shadow: none;
   }
 }
