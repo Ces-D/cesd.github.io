@@ -7,7 +7,7 @@ Meant for a button that only contains an icon
   import Button from 'flowbite-svelte/Button.svelte';
   import type { ButtonProps } from 'flowbite-svelte/Button.svelte';
 
-  let { children, ...props }: Omit<ButtonProps, 'class'> = $props();
+  let { children, ...props }: ButtonProps = $props();
 </script>
 
 <Button

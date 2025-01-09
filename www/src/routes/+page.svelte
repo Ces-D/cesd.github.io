@@ -1,46 +1,73 @@
 <script lang="ts">
-  import ChatForm from '$lib/components/ChatForm.svelte';
+  import ChatInputActions from '$lib/components/ChatInputActions.svelte';
   import ChatMessage from '$lib/components/ChatMessage.svelte';
-  import type { Snapshot } from './$types';
   import PromptButton from './components/PromptButton.svelte';
+  import { BOT_INPUT_ID, PREDEFINED_PROMPT, ROUTE } from '$lib/constants';
+  import IconButton from '$lib/components/IconButton.svelte';
+  import Icon from '@iconify/svelte';
+  import { enhance } from '$app/forms';
+  import type { PageData } from './$types';
+  import { invalidateAll } from '$app/navigation';
 
-  type Message = { message: string; isUser: boolean };
+  const { data }: { data: PageData } = $props();
+  let form: HTMLFormElement;
 
-  let chatMessageHistory = $state<Array<Message>>([]);
-  export const snapShot: Snapshot<Array<Message>> = {
-    capture: () => chatMessageHistory,
-    restore: (value) => (chatMessageHistory = value),
-  };
+  function updateChatMessageHistory() {
+    form.submit();
+  }
 
-  const updateChatMessageHistory = (message: string, isUser = true) => {
-    chatMessageHistory = [...chatMessageHistory, { message, isUser }];
-  };
-  // TODO: Create a server action that recieves the users message and pushes a response to the history. This is a replication of the conversation between ai and the user
+  function onSubmitPrompt(prompt: string) {
+    const body = new FormData(form);
+    body.set(BOT_INPUT_ID, prompt);
+    fetch('?' + ROUTE.home.chatAction, {
+      method: 'POST',
+      body,
+    });
+    invalidateAll();
+  }
 </script>
 
-<!-- TODO: What should be on the home page
-
+<!--
 Idea: It run a chatgpt chat box that answers questions about hte site, prijects, me, etc.
 -->
 
 <section class="flex flex-col justify-center items-center p-1 mx-auto md:w-3/4 lg:w-1/2">
-  {#if chatMessageHistory.length === 0}
+  {#if data.chatHistory.length === 0}
     <h3 class="mt-16 font-normal text-center font-cookie text-primary-500 dark:text-primary-400">
       Ask me a question!
     </h3>
   {/if}
 
-  {#each chatMessageHistory as history}
-    <ChatMessage message={history.message} user={history.isUser ? 'left' : 'right'} />
+  {#each data.chatHistory as history}
+    <ChatMessage {...history} />
   {/each}
-  <ChatForm onSubmitChatMessage={updateChatMessageHistory} />
-  <div class="grid grid-rows-1 grid-flow-col gap-2 mt-3">
-    <PromptButton prompt="Bleep-Bloop?" icon="mage:robot-dead-fill" />
-    <PromptButton prompt="What do you have planned today?" icon="mingcute:schedule-fill" />
-    <PromptButton prompt="Teach me a useful tip on a topic you like?" icon="pixelarticons:teach" />
-    <PromptButton
-      prompt="What's a goal your currently working on?"
-      icon="lucide-lab:football-goal"
-    />
-  </div>
+
+  <form method="post" action={'?' + ROUTE.home.chatAction} bind:this={form} use:enhance>
+    <ChatInputActions onSubmitChatMessage={updateChatMessageHistory}>
+      <IconButton>
+        <Icon icon="iconamoon:sign-plus-bold" width="24" height="24" />
+      </IconButton>
+      <IconButton type="submit">
+        <Icon icon="iconamoon:send-fill" width="24" height="24" />
+      </IconButton>
+    </ChatInputActions>
+    <div class="grid grid-rows-1 grid-flow-col gap-2 mt-3">
+      <PromptButton
+        {onSubmitPrompt}
+        prompt={PREDEFINED_PROMPT.bleepBloop}
+        icon="mage:robot-dead-fill"
+      />
+      <PromptButton
+        {onSubmitPrompt}
+        prompt={PREDEFINED_PROMPT.planned}
+        icon="mingcute:schedule-fill"
+      />
+      <PromptButton {onSubmitPrompt} prompt={PREDEFINED_PROMPT.teach} icon="pixelarticons:teach" />
+      <PromptButton
+        {onSubmitPrompt}
+        prompt={PREDEFINED_PROMPT.working}
+        icon="lucide-lab:football-goal"
+      />
+    </div>
+  </form>
 </section>

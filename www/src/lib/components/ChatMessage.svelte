@@ -1,11 +1,9 @@
 <script lang="ts">
-  type ChatMessageProps = {
-    message: string;
-    user: 'left' | 'right';
-  };
-  const { message, user }: ChatMessageProps = $props();
+  import type { Message } from '$lib/types';
+
+  const { message, user }: Message = $props();
 </script>
 
-<p class={['w-3/4', { 'mr-auto': user === 'left', 'ml-auto': user === 'right' }]}>
+<p class={['w-3/4', { 'mr-auto': user === 'user', 'ml-auto': user === 'bot' }]}>
   {message}
 </p>

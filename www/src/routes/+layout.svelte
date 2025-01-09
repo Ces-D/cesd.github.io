@@ -9,17 +9,17 @@
   let { children } = $props();
 </script>
 
-<main class="grid grid-cols-1 bg-white dark:bg-black grid-rows-[auto_1fr] font-lato">
+<main class="grid grid-cols-1 min-h-screen bg-white dark:bg-black grid-rows-[auto_1fr] font-lato">
   <nav
     class="flex sticky top-0 grid-cols-2 items-center p-1 w-full bg-white shadow md:p-2 2xl:p-4 dark:bg-black shadow-black shadow-b dark:shadow-white"
   >
     <h3 class="flex-1">
-      <a class="text-black rounded-lg dark:text-white outline-primary" href={ROUTE.home}
+      <a class="text-black rounded-lg dark:text-white outline-primary" href={ROUTE.home.default}
         >Cesar Diaz</a
       >
     </h3>
     <section class="flex gap-2 items-center h-full">
-      <IconButton href={ROUTE.home} outline>
+      <IconButton href={ROUTE.home.default} outline>
         <Icon icon="lucide-lab:cactus" width="24" height="24" />
       </IconButton>
       <Tooltip arrow>About Me</Tooltip>
