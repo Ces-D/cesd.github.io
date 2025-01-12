@@ -3,6 +3,7 @@ import { PREDEFINED_PROMPT, BOT_INPUT_ID } from '$lib/constants';
 import type { Message } from '$lib/types';
 import { addChatMessage, getChatHistory } from '$lib/server/database';
 
+// TODO: Add ai responses to all supported prompts
 function botResponse(prompt: string): Message['message'] {
   if (Object.values(PREDEFINED_PROMPT).includes(prompt)) {
     switch (prompt) {

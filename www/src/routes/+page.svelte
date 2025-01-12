@@ -28,7 +28,7 @@
 </script>
 
 <!--
-Idea: It run a chatgpt chat box that answers questions about hte site, prijects, me, etc.
+Idea: It run a chatgpt chat box that answers questions about the site, prijects, me, etc.
 -->
 
 <section class="flex flex-col justify-center items-center p-1 mx-auto md:w-3/4 lg:w-1/2">
