@@ -1,31 +1,61 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+@config "../tailwind.config.js";
+
+@theme {
+  /* Font Family */
+  --font-lato: 'Lato', sans-serif;
+  --font-cookie: 'Cookie', cursive;
+
+  /* Colors */
+  --color-gray-black: #403f43;
+  --color-gray-black-dark: #323135;
+  --color-gray-white: #d4d3e0;
+  --color-gray-white-lite: #EBEAF0l;
+
+  /* Font Size */
+  --text-sm: clamp(0.6875rem, 0.6528rem + 0.1852vw, 0.875rem);
+  --text-md: clamp(0.9375rem, 0.9028rem + 0.1852vw, 1.125rem);
+  --text-lg: clamp(1.125rem, 0.8935rem + 1.2346vw, 2.375rem);
+  --text-xl: clamp(1.25rem, 0.9259rem + 1.7284vw, 3rem);
+  --text-2xl: clamp(1.5625rem, 1.2384rem + 1.7284vw, 3.3125rem);
+
+  /* Screen Size */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+}
 
 @layer base {
   code,
   input,
   textarea,
   p {
-    @apply text-md font-normal;
+    font-size: var(--text-md);
+    font-weight: var(--font-weight-normal);
   }
   h1 {
-    @apply text-2xl font-bold;
+    font-size: var(--text-2xl);
+    font-weight: var(--font-weight-bold);
   }
   h2 {
-    @apply text-2xl font-thin;
+    font-size: var(--text-2xl);
+    font-weight: var(--font-weight-thin);
   }
   h3 {
-    @apply text-xl font-normal;
+    font-size: var(--text-xl);
+    font-weight: var(--font-weight-normal);
   }
   h4 {
-    @apply text-lg font-bold;
+    font-size: var(--text-lg);
+    font-weight: var(--font-weight-bold);
   }
   h5 {
-    @apply text-lg font-thin;
+    font-size: var(--text-lg);
+    font-weight: var(--font-weight-thin);
   }
 
-  code,
   input,
   p,
   h1,
@@ -33,21 +63,7 @@
   h3,
   h4,
   h5 {
-    @apply font-lato text-black dark:text-white;
-  }
-}
-
-@layer components {
-  .outline-primary:focus-within {
-    @apply ring outline-none ring-primary-800 !important;
-  }
-  .outline-primary:focus-within:is(.dark *) {
-    @apply ring-primary-300 !important;
-  }
-
-  .outline-none:is(textarea) {
-    border-color: inherit;
-    -webkit-box-shadow: none;
-    box-shadow: none;
+    font-family: var(--font-lato);
+    color: var(--text-black);
   }
 }

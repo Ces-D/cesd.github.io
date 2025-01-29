@@ -42,8 +42,14 @@ Idea: It run a chatgpt chat box that answers questions about the site, prijects,
     <ChatMessage {...history} />
   {/each}
 
-  <form method="post" action={'?' + ROUTE.home.chatAction} bind:this={form} use:enhance>
-    <ChatInputActions onSubmitChatMessage={updateChatMessageHistory}>
+  <form
+    method="post"
+    class="mt-2"
+    action={'?' + ROUTE.home.chatAction}
+    bind:this={form}
+    use:enhance
+  >
+    <ChatInputActions autoFocus onSubmitChatMessage={updateChatMessageHistory}>
       <IconButton>
         <Icon icon="iconamoon:sign-plus-bold" width="24" height="24" />
       </IconButton>

@@ -34,30 +34,6 @@ export default {
   ],
   darkMode: 'class',
   theme: {
-    screens: {
-      sm: '640px',
-      md: '768px',
-      lg: '1024px',
-      xl: '1280px',
-      '2xl': '1536px',
-    },
-    fontSize: {
-      sm: 'clamp(0.6875rem, 0.6528rem + 0.1852vw, 0.875rem)',
-      md: 'clamp(0.9375rem, 0.9028rem + 0.1852vw, 1.125rem)',
-      lg: 'clamp(1.125rem, 0.8935rem + 1.2346vw, 2.375rem)',
-      xl: 'clamp(1.25rem, 0.9259rem + 1.7284vw, 3rem)',
-      '2xl': 'clamp(1.5625rem, 1.2384rem + 1.7284vw, 3.3125rem)',
-    },
-    colors: {
-      'gray-black': '#403f43',
-      'gray-black-dark': '#323135',
-      'gray-white': '#d4d3e0',
-      'gray-white-lite': '#EBEAF0',
-    },
-    fontFamily: {
-      lato: ['Lato', 'serif'],
-      cookie: ['Cookie', 'serif'],
-    },
     extend: {
       width: {
         110: '28rem',

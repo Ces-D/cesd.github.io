@@ -13,7 +13,7 @@
 
 <Button
   outline
-  class="text-black dark:text-white border-gray-black outline-primary dark:border-gray-black dark:hover:border-primary-900 dark:hover:text-primary-500 hover:text-primary-900 hover:border-primary-900"
+  class="text-black dark:text-white hover:cursor-pointer border-gray-black dark:hover:text-primary-500 hover:text-primary-900 hover:border-primary-900"
   onclick={() => onSubmitPrompt(prompt)}
 >
   {#if typeof icon === 'string'}
