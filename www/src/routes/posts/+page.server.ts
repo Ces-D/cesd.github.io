@@ -1,57 +1,39 @@
 import path from 'path';
-import fs from 'fs';
+import fs from 'fs/promises';
 import matter from 'gray-matter';
 import { parse, stringify } from 'smol-toml';
 import type { PageServerLoad } from './$types';
-import { postMetadataSimpleSchema, type PostMetadataSimple } from '$lib/types';
+import { postMetadataSchema, type PostMetadata } from '$lib/types';
+import { ReadPostMetadataError } from '$lib/errors';
 import { postsDirectory } from '$lib/server/constants';
+import type { Dirent } from 'fs';
 
-function interpretMetadata(
-  error: NodeJS.ErrnoException | null,
-  readFile: string,
-  fileName: string
-): PostMetadataSimple {
-  if (error) {
-    throw new ReadPostMetadataError(error.message, fileName);
-  }
-  if (typeof readFile === 'string') {
-    const m = matter(readFile, {
-      engines: { toml: { parse, stringify } },
-      language: 'toml',
-    });
-    const parsedMatter = postMetadataSimpleSchema.safeParse(m.data);
-    if (parsedMatter.success) {
-      return parsedMatter.data;
+const isMarkdownFile = (file: Dirent) => file.isFile() && file.name.endsWith('.md');
+
+async function getCompleteMetadata() {
+  const files = await fs.readdir(postsDirectory, { encoding: 'utf8', withFileTypes: true });
+  const completeMetadata: Array<Promise<PostMetadata>> = files.map(async (f) => {
+    if (isMarkdownFile(f)) {
+      const filePath = path.join(postsDirectory, f.name);
+      const content = await fs.readFile(filePath, { encoding: 'utf8', flag: 'r' });
+      const m = matter(content, {
+        engines: { toml: { parse, stringify } },
+        language: 'toml',
+      });
+      const parsedMatter = postMetadataSchema.safeParse(m.data);
+      if (parsedMatter.success) {
+        return parsedMatter.data;
+      } else {
+        throw new ReadPostMetadataError(parsedMatter.error.toString(), f.name);
+      }
     } else {
-      throw new ReadPostMetadataError(parsedMatter.error.toString(), fileName);
+      throw new ReadPostMetadataError('File is not a markdown file', f.name);
     }
-  } else {
-    throw new ReadPostMetadataError('File content is not a string', fileName);
-  }
+  });
+
+  return Promise.allSettled(completeMetadata);
 }
 
 export const load: PageServerLoad = async () => {
-  const postMetaData: Array<PostMetadataSimple> = [];
-  const files = fs.readdirSync(postsDirectory, { encoding: 'utf8', withFileTypes: true });
-
-  for (const file of files) {
-    if (file.isFile() && file.name.endsWith('.md')) {
-      try {
-        fs.readFile(
-          path.join(postsDirectory, file.name),
-          { encoding: 'utf8', flag: 'r' },
-          (error, readFile) => {
-            const metadata = interpretMetadata(error, readFile, file.name);
-            postMetaData.push(metadata);
-          }
-        );
-      } catch (error) {
-        if (error instanceof ReadPostMetadataError) {
-          console.error(`Error reading metadata from ${error.fileName}: ${error.message}`);
-        } else console.error(error);
-      }
-    }
-  }
-
-  return postMetaData;
+  return { metadata: await getCompleteMetadata() };
 };

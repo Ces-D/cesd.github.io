@@ -1,4 +1,4 @@
-class ReadPostMetadataError extends Error {
+export class ReadPostMetadataError extends Error {
   fileName?: string;
   constructor(message: string, fileName?: string) {
     super(message);
