@@ -5,10 +5,7 @@ import { parse, stringify } from 'smol-toml';
 import type { PageServerLoad } from './$types';
 import { postMetadataSchema, type PostMetadata } from '$lib/types';
 import { ReadPostMetadataError } from '$lib/errors';
-import { postsDirectory } from '$lib/server/constants';
-import type { Dirent } from 'fs';
-
-const isMarkdownFile = (file: Dirent) => file.isFile() && file.name.endsWith('.md');
+import { isMarkdownFile, postsDirectory } from '$lib/server/constants';
 
 async function getCompleteMetadata() {
   const files = await fs.readdir(postsDirectory, { encoding: 'utf8', withFileTypes: true });
@@ -37,3 +34,5 @@ async function getCompleteMetadata() {
 export const load: PageServerLoad = async () => {
   return { metadata: await getCompleteMetadata() };
 };
+
+export const prerender = true;
