@@ -1,19 +1,19 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/node_modules
-/.pnp
+**/node_modules
+**/.pnp
 .pnp.js
 
 # testing
-/coverage
+**/coverage
 
 # next.js
-/.next/
-/out/
+**/.next/
+**/out/
 
 # production
-/build
+**/build
 
 # misc
 .DS_Store
@@ -33,6 +33,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# turbo
+**/.turbo
+
 # typescript
 *.tsbuildinfo
 
@@ -40,3 +43,13 @@ yarn-error.log*
 
 # lock
 pnpm-lock.yaml
+
+# local scripts
+/scripts/
+
+# wasm
+**/pkg
+**/target
+Cargo.lock
+
+__generated__
