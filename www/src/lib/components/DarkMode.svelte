@@ -10,10 +10,20 @@ custom dark mode switch
   const toggleTheme = (ev: MouseEvent) => {
     const target = ev.target as HTMLElement;
     const isDark = target.ownerDocument.documentElement.classList.toggle('dark');
-    if (target.ownerDocument === document)
-      // we are NOT in the iFrame
-      localStorage.setItem('color-theme', isDark ? 'dark' : 'light');
+    //Need to come up with way to toggle between three class states
+    // TODO::
+    // first state: light
+    // second state: dark
+    // third state: none
+    const variantOne = target.ownerDocument.documentElement.classList.toggle('light-variant');
+    const variantTwo = target.ownerDocument.documentElement.classList.toggle('dark-variant');
+
+    if (target.ownerDocument === document) {
+      window.localStorage.setItem('color-theme', isDark ? 'dark' : 'light');
+      
+    }
   };
+  // we are NOT in the iFrame
 </script>
 
 <svelte:head>

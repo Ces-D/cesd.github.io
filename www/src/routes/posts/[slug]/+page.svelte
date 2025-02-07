@@ -24,6 +24,8 @@
     {@html data.content}
   </article>
 
+  <hr class="my-1 mx-auto w-48 h-1 rounded-sm border-0 md:my-2 bg-secondary-900" />
+
   <div class="w-full dark:text-white text-dark">
     <p>Genre:</p>
     <p>{data.metadata.interest.genre}</p>

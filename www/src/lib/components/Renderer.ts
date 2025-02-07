@@ -1,5 +1,15 @@
 import type { RendererObject } from 'marked';
 
+// see - https://github.com/markedjs/marked/blob/eb61090b41f4791c1c7a51322f3a4d6ad21053a4/src/helpers.ts#L43
+export function cleanUrl(href: string) {
+  try {
+    href = encodeURI(href).replace(/%25/g, '%');
+  } catch {
+    return null;
+  }
+  return href;
+}
+
 // see - https://github.com/markedjs/marked/blob/eb61090b41f4791c1c7a51322f3a4d6ad21053a4/src/Renderer.ts
 export const renderer: RendererObject = {
   heading({ tokens, depth }) {
@@ -124,5 +134,20 @@ export const renderer: RendererObject = {
     itemBody += this.parser.parse(item.tokens, !!item.loose);
 
     return `<li class="text-black dark:text-white my-1 text-justify">${itemBody}</li>\n`;
+  },
+
+  link({ href, title, tokens }) {
+    const text = this.parser.parseInline(tokens);
+    const cleanHref = cleanUrl(href);
+    if (cleanHref === null) {
+      return text;
+    }
+    href = cleanHref;
+    let out = '<a href="' + href + '"' + "class='underline text-primary-900'";
+    if (title) {
+      out += ' title="' + encodeURIComponent(title) + '"';
+    }
+    out += '>' + text + '</a>';
+    return out;
   },
 };

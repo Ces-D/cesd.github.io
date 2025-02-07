@@ -74,6 +74,7 @@ export default {
         secondary: {
           100: SECONDARY_COLOR[100],
           300: SECONDARY_COLOR[300],
+          900: SECONDARY_COLOR[900],
         },
       },
       borderColor: {
