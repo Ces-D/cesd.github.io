@@ -1,5 +1,9 @@
 @import 'tailwindcss';
-@config "../tailwind.config.js";
+@plugin "flowbite/plugin";
+
+@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant prime (&:where(.primary, .primary *));
+@custom-variant second (&:where(.secondary, .secondary *));
 
 @theme {
   /* Font Family */
@@ -7,12 +11,38 @@
   --font-cookie: 'Cookie', cursive;
 
   /* Colors */
+  --color-*: initial;
+  --color-white: #eeedf9;
+  --color-black: #1b1a1c;
   --color-gray-black: #403f43;
   --color-gray-black-dark: #323135;
   --color-gray-white: #d4d3e0;
   --color-gray-white-lite: #EBEAF0l;
 
+  --color-primary-50: #fff5f2;
+  --color-primary-100: #fff1ee;
+  --color-primary-200: #ffe4de;
+  --color-primary-300: #ffd5cc;
+  --color-primary-400: #ffbcad;
+  --color-primary-500: #fe795d;
+  --color-primary-600: #ef562f;
+  --color-primary-700: #eb4f27;
+  --color-primary-800: #cc4522;
+  --color-primary-900: #a5371b;
+
+  --color-secondary-50: #eff6ff;
+  --color-secondary-100: #dbeafe;
+  --color-secondary-200: #bfdbfe;
+  --color-secondary-300: #93c5fd;
+  --color-secondary-400: #60a5fa;
+  --color-secondary-500: #3b82f6;
+  --color-secondary-600: #2563eb;
+  --color-secondary-700: #1d4ed8;
+  --color-secondary-800: #1e40af;
+  --color-secondary-900: #1e3a8a;
+
   /* Font Size */
+  --text-*: initial;
   --text-sm: clamp(0.6875rem, 0.6528rem + 0.1852vw, 0.875rem);
   --text-md: clamp(0.9375rem, 0.9028rem + 0.1852vw, 1.125rem);
   --text-lg: clamp(1.125rem, 0.8935rem + 1.2346vw, 2.375rem);
@@ -57,6 +87,7 @@
   }
 
   input,
+  button,
   p,
   h1,
   h2,
@@ -64,6 +95,9 @@
   h4,
   h5 {
     font-family: var(--font-lato);
-    color: var(--text-black);
+    color: var(--color-black);
+    @variant dark {
+      color: var(--color-white);
+    }
   }
 }

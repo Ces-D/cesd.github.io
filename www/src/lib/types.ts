@@ -1,5 +1,11 @@
 import { z } from 'zod';
 
+// Be sure that this is synced with data-theme in app.css
+export const theme = z
+  .enum(['light', 'dark', 'primary', 'secondary'])
+  .describe('A supported theme for the app.');
+export type Theme = z.infer<typeof theme>;
+
 /** A chat message contains the message and an identifier indicating who the user is */
 export type Message = { message: string; user: 'user' | 'bot' };
 

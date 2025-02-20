@@ -16,8 +16,7 @@ export const renderer: RendererObject = {
     const text = this.parser.parseInline(tokens);
     const escapedText = text.toLowerCase().replace(/[^\w]+/g, '-');
     return (
-      `<h${depth + 1}` +
-      ' class="text-black dark:text-white">' +
+      `<h${depth + 1}>` +
       `<a name="${escapedText}" class="anchor" href="#${escapedText}">` +
       text +
       '</a>' +
@@ -68,13 +67,13 @@ export const renderer: RendererObject = {
     const content = this.parser.parseInline(token.tokens);
     const type = token.header ? 'th' : 'td';
     const tag = token.align
-      ? `<${type} class="px-6 py-4 text-gray-900 dark:text-white" align="${token.align}">`
-      : `<${type} class="px-6 py-4 text-gray-900 dark:text-white" >`;
+      ? `<${type} class="px-6 py-4" align="${token.align}">`
+      : `<${type} class="px-6 py-4" >`;
     return tag + content + `</${type}>\n`;
   },
 
   paragraph({ tokens }) {
-    return `<p class="text-black dark:text-white my-2 text-justify">${this.parser.parseInline(tokens)}</p>\n`;
+    return `<p class="my-2 text-justify">${this.parser.parseInline(tokens)}</p>\n`;
   },
 
   list(token) {
@@ -133,7 +132,7 @@ export const renderer: RendererObject = {
 
     itemBody += this.parser.parse(item.tokens, !!item.loose);
 
-    return `<li class="text-black dark:text-white my-1 text-justify">${itemBody}</li>\n`;
+    return `<li class="my-1 text-justify">${itemBody}</li>\n`;
   },
 
   link({ href, title, tokens }) {
@@ -143,7 +142,13 @@ export const renderer: RendererObject = {
       return text;
     }
     href = cleanHref;
-    let out = '<a href="' + href + '"' + "class='underline text-primary-900'";
+    let out =
+      '<a href="' +
+      href +
+      '"' +
+      "class='underline text-primary-900'" +
+      "target='_blank'" +
+      "rel='noopener noreferrer'";
     if (title) {
       out += ' title="' + encodeURIComponent(title) + '"';
     }

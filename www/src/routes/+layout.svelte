@@ -1,5 +1,4 @@
 <script lang="ts">
-  import '../app.css';
   import { ROUTE } from '$lib/constants';
   import Icon from '@iconify/svelte';
   import Tooltip from 'flowbite-svelte/Tooltip.svelte';
@@ -8,14 +7,17 @@
   import '../app.css';
 
   let { children } = $props();
+  // TODO: The tooltip needs styling based on the theme
 </script>
 
-<main class="grid grid-cols-1 min-h-screen bg-white dark:bg-black grid-rows-[auto_1fr] font-lato">
+<main
+  class="grid grid-cols-1 min-h-screen bg-white dark:bg-black prime:bg-primary-100 second:bg-secondary-900 grid-rows-[auto_1fr] font-lato"
+>
   <nav
     class="flex sticky top-0 z-10 grid-cols-2 items-center p-1 w-full bg-white shadow-sm md:p-2 2xl:p-4 dark:bg-black shadow-black shadow-b dark:shadow-white"
   >
     <h3 class="flex-1">
-      <a class="text-black rounded-lg dark:text-white" href={ROUTE.home.default}>Cesar Diaz</a>
+      <a class="rounded-lg" href={ROUTE.home.default}>Cesar Diaz</a>
     </h3>
     <section class="flex gap-2 items-center h-full">
       <IconButton href={ROUTE.posts.default} outline>
