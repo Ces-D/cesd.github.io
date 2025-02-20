@@ -15,7 +15,7 @@ genre = "TECHNOLOGY"
 related_articles = []
 ---
 
-## Brainiac Series
+# Brainiac Series
 
 In the ever-evolving landscape of content creation and management, automating tasks to streamline workflows is crucial for productivity and efficiency. My recent project, part of what I’m calling the "Brainiac" series, leverages artificial intelligence (AI) models to automate the generation of metadata for blog posts. This project combines tools like Ollama and DeepSeek to create a pipeline that not only generates metadata but also processes it through a series of stages, similar to LangChain’s approach, ensuring accuracy and relevance.
 
