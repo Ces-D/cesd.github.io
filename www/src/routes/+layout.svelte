@@ -4,9 +4,13 @@
   import Tooltip from 'flowbite-svelte/Tooltip.svelte';
   import IconButton from '$lib/components/IconButton.svelte';
   import DarkMode from '$lib/components/DarkMode.svelte';
+  import { injectAnalytics } from '@vercel/analytics/sveltekit';
+  import { dev } from '$app/environment';
   import '../app.css';
 
   let { children } = $props();
+
+  injectAnalytics({ mode: dev ? 'development' : 'production' });
 </script>
 
 <main
