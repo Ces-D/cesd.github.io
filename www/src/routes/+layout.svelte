@@ -7,7 +7,6 @@
   import '../app.css';
 
   let { children } = $props();
-  // TODO: The tooltip needs styling based on the theme
 </script>
 
 <main
@@ -23,13 +22,13 @@
       <IconButton href={ROUTE.posts.default} outline>
         <Icon icon="material-symbols:article-outline" width="24" height="24" />
       </IconButton>
-      <Tooltip arrow>Blog Posts</Tooltip>
+      <Tooltip type="light" arrow>Blog Posts</Tooltip>
       <IconButton href={ROUTE.home.default} outline>
         <Icon icon="lucide-lab:cactus" width="24" height="24" />
       </IconButton>
-      <Tooltip arrow>About Me</Tooltip>
+      <Tooltip type="light" arrow>About Me</Tooltip>
       <DarkMode />
-      <Tooltip arrow>Theme</Tooltip>
+      <Tooltip type="light" arrow>Theme</Tooltip>
     </section>
   </nav>
   <section class="p-1 md:p-2 2xl:p-4">
