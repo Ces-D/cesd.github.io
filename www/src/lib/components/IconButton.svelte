@@ -12,7 +12,7 @@ Meant for a button that only contains an icon
 
 <Button
   {...props}
-  class="text-black dark:text-white hover:cursor-pointer border-gray-black dark:border-gray-black dark:hover:text-gray-white dark:hover:bg-gray-black hover:text-gray-black hover:bg-gray-white"
+  class="hover:cursor-pointer border-gray-black dark:border-gray-black dark:hover:text-gray-white dark:hover:bg-gray-black hover:text-gray-black hover:bg-gray-white"
   size="sm"
 >
   {@render children?.()}

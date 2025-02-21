@@ -11,9 +11,7 @@
 
 <section class="flex flex-col gap-2 justify-center items-center p-1 m-auto w-full max-w-[1000px]">
   <h1 class="underline text-primary-900">{data.metadata.title}</h1>
-  <div
-    class="grid gap-x-3 justify-start items-center w-full dark:text-white grid-cols-[auto_1fr] text-dark"
-  >
+  <div class="grid gap-x-3 justify-start items-center w-full grid-cols-[auto_1fr]">
     <p>Authored:</p>
     <p>{new Date(data.metadata.analytics.created_at).toLocaleDateString()}</p>
     <p>Reading Time:</p>
@@ -24,11 +22,13 @@
     {@html data.content}
   </article>
 
-  <div class="w-full dark:text-white text-dark">
+  <hr class="my-1 mx-auto w-48 h-1 rounded-sm border-0 md:my-2 bg-secondary-900" />
+
+  <div class="w-full">
     <p>Genre:</p>
     <p>{data.metadata.interest.genre}</p>
   </div>
-  <div class="w-full dark:text-white text-dark">
+  <div class="w-full">
     <p>Keywords:</p>
     <p>{data.metadata.interest.keywords.join(', ')}</p>
   </div>

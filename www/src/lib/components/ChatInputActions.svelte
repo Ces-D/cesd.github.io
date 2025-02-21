@@ -26,7 +26,7 @@
     autofocus={autoFocus}
     name={BOT_INPUT_ID}
     id={BOT_INPUT_ID}
-    class="w-full text-black bg-transparent resize-none dark:text-white min-h-32 chat-input"
+    class="w-full bg-transparent resize-none min-h-32 chat-input"
     onkeydown={onTextAreaKeyDown}
   ></textarea>
   <div class="flex justify-between p-1 w-full">
