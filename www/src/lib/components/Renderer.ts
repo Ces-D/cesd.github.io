@@ -48,7 +48,7 @@ export const renderer: RendererObject = {
     if (body) body = `<tbody class="divide-y">${body}</tbody>`;
 
     return (
-      '<div class="my-2 bg-white dark:bg-black relative overflow-x-auto shadow-md sm:rounded-lg">\n' +
+      '<div class="my-2 bg-background relative overflow-x-auto shadow-md sm:rounded-lg">\n' +
       '<table class="w-full text-left">\n' +
       '<thead class="uppercase">\n' +
       header +
@@ -60,7 +60,7 @@ export const renderer: RendererObject = {
   },
 
   tablerow({ text }) {
-    return `<tr class="border-b last:border-b-0 bg-white dark:bg-gray-800 dark:border-gray-700">\n${text}</tr>\n`;
+    return `<tr class="border-b last:border-b-0 bg-background">\n${text}</tr>\n`;
   },
 
   tablecell(token) {
