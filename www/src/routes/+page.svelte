@@ -1,11 +1,6 @@
 <script lang="ts">
-  import { ROUTE } from '$lib/constants';
-  import IconButton from '$lib/components/IconButton.svelte';
-  import Icon from '@iconify/svelte';
-  import type { PageData } from './$types';
   import { headTitle } from '$lib/utils';
-
-  const { data }: { data: PageData } = $props();
+  import BubbleGame from '$lib/components/Bubble/Game.svelte';
 </script>
 
 <svelte:head>
@@ -13,4 +8,8 @@
   <meta name="description" content="Learning, Building, Growing, Breaking" />
 </svelte:head>
 
-<section class="flex flex-col justify-center items-center p-1 mx-auto md:w-3/4 lg:w-1/2"></section>
+<section class="flex flex-col justify-center items-center p-1 mx-auto lg:w-3/4">
+  <div class="w-full md:p-2 lg:p-5 h-[500px] md:h-[500px] lg:h-[800px]">
+    <BubbleGame />
+  </div>
+</section>

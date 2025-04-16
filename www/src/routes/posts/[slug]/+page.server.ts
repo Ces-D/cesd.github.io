@@ -27,7 +27,7 @@ export const load: PageServerLoad = async (request) => {
     } else {
       error(404, { message: `${request.params.slug} not found` });
     }
-  } catch (e) {
+  } catch (_) {
     error(404, { message: `${request.params.slug} not found` });
   }
 };

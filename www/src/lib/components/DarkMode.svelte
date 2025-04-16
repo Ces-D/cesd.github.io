@@ -7,12 +7,10 @@ custom dark mode switch
   import IconButton from './IconButton.svelte';
   import Icon from '@iconify/svelte';
   import { theme } from '../types';
+  import { getCurrentTheme } from '$lib/utils';
 
   const toggleTheme = (_: MouseEvent) => {
-    let target = window.document.documentElement;
-    const currentThemeParse = theme.safeParse(target.getAttribute('data-theme'));
-    let currentTheme = currentThemeParse.success ? currentThemeParse.data : theme.enum.light;
-
+    let { currentTheme, target } = getCurrentTheme();
     const currentVariantIndex = theme.options.indexOf(currentTheme);
     const nextThemeVariant =
       theme.options.at(

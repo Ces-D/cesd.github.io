@@ -12,7 +12,7 @@
 </svelte:head>
 
 <section class="grid grid-cols-1 gap-4">
-  {#each data.metadata as metadata}
+  {#each data.metadata as metadata, i (i)}
     <Card
       size="none"
       href={metadata.status === 'fulfilled' ? ROUTE.posts.post(metadata.value.slug) : undefined}
