@@ -1,23 +1,15 @@
 @import 'tailwindcss';
 @plugin "flowbite/plugin";
 
-@custom-variant dark (&:where(.dark, .dark *));
-@custom-variant prime (&:where(.primary, .primary *));
-@custom-variant second (&:where(.secondary, .secondary *));
-
-@theme {
-  /* Font Family */
-  --font-lato: 'Lato', sans-serif;
-  --font-cookie: 'Cookie', cursive;
-
-  /* Colors */
-  --color-*: initial;
-  --color-white: #eeedf9;
-  --color-black: #1b1a1c;
-  --color-gray-black: #403f43;
-  --color-gray-black-dark: #323135;
-  --color-gray-white: #d4d3e0;
-  --color-gray-white-lite: #EBEAF0l;
+:root {
+  --text-color: #1b1a1c;
+  --text-color-inverted: #eeedf9;
+  --bg-color: #eeedf9;
+  /* half the hsl lightness */
+  --bg-color-50: #473db8;
+  --bg-color-inverted: #1b1a1c;
+  /* double the hsl lightness */
+  --bg-color-inverted-50: #38363a;
 
   --color-primary-50: #fff5f2;
   --color-primary-100: #fff1ee;
@@ -29,17 +21,33 @@
   --color-primary-700: #eb4f27;
   --color-primary-800: #cc4522;
   --color-primary-900: #a5371b;
+}
 
-  --color-secondary-50: #eff6ff;
-  --color-secondary-100: #dbeafe;
-  --color-secondary-200: #bfdbfe;
-  --color-secondary-300: #93c5fd;
-  --color-secondary-400: #60a5fa;
-  --color-secondary-500: #3b82f6;
-  --color-secondary-600: #2563eb;
-  --color-secondary-700: #1d4ed8;
-  --color-secondary-800: #1e40af;
-  --color-secondary-900: #1e3a8a;
+html[data-theme='dark'] {
+  --text-color: #eeedf9;
+  --text-color-inverted: #1b1a1c;
+  --bg-color: #1b1a1c;
+  --bg-color-50: #38363a;
+  --bg-color-inverted: #eeedf9;
+  --bg-color-inverted-50: #473db8;
+}
+
+html[data-theme='orange'] {
+  --text-color: #581c0e;
+  --text-color-inverted: #f8dad3;
+  --bg-color: #fef8f6;
+  --bg-color-50: #e14b19;
+  --bg-color-inverted: #40251c;
+  --bg-color-inverted-50: #a35e48;
+}
+
+@theme {
+  /* Font Family */
+  --font-lato: 'Lato', sans-serif;
+  --font-cookie: 'Cookie', cursive;
+
+  /* Colors */
+  --color-*: initial;
 
   /* Font Size */
   --text-*: initial;
@@ -55,6 +63,27 @@
   --breakpoint-lg: 1024px;
   --breakpoint-xl: 1280px;
   --breakpoint-2xl: 1536px;
+}
+
+@theme inline {
+  /* Colors */
+  --color-text: var(--text-color);
+  --color-text-inverted: var(--text-color-inverted);
+  --color-background: var(--bg-color);
+  --color-background-50: var(--bg-color-50);
+  --color-background-inverted: var(--bg-color-inverted);
+  --color-background-inverted-50: var(--bg-color-inverted-50);
+
+  --color-primary-50: var(--color-primary-50);
+  --color-primary-100: var(--color-primary-100);
+  --color-primary-200: var(--color-primary-200);
+  --color-primary-300: var(--color-primary-300);
+  --color-primary-400: var(--color-primary-400);
+  --color-primary-500: var(--color-primary-500);
+  --color-primary-600: var(--color-primary-600);
+  --color-primary-700: var(--color-primary-700);
+  --color-primary-800: var(--color-primary-800);
+  --color-primary-900: var(--color-primary-900);
 }
 
 @layer base {
@@ -86,6 +115,7 @@
     font-weight: var(--font-weight-thin);
   }
 
+  div,
   input,
   button,
   p,
@@ -95,9 +125,6 @@
   h4,
   h5 {
     font-family: var(--font-lato);
-    color: var(--color-black);
-    @variant dark {
-      color: var(--color-white);
-    }
+    color: var(--text-color);
   }
 }

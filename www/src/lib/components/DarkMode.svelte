@@ -7,74 +7,87 @@ custom dark mode switch
   import IconButton from './IconButton.svelte';
   import Icon from '@iconify/svelte';
   import { theme } from '../types';
-  import { setDocumentClass } from '../utils';
+  import { getCurrentTheme } from '$lib/utils';
 
-  const toggleTheme = (ev: MouseEvent) => {
-    const target = ev.target as HTMLElement;
-    const currentVariant = theme.safeParse(target.ownerDocument.documentElement.classList.item(0));
-    const currentVariantIndex = theme.options.indexOf(
-      currentVariant.success ? currentVariant.data : theme.enum.light
-    );
-    const nextVariant =
+  const toggleTheme = (_: MouseEvent) => {
+    let { currentTheme, target } = getCurrentTheme();
+    const currentVariantIndex = theme.options.indexOf(currentTheme);
+    const nextThemeVariant =
       theme.options.at(
         currentVariantIndex === theme.options.length - 1 ? 0 : currentVariantIndex + 1
       ) ?? theme.enum.light;
 
-    if (target.ownerDocument === document) {
-      setDocumentClass(nextVariant);
-      window.localStorage.setItem('color-theme', nextVariant);
-    }
+    target.setAttribute('data-theme', nextThemeVariant);
+    window.localStorage.setItem('color-theme', nextThemeVariant);
   };
-
-  // we are NOT in the iFrame
 </script>
 
 <svelte:head>
   <script>
-    // Had to copy else import error :(
-    const setDocumentClass = (newTheme) => {
-      const currentTheme = window.document.documentElement.classList.item(0);
-      if (currentTheme) {
-        window.document.documentElement.classList.replace(currentTheme, newTheme);
-      } else {
-        window.document.documentElement.classList.add(newTheme);
-      }
-    };
-    // not the safest but oh well
     const storedTheme = window.localStorage.getItem('color-theme');
+    const body = window.document.documentElement;
+
     if (storedTheme) {
       // user preference - overrides
-      setDocumentClass(storedTheme);
+      body.setAttribute('data-theme', storedTheme);
+      window.localStorage.setItem('color-theme', storedTheme);
     } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      // browser preference - does not overrides
-      setDocumentClass('dark');
+      body.setAttribute('data-theme', 'dark');
+      window.localStorage.setItem('color-theme', 'dark');
     } else {
-      setDocumentClass('light');
+      body.setAttribute('data-theme', 'light');
+      window.localStorage.setItem('color-theme', 'light');
     }
   </script>
 </svelte:head>
 
 <IconButton onclick={toggleTheme} outline>
-  <Icon icon="tabler:moon" id={theme.enum.dark} class="hidden dark:block" width="24" height="24" />
-  <Icon
-    icon="tabler:sun"
-    id={theme.enum.light}
-    class="block dark:hidden prime:hidden second:hidden"
-    width="24"
-    height="24"
-  />
-  <Icon
-    icon="tabler:sun-electricity"
-    id={theme.enum.primary}
-    class="hidden prime:block"
-    width="24"
-    height="24"
-  />
-  <Icon
-    icon="tabler:moon-2"
-    id={theme.enum.secondary}
-    class="hidden second:block"
-    width="24"
-    height="24"
-  />
+  <span class="theme-icon-light">
+    <Icon icon="tabler:sun" width="24" height="24" />
+  </span>
+  <span class="theme-icon-dark">
+    <Icon icon="tabler:moon" width="24" height="24" />
+  </span>
+  <span class="theme-icon-orange">
+    <Icon icon="tabler:sun-electricity" width="24" height="24" />
+  </span>
+
+  <!-- <Icon -->
+  <!--   icon="tabler:moon-2" -->
+  <!--   id={theme.enum.secondary} -->
+  <!--   class="hidden second:block" -->
+  <!--   width="24" -->
+  <!--   height="24" -->
+  <!-- /> -->
 </IconButton>
+
+<style>
+  .theme-icon-light {
+    display: block;
+  }
+  .theme-icon-dark {
+    display: none;
+  }
+  .theme-icon-orange {
+    display: none;
+  }
+  :global(html[data-theme='dark'] .theme-icon-light) {
+    display: none;
+  }
+  :global(html[data-theme='dark'] .theme-icon-dark) {
+    display: block;
+  }
+  :global(html[data-theme='dark'] .theme-icon-orange) {
+    display: none;
+  }
+
+  :global(html[data-theme='orange'] .theme-icon-light) {
+    display: none;
+  }
+  :global(html[data-theme='orange'] .theme-icon-dark) {
+    display: none;
+  }
+  :global(html[data-theme='orange'] .theme-icon-orange) {
+    display: block;
+  }
+</style>
