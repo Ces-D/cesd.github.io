@@ -4,9 +4,6 @@ import { z } from 'zod';
 export const theme = z.enum(['light', 'dark', 'orange']).describe('A supported theme for the app.');
 export type Theme = z.infer<typeof theme>;
 
-/** A chat message contains the message and an identifier indicating who the user is */
-export type Message = { message: string; user: 'user' | 'bot' };
-
 export const analyticsMetadataSchema = z
   .object({
     created_at: z.coerce.date(),
@@ -30,12 +27,17 @@ export const postMetadataSchema = z
     title: z.string().min(1),
     description: z.string().min(1),
     slug: z.string().min(1),
+    author: z.string().min(1),
     analytics: analyticsMetadataSchema,
     interest: interestMetadataSchema,
   })
   .describe('A schema for a posts metadata.');
 
-/** Complete data from Brainiac post graymatter
- *  @see https://github.com/Ces-D/Brainiac-1
- * */
 export type PostMetadata = z.infer<typeof postMetadataSchema>;
+
+export const postMetadataFileSchema = z.object({
+  updated: z.coerce.date(),
+  metadata: z.record(z.string(), postMetadataSchema).transform((c) => new Map(Object.entries(c))),
+});
+
+export type PostMetadataFile = z.infer<typeof postMetadataFileSchema>;
