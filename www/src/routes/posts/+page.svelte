@@ -15,17 +15,11 @@
   {#each data.metadata as metadata, i (i)}
     <Card
       size="none"
-      href={metadata.status === 'fulfilled' ? ROUTE.posts.post(metadata.value.slug) : undefined}
+      href={ROUTE.posts.post(metadata.slug)}
       class="p-1 md:p-2 lg:py-2 lg:px-3 hover:bg-background-inverted hover:text-text-inverted"
     >
-      {#if metadata.status === 'fulfilled'}
-        <h2 style="color: inherit;">{metadata.value.title}</h2>
-        <p style="color: inherit;" class="mt-3">{metadata.value.description}</p>
-      {:else}
-        <h2>Error</h2>
-        <p>Failed to load post</p>
-        <p>{metadata.reason}</p>
-      {/if}
+      <h2 style="color: inherit;">{metadata.title}</h2>
+      <p style="color: inherit;" class="mt-3">{metadata.description}</p>
     </Card>
   {/each}
 </section>

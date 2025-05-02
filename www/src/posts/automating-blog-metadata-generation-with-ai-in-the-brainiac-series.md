@@ -1,21 +1,4 @@
----
-title = "AI Automates Metadata: The Brainiac Series"
-description = "In the ever-evolving landscape of content creation and management, automating tasks to streamline workflows is crucial for productivity and efficiency. My recent project, part of what I’m calling the 'Brainiac' series, leverages artificial intelligence (AI) models to automate the generation of metadata for blog posts. This project combines tools like Ollama and DeepSeek to create a pipeline that not only generates metadata but also processes it through a series of stages, similar to LangChain’s approach, ensuring accuracy and relevance."
-author = "Cesar Diaz"
-slug = "ai-automates-metadata-the-brainiac-series"
-
-[analytics]
-created_at = "2025-02-07"
-length_in_words = 871
-reading_time_in_minutes = 3
-
-[interest]
-keywords = ["AI-powered metadata generation", "Automated blog post processing", "Ollama", "DeepSeek", "NLP models", "Markdown parsing", "Command-line interface (CLI)", "Genre detection", "Keyword extraction", "Content creation tools", "SEO optimization", "Blog management", "Validation", "Error handling", "Logging", "Marketing teams"]
-genre = "TECHNOLOGY"
-related_articles = []
----
-
-# Brainiac Series
+## Brainiac Series
 
 In the ever-evolving landscape of content creation and management, automating tasks to streamline workflows is crucial for productivity and efficiency. My recent project, part of what I’m calling the "Brainiac" series, leverages artificial intelligence (AI) models to automate the generation of metadata for blog posts. This project combines tools like Ollama and DeepSeek to create a pipeline that not only generates metadata but also processes it through a series of stages, similar to LangChain’s approach, ensuring accuracy and relevance.
 
@@ -61,4 +44,4 @@ and integrations to make metadata generation even more seamless and efficient.
 
 Let me know if you’d like more details on specific aspects of the project or advice on expanding its functionality!
 
-[ Brainiac-1 ](https://github.com/Ces-D/Brainiac-1)
+##### [ Brainiac-1 ](https://github.com/Ces-D/Brainiac-1)
