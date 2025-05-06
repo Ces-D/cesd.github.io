@@ -1,5 +1,5 @@
 {
-  "updated": "2025-05-02 16:49:35",
+  "updated": "2025-05-05 20:36:08",
   "metadata": {
     "aws-certified-developer-certification-exam-overview": {
       "title": "AWS Certified Developer Certification Exam Overview",
@@ -105,7 +105,36 @@
           "human oversight"
         ],
         "genre": "TECHNOLOGY",
-        "related_articles": ["automating-blog-metadata-generation-with-ai-in-the-brainiac-series"]
+        "related_articles": [
+          "automating-blog-metadata-generation-with-ai-in-the-brainiac-series"
+        ]
+      }
+    },
+    "comprehensive-study-plan-for-aws-certified-developer-associate": {
+      "title": "Comprehensive Study Plan for AWS Certified Developer – Associate",
+      "description": "An organized and thorough 12-week study roadmap designed to help candidates prepare for the AWS Certified Developer – Associate exam, emphasizing hands-on practice and resource utilization.",
+      "author": "Cesar Diaz",
+      "slug": "comprehensive-study-plan-for-aws-certified-developer-associate",
+      "analytics": {
+        "created_at": "2025-05-05 20:36:08",
+        "length_in_words": 475,
+        "reading_time_in_minutes": 2
+      },
+      "interest": {
+        "keywords": [
+          "AWS",
+          "certification",
+          "study plan",
+          "cloud development",
+          "serverless",
+          "security",
+          "CI/CD",
+          "monitoring",
+          "performance optimization",
+          "hands-on learning"
+        ],
+        "genre": "OPINION",
+        "related_articles": []
       }
     }
   }
