@@ -4,7 +4,7 @@ import { readCompleteMetadata } from '$lib/server/readCompleteMetadata';
 
 async function getCompleteMetadata(): Promise<Array<PostMetadata>> {
   const completeMetadataFile = await readCompleteMetadata();
-  return Array.from( completeMetadataFile.metadata.values() );
+  return Array.from(completeMetadataFile.metadata.values());
 }
 
 export const load: PageServerLoad = async () => {

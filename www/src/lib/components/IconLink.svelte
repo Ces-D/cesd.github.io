@@ -1,11 +1,12 @@
 <script lang="ts">
-  import type { HTMLButtonAttributes } from 'svelte/elements';
-  let { children, onclick }: Pick<HTMLButtonAttributes, 'onclick' | 'children'> = $props();
+  import type { HTMLAnchorAttributes } from 'svelte/elements';
+
+  let { href, children }: Pick<HTMLAnchorAttributes, 'children' | 'href'> = $props();
 </script>
 
-<button
-  {onclick}
+<a
+  {href}
   class="p-2 rounded-2xl border hover:cursor-pointer h-fit w-fit bg-background-inverted-50 text-text-inverted hover:bg-background-inverted"
 >
   {@render children?.()}
-</button>
+</a>

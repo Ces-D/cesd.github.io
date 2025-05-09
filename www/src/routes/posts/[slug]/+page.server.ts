@@ -17,11 +17,21 @@ export const load: PageServerLoad = async (request) => {
 
     const htmlContent = await marked.parse(fileContent, { breaks: true });
     const metadata = metadataFile.metadata.get(request.params.slug);
+    const otherArticles = Array.from(
+      metadataFile.metadata
+        .entries()
+        .filter(([entryKey]) => entryKey !== request.params.slug)
+        .map(([entryKey, entryValue]) => ({ slug: entryKey, title: entryValue.title }))
+    );
 
     if (!metadata) {
       error(404, { message: `${request.params.slug} not found` });
     } else {
-      return { metadata, content: htmlContent };
+      return {
+        metadata,
+        content: htmlContent,
+        otherArticles,
+      };
     }
   } catch (_) {
     error(404, { message: `${request.params.slug} not found` });

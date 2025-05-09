@@ -73,7 +73,7 @@ export const renderer: RendererObject = {
   },
 
   paragraph({ tokens }) {
-    return `<p class="my-2 text-justify">${this.parser.parseInline(tokens)}</p>\n`;
+    return `<p class="my-2">${this.parser.parseInline(tokens)}</p>\n`;
   },
 
   list(token) {
@@ -92,7 +92,7 @@ export const renderer: RendererObject = {
       '<' +
       type +
       startAttr +
-      ' class="list-disc list-inside" ' +
+      ' class="list-disc list-outside md:list-inside" ' +
       '>\n' +
       body +
       '</' +
@@ -132,7 +132,7 @@ export const renderer: RendererObject = {
 
     itemBody += this.parser.parse(item.tokens, !!item.loose);
 
-    return `<li class="my-1 text-justify">${itemBody}</li>\n`;
+    return `<li class="my-1">${itemBody}</li>\n`;
   },
 
   link({ href, title, tokens }) {
