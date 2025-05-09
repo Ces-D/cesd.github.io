@@ -17,12 +17,6 @@ export const load: PageServerLoad = async (request) => {
 
     const htmlContent = await marked.parse(fileContent, { breaks: true });
     const metadata = metadataFile.metadata.get(request.params.slug);
-    const otherArticles = Array.from(
-      metadataFile.metadata
-        .entries()
-        .filter(([entryKey]) => entryKey !== request.params.slug)
-        .map(([entryKey, entryValue]) => ({ slug: entryKey, title: entryValue.title }))
-    );
 
     if (!metadata) {
       error(404, { message: `${request.params.slug} not found` });
@@ -30,7 +24,6 @@ export const load: PageServerLoad = async (request) => {
       return {
         metadata,
         content: htmlContent,
-        otherArticles,
       };
     }
   } catch (_) {
@@ -41,9 +34,9 @@ export const load: PageServerLoad = async (request) => {
 // see - https://svelte.dev/docs/kit/page-options#prerender
 export const entries: EntryGenerator = async () => {
   const metadataFile = await readCompleteMetadata();
-  const metadata = Object.values(metadataFile.metadata);
+  const metadata = Object.keys(metadataFile.metadata);
 
-  return metadata.map((p) => ({ slug: p.value.slug }));
+  return metadata.map((p) => ({ slug: p }));
 };
 
 export const prerender = true;
