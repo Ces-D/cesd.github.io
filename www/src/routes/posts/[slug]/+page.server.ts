@@ -21,7 +21,10 @@ export const load: PageServerLoad = async (request) => {
     if (!metadata) {
       error(404, { message: `${request.params.slug} not found` });
     } else {
-      return { metadata, content: htmlContent };
+      return {
+        metadata,
+        content: htmlContent,
+      };
     }
   } catch (_) {
     error(404, { message: `${request.params.slug} not found` });
@@ -31,9 +34,9 @@ export const load: PageServerLoad = async (request) => {
 // see - https://svelte.dev/docs/kit/page-options#prerender
 export const entries: EntryGenerator = async () => {
   const metadataFile = await readCompleteMetadata();
-  const metadata = Object.values(metadataFile.metadata);
+  const metadata = Object.keys(metadataFile.metadata);
 
-  return metadata.map((p) => ({ slug: p.value.slug }));
+  return metadata.map((p) => ({ slug: p }));
 };
 
 export const prerender = true;

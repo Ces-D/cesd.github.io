@@ -5,9 +5,11 @@ custom dark mode switch
 
 <script lang="ts">
   import IconButton from './IconButton.svelte';
-  import Icon from '@iconify/svelte';
   import { theme } from '../types';
   import { getCurrentTheme } from '$lib/utils';
+  import Sun from './Icons/Sun.svelte';
+  import Moon from './Icons/Moon.svelte';
+  import Sunset from './Icons/Sunset.svelte';
 
   const toggleTheme = (_: MouseEvent) => {
     let { currentTheme, target } = getCurrentTheme();
@@ -41,15 +43,15 @@ custom dark mode switch
   </script>
 </svelte:head>
 
-<IconButton onclick={toggleTheme} outline>
+<IconButton onclick={toggleTheme}>
   <span class="theme-icon-light">
-    <Icon icon="tabler:sun" width="24" height="24" />
+    <Sun />
   </span>
   <span class="theme-icon-dark">
-    <Icon icon="tabler:moon" width="24" height="24" />
+    <Moon />
   </span>
   <span class="theme-icon-orange">
-    <Icon icon="tabler:sun-electricity" width="24" height="24" />
+    <Sunset />
   </span>
 
   <!-- <Icon -->

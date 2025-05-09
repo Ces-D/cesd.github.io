@@ -9,9 +9,9 @@
   <meta name="description" content={data.metadata.description} />
 </svelte:head>
 
-<section class="flex flex-col gap-2 justify-center items-center p-1 m-auto w-full max-w-[1000px]">
+<main class="p-1 mx-auto w-full md:p-2 lg:p-4 max-w-[1000px]">
   <h1 class="underline text-primary-900">{data.metadata.title}</h1>
-  <div class="grid gap-x-3 justify-start items-center w-full grid-cols-[auto_1fr]">
+  <div class="grid gap-x-3 justify-start items-center my-5 w-full grid-cols-[auto_1fr]">
     <p>Authored:</p>
     <p>{new Date(data.metadata.analytics.created_at).toLocaleDateString()}</p>
     <p>Reading Time:</p>
@@ -32,4 +32,4 @@
     <p>Keywords:</p>
     <p>{data.metadata.interest.keywords.join(', ')}</p>
   </div>
-</section>
+</main>

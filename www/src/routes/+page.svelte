@@ -8,8 +8,8 @@
   <meta name="description" content="Learning, Building, Growing, Breaking" />
 </svelte:head>
 
-<section class="flex flex-col justify-center items-center p-1 mx-auto lg:w-3/4">
-  <div class="w-full md:p-2 lg:p-5 h-[500px] md:h-[500px] lg:h-[800px]">
+<main class="col-span-full p-1 md:p-2 lg:p-4">
+  <div class="lg:mx-auto h-[500px] md:h-[500px] lg:max-w-3/4 lg:h-[800px]">
     <BubbleGame />
   </div>
-</section>
+</main>
