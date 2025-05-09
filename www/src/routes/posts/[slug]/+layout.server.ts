@@ -8,10 +8,9 @@ marked.use({ renderer });
 export const load: LayoutServerLoad = async () => {
   const metadataFile = await readCompleteMetadata();
 
-  const articles = Array.from(
-    metadataFile.metadata
-      .entries()
-      .map(([entryKey, entryValue]) => ({ slug: entryKey, title: entryValue.title }))
-  );
+  const articles = Array.from(metadataFile.metadata.values()).map((val) => ({
+    slug: val.slug,
+    title: val.title,
+  }));
   return { articles };
 };
