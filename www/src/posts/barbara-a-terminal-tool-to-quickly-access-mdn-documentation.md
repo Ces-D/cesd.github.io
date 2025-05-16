@@ -38,6 +38,6 @@ cargo install barbara
 
 ## Built to Help Me Learn, Shared to Help You Too
 
-Barbara started as a personal tool to help me learn faster — to close the gap between I need to look this up and here’s the answer. But it turned out to be too useful not to share.
+[ Barbara ](https://github.com/Ces-D/barbara) started as a personal tool to help me learn faster — to close the gap between I need to look this up and here’s the answer. But it turned out to be too useful not to share.
 
 If you spend time in the terminal and find yourself constantly flipping to MDN, give Barbara a try. I hope it helps you learn faster and code smarter, just like it’s helping me.
