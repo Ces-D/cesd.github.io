@@ -1,5 +1,5 @@
 {
-  "updated": "2025-05-05 20:36:08",
+  "updated": "2025-05-16 14:12:06",
   "metadata": {
     "aws-certified-developer-certification-exam-overview": {
       "title": "AWS Certified Developer Certification Exam Overview",
@@ -133,6 +133,32 @@
         ],
         "genre": "OPINION",
         "related_articles": []
+      }
+    },
+    "barbara-a-terminal-tool-to-quickly-access-mdn-documentation": {
+      "title": "Barbara: A Terminal Tool to Quickly Access MDN Documentation",
+      "description": "Barbara is a command-line interface tool designed to streamline access to MDN Web Docs for web developers. It leverages fuzzy search and Rust-based performance to enable rapid, seamless searches directly from the terminal, aiming to reduce context switching and improve productivity. The tool reflects an innovative approach to integrating documentation lookup into developers' workflows, promoting more efficient learning and coding.",
+      "author": "Cesar Diaz",
+      "slug": "barbara-a-terminal-tool-to-quickly-access-mdn-documentation",
+      "analytics": {
+        "created_at": "2025-05-16 14:12:06",
+        "length_in_words": 372,
+        "reading_time_in_minutes": 2
+      },
+      "interest": {
+        "keywords": [
+          "MDN Web Docs",
+          "CLI tool",
+          "fuzzy search",
+          "Rust",
+          "developer productivity",
+          "documentation",
+          "web development",
+          "terminal tool",
+          "FZF"
+        ],
+        "genre": "TECHNOLOGY",
+        "related_articles": ["key-considerations-for-effective-ai-agent-automation"]
       }
     }
   }
